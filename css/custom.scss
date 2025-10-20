@@ -1,0 +1,469 @@
+/* src/css/custom.scss */
+
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Outfit:wght@100..900&display=swap');
+
+/* Variables tipográficas */
+$font-family-base: 'Lexend',
+sans-serif;
+$font-size-base: 1.2rem; // 16px
+$line-height-base: 1.5;
+
+/* Colores (puedes usar los de Reveal como base) */
+$primary-color: #460556;
+$secondary-color: #ff6600;
+
+/* Sobrescribe variables de Reveal (si las usa) */
+$background-color: #e0e7ed; // Fondo de la presentación
+$color: #141414c2; // Color de texto
+
+
+/* Long shadow 
+        para usar:
+        @include long-shadow(20, 2px, 2px, 0, rgba(251, 255, 16, 0.083)); */
+@mixin long-shadow($steps: 50, $dx: 1px, $dy: 1px, $blur: 0, $color: rgba(0, 0, 0, .3)) {
+    $shadows: ();
+
+    @for $i from 1 through $steps {
+        $x: $i * $dx;
+        $y: $i * $dy;
+        $shadows: append($shadows, $x $y $blur $color, comma);
+    }
+
+    text-shadow: $shadows;
+}
+
+
+/* Estilos globales */
+body {
+    font-family: $font-family-base;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+    color: $color;
+    background: $background-color;
+}
+
+
+
+/* Sobrescribe clases de Reveal (ejemplo) */
+.reveal .slide-background {
+    background-size: cover;
+    background-position: center;
+}
+
+/* Si quieres usar variables CSS (custom properties) */
+:root {
+    --r-background: $background-color;
+    --r-color: $color;
+}
+
+.reveal {
+    .slides {
+        line-height: $line-height-base;
+        text-align: left;
+
+        #title-slide {
+
+            img.title-illustration{
+                max-width: 50vw;
+                max-height: 40vh;
+                margin: 2em 0 0 20%;
+            }
+
+            .tagline,
+            .title {
+                margin: 0;
+                font-size: $font-size-base * 1.1;
+                text-transform: uppercase;
+                line-height: $font-size-base * 1.59;
+                letter-spacing: .25ex;
+
+            }
+
+            .tagline{
+                font-weight: 700;
+                color: #C00;
+            }
+            .title {
+                margin-bottom: 2em;
+                font-weight: 300;
+                color: rgba(0, 0, 0, 0.88);
+            }
+
+            .credentials {
+                display: grid;
+                font-size: 75%;
+                line-height: 160%;
+                font-size: 75%;
+                grid-template-columns: 1fr 1fr 1fr;
+                margin: 1.5em 0 0 0;
+
+                .author {
+                    margin: 0 0 2em 0;
+
+                    span {
+                        font-weight: 290;
+                        font-size: 0.85em;
+                        color: transparentize($color, 0.3);
+
+                        a,
+                        a:visited {
+                            color: orangered
+                        }
+                    }
+                }
+
+                .tutors {
+                    dt {
+                        font-weight: 300;
+                        margin: 0 0 0 2em;
+                    }
+
+                    dl {
+                        margin: 0 0 0 4em;
+                    }
+                }
+
+
+                div {
+                    img.logo {
+                        position: absolute;
+                        bottom: -1ex;
+                        width: 5em;
+                        height: auto;
+                    }
+                }
+            }
+
+        }
+
+
+
+        p {
+
+            &.huge {
+                font-weight: 179;
+                line-height: 124%;
+                font-size: 3.5rem;
+                padding: 0 6ex 0 2.3em;
+                mix-blend-mode: lighten;
+                color: rgb(2, 32, 44);
+
+                span {
+                    transform-origin: center;
+                    transform: rotate(-1.5deg);
+                    border-radius: 0.21ex;
+                    display: inline-block;
+                    break-inside: avoid;
+                    padding: 0 0.23ex 0.123ex 0.27ex;
+                    color: rgb(74 203 189 / 95%);
+                    background-color: rgb(1 106 94 / 12%);
+                    border: 0.013ex solid #80aba429;
+                    font-weight: 300;
+                }
+            }
+
+            &.question {
+                padding: 0 2m;
+                line-height: 160%;
+            }
+
+            &.light {
+                font-weight: 222;
+                text-transform: none;
+                color: #ffffffca;
+                font-size: 80%;
+
+                strong {
+                    color: white;
+                }
+            }
+
+            &.small {
+                font-size: 0.8rem;
+            }
+        }
+
+        h2 {
+
+            &.photo-overlay {
+                color: rgba(255, 255, 255, 0.92);
+                margin: 16em 0 0 0;
+                font-weight: 689;
+                line-height: 166%;
+                text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.93);
+                text-transform: uppercase;
+                font-size: 1.36rem;
+
+                span {
+                    background-color: rgba(0, 0, 0, 0.54);
+                    padding: 0 .5ex;
+
+                    &.light {
+                        font-weight: 222;
+                        text-transform: none;
+                    }
+                }
+            }
+
+        }
+
+        .last {
+
+            a,
+            a:visited {
+                color: $primary-color;
+                font-weight: 600;
+            }
+        }
+
+        .nsm {
+            margin: 4em 0 0 0;
+            font-size: 60%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(20em, 1fr));
+            gap: 1.5rem;
+            grid-template-rows: repeat(auto-fit, minmax(9em, 1fr));
+
+            .block-name {
+                color: rgb(248, 247, 242);
+                font-size: .9rem;
+                font-weight: 600;
+                margin: 0 0 0.5em 0;
+                text-align: left;
+            }
+
+            .nsm-block {
+                margin: 0;
+                padding: 0;
+
+                li {
+                    display: inline-block;
+                    background-color: gray;
+                    margin: .31ex .1ex;
+                    padding: 0 .5ex;
+                    border-radius: .3ex;
+                    font-size: 150%;
+                    text-shadow: 1px 1px 0 #ffffff4d;
+                }
+
+                .facil {
+                    background-color: rgba(94, 255, 1, 0.631);
+
+                }
+
+                .dificil {
+                    background-color: rgba(255, 94, 0, 0.637);
+                }
+
+                .d1 {
+                    background-color: #48ba06;
+                }
+
+                .d2 {
+                    background-color: #96f704;
+                }
+
+                .d3 {
+                    background-color: #e4f804;
+                }
+
+                .d4 {
+                    background-color: #f78e04;
+                }
+
+                .d5 {
+                    background-color: #c94b01;
+                }
+            }
+        }
+
+
+
+
+
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+
+            th {
+                border-bottom: .3ex solid $primary-color;
+            }
+        }
+
+        .fit {
+            margin: 0 auto;
+            max-height: 80vh;
+            max-width: 90%;
+            height: auto;
+        }
+
+        .w {
+            background-color: white;
+        }
+
+        .p5-host {
+            width: 100%;
+            height: 60vh;
+            max-height: 80vh;
+            background: transparent;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .web-window {
+            /* Marco y estética */
+            border: 1px solid rgba(0, 0, 0, 0.16);
+            border-radius: 1.34ex;
+            box-shadow:
+                0 1ex 5px rgba(0, 0, 0, 0.14),
+                0 .66ex 10px rgba(0, 0, 0, 0.35),
+                0 .33ex 30px rgba(0, 0, 0, 0.20);
+            overflow: hidden;
+            background: #fff;
+
+            /* Centrando y limitando tamaño de manera fluida */
+            margin-inline: auto;
+            /* centra horizontalmente dentro de la slide */
+            display: grid;
+            /* para que el iframe llene el contenedor */
+            place-items: stretch;
+            /* iframe a 100% */
+            width: min(85vw, 1200px);
+            height: min(85vh, 800px);
+
+
+            &.pictogramas {
+                height: min(82vh, 860px);
+            }
+
+            &.pipeline {
+                height: min(55vh, 650px);
+            }
+
+
+            // el iframe adentro
+            iframe {
+                width: 100%;
+                height: 100%;
+                border: 0;
+                border-radius: inherit;
+                /* hereda esquinas redondeadas del marco */
+            }
+        }
+    }
+}
+
+.zoom125 {
+    zoom: 1.25;
+}
+
+.zoom133 {
+    zoom: 1.33;
+}
+
+.zoom166 {
+    zoom: 1.66;
+}
+
+
+/* highlight */
+#svg-code-sync {
+    $col: #00d2ff;
+
+    .code-node {
+        border-radius: .35em;
+        padding: .2em .25em;
+        transition: outline-color .12s ease, background .12s ease;
+    }
+
+    .code-node.is-selected {
+        outline: 2px solid $col;
+        outline-offset: 3px;
+        background: rgba(0, 210, 255, .10);
+    }
+
+    svg .is-selected {
+        filter: drop-shadow(0 0 .11rem $col) drop-shadow(0 0 .08rem $col);
+        transition: filter .12s ease;
+    }
+}
+
+/* code highlight */
+
+
+.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    background: transparent;
+    color: #6b6767;
+    //white-space: pre-wrap;
+    font-size: 70%;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-tag {
+    color: #9b6b18;
+}
+
+.hljs-template-tag {
+    color: #df6363;
+}
+
+.hljs-number {
+    color: #8cd0d3;
+}
+
+.hljs-variable,
+.hljs-template-variable,
+.hljs-attribute {
+    color: #ccd34e;
+}
+
+.hljs-literal {
+    color: #6d6d39;
+}
+
+.hljs-subst {
+    color: #8f8f8f;
+}
+
+.hljs-title,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-section,
+.hljs-type {
+    color: #5fa94c;
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link {
+    color: #dca3a3;
+}
+
+.hljs-deletion,
+.hljs-string,
+.hljs-built_in,
+.hljs-builtin-name {
+    color: #cc9393;
+}
+
+.hljs-addition,
+.hljs-comment,
+.hljs-quote,
+.hljs-meta {
+    color: #7f9f7f;
+}
+
+
+.hljs-emphasis {
+    font-style: italic;
+}
+
+.hljs-strong {
+    font-weight: bold;
+}

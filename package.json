@@ -1,9 +1,9 @@
 {
-  "name": "postgraduate-research-symposium-2025",
+  "name": "Confirmation of Candidature",
   "version": "1.0.0",
-  "description": "Towards a Generative Pictographic System for Cognitive Accessibility and Inclusive Communication",
+  "description": "MediaFranca: Practice-Oriented Investigation into a Generative Pictographic System for Cognitive Accessibility",
   "private": true,
-  "homepage": "https://hspencer.github.io/prs/",
+  "homepage": "https://hspencer.github.io/cc/",
   "license": "MIT",
   "author": "Herbert Spencer <hspencer@ead.cl>",
   "type": "module",

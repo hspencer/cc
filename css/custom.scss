@@ -11,10 +11,16 @@ $line-height-base: 1.5;
 /* Colores (puedes usar los de Reveal como base) */
 $primary-color: #460556;
 $secondary-color: #ff6600;
+$terciary-color: #c73319;
 
 /* Sobrescribe variables de Reveal (si las usa) */
 $background-color: #e0e7ed; // Fondo de la presentación
 $color: #141414c2; // Color de texto
+
+
+a, a:visited{
+    color: $terciary-color;
+}
 
 
 /* Long shadow 
@@ -28,10 +34,20 @@ $color: #141414c2; // Color de texto
         $y: $i * $dy;
         $shadows: append($shadows, $x $y $blur $color, comma);
     }
-
     text-shadow: $shadows;
 }
 
+@mixin svg-shadow($steps: 50, $dx: 1px, $dy: 1px, $blur: 0, $color: rgba(0, 0, 0, .3)) {
+  $filters: "";
+
+  @for $i from 1 through $steps {
+    $x: $i * $dx;
+    $y: $i * $dy;
+    $filters: #{$filters} drop-shadow(#{$x} #{$y} #{$blur} #{$color});
+  }
+
+  filter: #{$filters};
+}
 
 /* Estilos globales */
 body {
@@ -56,6 +72,12 @@ body {
     --r-color: $color;
 }
 
+.col-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+}
+
 .reveal {
     .slides {
         line-height: $line-height-base;
@@ -63,80 +85,86 @@ body {
 
         #title-slide {
 
-            img.title-illustration{
-                max-width: 50vw;
-                max-height: 40vh;
-                margin: 2em 0 0 20%;
+            .illustration {
+                position: absolute;
+                width: 66%;
+                left:33%;
+                top: -18%;
+                @include svg-shadow(3, 1px, 1px, 0, rgba(0, 0, 0, 0.039));
             }
 
-            .tagline,
-            .title {
-                margin: 0;
-                font-size: $font-size-base * 1.1;
-                text-transform: uppercase;
-                line-height: $font-size-base * 1.59;
-                letter-spacing: .25ex;
+            .col-2 {
+                margin: 30% 0 0 0;
+                .title {
+                    margin: 0;
+                    @include long-shadow(3, 1px, 1px, 0, rgba(0, 0, 0, 0.039));
 
-            }
+                    h1 {
+                        text-transform: uppercase;
+                        font-size: $font-size-base * 1.25;
+                        line-height: $font-size-base * 2;
+                        letter-spacing: .15ex;
+                        font-weight: 350;
 
-            .tagline{
-                font-weight: 700;
-                color: #C00;
-            }
-            .title {
-                margin-bottom: 2em;
-                font-weight: 300;
-                color: rgba(0, 0, 0, 0.88);
-            }
-
-            .credentials {
-                display: grid;
-                font-size: 75%;
-                line-height: 160%;
-                font-size: 75%;
-                grid-template-columns: 1fr 1fr 1fr;
-                margin: 1.5em 0 0 0;
-
-                .author {
-                    margin: 0 0 2em 0;
-
-                    span {
-                        font-weight: 290;
-                        font-size: 0.85em;
-                        color: transparentize($color, 0.3);
-
-                        a,
-                        a:visited {
-                            color: orangered
+                        span {
+                            display: block;
+                            font-weight: 700;
+                            color: $terciary-color;
                         }
                     }
+
                 }
 
-                .tutors {
-                    dt {
-                        font-weight: 300;
-                        margin: 0 0 0 2em;
+                .credentials {
+                    display: grid;
+                    font-size: 75%;
+                    line-height: 160%;
+                    font-size: 75%;
+                    grid-template-columns: 4fr 6fr;
+                    margin: 1.5em 0 0 0;
+
+                    .author {
+                        margin: 0 0 2em 0;
+
+                        span {
+                            font-weight: 290;
+                            font-size: 0.85em;
+                            color: transparentize($color, 0.3);
+
+                            a,
+                            a:visited {
+                                color: $terciary-color;
+                            }
+                        }
                     }
 
-                    dl {
-                        margin: 0 0 0 4em;
-                    }
-                }
+                    .tutors {
+                        dt {
+                            font-size: .6rem;
+                            color: $terciary-color;
+                            text-transform: uppercase;
+                            font-weight: 600;
+                            margin: 0 0 0 2em;
+                        }
 
-
-                div {
-                    img.logo {
-                        position: absolute;
-                        bottom: -1ex;
-                        width: 5em;
-                        height: auto;
+                        dl {
+                            margin: 0 0 0 4em;
+                        }
                     }
                 }
             }
 
         }
 
-
+        .footer{
+            display: flex;             
+            align-items: center;         
+            justify-content: space-between; 
+            height: 100%; 
+            font-size: .7rem;
+            padding: 3rem 3rem 3rem 0;
+            img.logo{width: 100px;}
+        }
 
         p {
 

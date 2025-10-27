@@ -14,14 +14,13 @@ $secondary-color: #ff6600;
 $terciary-color: #c73319;
 
 /* Sobrescribe variables de Reveal (si las usa) */
-$background-color: #e0e7ed; // Fondo de la presentación
+$background-color: #c4cfb5; // Fondo de la presentación
 $color: #141414c2; // Color de texto
 
 
 a, a:visited{
     color: $terciary-color;
 }
-
 
 /* Long shadow 
         para usar:
@@ -75,13 +74,58 @@ body {
 .col-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-items: end;
+    align-items: center;
 }
 
 .reveal {
     .slides {
+
+        h2, h3, h4, h5, h6{
+            color: $terciary-color;
+        }
+        table.essence-mediafranca{
+            font-size: 75%;
+            width: 100%;
+            th{
+                vertical-align: bottom;
+              span{
+                text-transform: uppercase;
+                    font-size: 70%;
+                    font-weight: 300;
+              }
+              em{
+                font-style: normal;
+                color: $terciary-color;
+                font-weight: 500;
+              }
+              strong{
+                font-size: 3rem;
+              }
+            }
+            th:first-child,
+            td:first-child{
+                text-align: right;
+                white-space: nowrap;
+            }
+            td{
+                vertical-align: top;
+                em{
+                    font-style: normal;
+                    text-transform: uppercase;
+                    font-size: 70%;
+                    color: $terciary-color;
+                }
+            }
+        }
+
         line-height: $line-height-base;
         text-align: left;
+
+        .thumb{
+            position: relative;
+            max-width: 10em;
+            margin: 0 auto;
+        }
 
         #title-slide {
 
@@ -156,6 +200,13 @@ body {
 
         }
 
+        .image{
+            text-align: center;
+            img, svg{
+                max-width: 70vw;
+            }
+        }
+
         .footer{
             display: flex;             
             align-items: center;         
@@ -166,12 +217,25 @@ body {
             img.logo{width: 100px;}
         }
 
-        p {
+        .legend{
+            position: relative;
+            height: 70vh;
+            display: table-cell;
+            height: max-content;
+            background-color: #fffc;
+            bottom: 0;
+        }
 
+        p {
+            &.smallcaps{
+                text-transform: uppercase;
+                color: $terciary-color;
+                letter-spacing: .1ex;
+            }
             &.huge {
-                font-weight: 179;
+                
                 line-height: 124%;
-                font-size: 3.5rem;
+                font-size: 2.5rem;
                 padding: 0 6ex 0 2.3em;
                 mix-blend-mode: lighten;
                 color: rgb(2, 32, 44);
@@ -183,14 +247,15 @@ body {
                     display: inline-block;
                     break-inside: avoid;
                     padding: 0 0.23ex 0.123ex 0.27ex;
-                    color: rgb(74 203 189 / 95%);
-                    background-color: rgb(1 106 94 / 12%);
-                    border: 0.013ex solid #80aba429;
+                    color: $terciary-color;
+                    background-color:transparentize($terciary-color, .9);
+                    border: 0.013ex solid transparentize($terciary-color, .8);
                     font-weight: 300;
                 }
             }
 
             &.question {
+                font-weight: 279;
                 padding: 0 2m;
                 line-height: 160%;
             }
@@ -315,7 +380,7 @@ body {
             border-collapse: collapse;
 
             th {
-                border-bottom: .3ex solid $primary-color;
+                border-bottom: .25ex solid $terciary-color;
             }
         }
 
@@ -379,6 +444,13 @@ body {
                 /* hereda esquinas redondeadas del marco */
             }
         }
+    }
+}
+
+.xl{
+    font-size: 150%;
+    li{
+        margin-bottom: 1em;
     }
 }
 

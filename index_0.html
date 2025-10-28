@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MediaFranca</title>
+
+  <!-- en <head> o justo antes de </body>, pero SIEMPRE antes de main.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/2.0.4/p5.min.js" defer></script>
+  <script src="./p5/sketches.js" defer></script>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- 1: Introduction  -->
+      <section id="intro">
+        <!-- 1.1 title -->
+        <section data-background-color="#FFF" data-transition="concave" id="title-slide">
+          <object type="image/svg+xml" data="svg/title-illustration.svg" class="illustration"
+            alt="MediaFranca Illustration: a thinking bubble of pictograms"></object>
+
+          <div class="col-2">
+            <div class="title">
+              <h1><span>MediaFranca:</span>A Practice-Oriented Investigation into a Generative Pictographic System for
+                Cognitive Accessibility</h1>
+            </div>
+
+            <div class="credentials">
+              <div class="author">
+                <strong>Herbert Spencer González</strong><br>
+                PhD Student in Design
+              </div>
+
+              <div class="tutors">
+                <dt>Supervisors</dt>
+                <dl>Dr. Marcos Steagall</dl>
+                <dl>Dr. Ivana Nakarada-Kordic</dl>
+                <dt>Advisor</dt>
+                <dl>Dr. Welby Ings</dl>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer">
+            <span>This presentation lives at <a href="https://herbertspencer.net/cc">herbertspencer.net/cc</a></span>
+            <img class="logo" src="images/AUT.jpg" alt="Auckland University of Technology">
+          </div>
+        </section>
+
+        <!-- 1.2 Aromos  -->
+        <section data-background-image="images/aromos.jpg">
+          <aside class="notes">This is my home in Chile, near the Aconcagua river and Cerro la Campana. I begin here
+            because design is always situated; it begins from place, from the ground where we stand and from the waters
+            that sustain us.</aside>
+        </section>
+
+
+        <!-- 1.3 Profesor  -->
+        <section data-background-image="images/travesia.jpg">
+          <h2 class="photo-overlay"><span>Travesía 2018</span><br><span>Corredor Litoral</span><br><span
+              class="light">First Year Design Studio</span><span>+</span><br><span class="light">Third year Light and
+              Color Design Studio</span></h2>
+          <aside class="notes">Here you see my students during a design "Travesía" in the north of Chile. We travelled
+            where the Pacific meets the Atacama desert and built, at full scale, a timber “coastal corridor”. For me,
+            teaching design has always meant expanding perception, opening encounters, and making space for others to
+            participate.</aside>
+        </section>
+
+        <!-- Núcleo de Investigación en Accesibilidad e Inclusión PUCV  -->
+        <section data-background-image="images/nucleo.jpg">
+          <h2 class="photo-overlay"><span class="light">Research Centre for</span><br><span>Accessibility and
+              Inclusion</span><br><span class="light">Pontifical Catholic University of Valparaíso</span></h2>
+          <aside class="notes">
+            Over time, the team grew into an interdisciplinary centre, with people from linguistics, engineering,
+            sociology, law and more. Together we tried to build knowledge across differences, following the idea that
+            inclusive research requires inclusive teams.
+          </aside>
+        </section>
+
+        <!-- 1.5 PICTOS Service  -->
+        <section class="w">
+          <img class="fit" src="images/pictos-service.png" alt="PICTOS Sevice Arqchitecture">
+          <aside class="notes">
+            So we designed supports: a grammar for pictograms, a system for plain language, and a publishing
+            architecture to adapt these supports across services. The aim was not to simplify life but to return
+            dignity, to enable people to complete everyday transactions without dependence... and get the value that
+            these services offer.
+          </aside>
+        </section>
+
+        <!-- the space between words and images -->
+        <section data-background-color="#FFF" data-background-image="svg/word-visual-space.svg">
+          <aside class="notes">Both groups converge here: they say cognitive accessibility depends on coherence between
+            words and images. Therapists describe the fatigue of their students when facing mismatched systems.
+            Designers describe the failure of icons when they drift into opacity or cliché. Their insights confirm the
+            hypothesis: the corridor between word and image must remain tight, structured, and open to correction.
+            The PICTOS approach consists of a highly coherent support between the word space and the image. The direct
+            correspondence between instruction and pictogram promotes comprehension and reduces cognitive overload. This
+            is the fundamental idea on which my research is based.</aside>
+        </section>
+
+        <!-- 1.3 research question-->
+        <section>
+          <p class="smallcaps">research question:</p>
+          <p class="huge question">
+            How can a generative pictographic system <span>be designed</span> to support
+            communication for people with complex communication needs?
+          </p>
+          <aside class="notes">The core question I bring here is: how can a generative pictographic system be designed
+            to support communication for people with complex communication needs? To approach this, I am not working
+            alone in my studio. I am conducting interviews with two groups of professionals. On the one hand, those who
+            teach, educate, and promote the use of AAC tools in schools, clinics, and daily practices. On the other
+            hand, designers who have dedicated their craft to pictograms with great concern for accessibility,
+            comprehension, synthesis, and elegance. Their voices frame the territory of this research.</aside>
+        </section>
+      </section>
+
+
+      <!-- 2: Why this research matters -->
+      <section id="why-matters">
+        <!-- 2.1 Scale of need (Aotearoa NZ) -->
+        <section data-background-color="#FFF">
+          <h3 class="xl">Why this research matters?</h3>
+          <div class="image">
+            <img src="svg/people-with-ccn.svg" alt="between 6% and 10% have complex communication needs">
+            <div class="legend">
+              <ul>
+                <li>According to the 2023 census, in New Zealand, about <strong>1 in 6 people</strong> live with
+                  disability — around
+                  <strong>851,000</strong> people.
+                </li>
+                <li>The census indicates that <strong>5.9%</strong> of people aged 5+ report some difficulty
+                  communicating</li>
+                <li>Professional estimates put <strong>up to 10%</strong> of New
+                  Zealanders with a communication difficulty.</li>
+              </ul>
+            </div>
+          </div>
+
+          <aside class="notes">
+            Land the scale: 17% disabled (851k). Communication difficulty: 5.9% Census; up to 10% (SLT NZ) — frame as
+            range to be honest about methods. Emphasise quality of life and participation.
+          </aside>
+        </section>
+
+        <!-- 2.2 What AAC is (plain) -->
+        <section data-transition="fade">
+          <h3>What is AAC?</h3>
+          <div class="image">
+            <img src="images/ccn.png" alt="Pictogram of a person with complex communication needs" style="width: 300px;">
+          <p><strong>Augmentative and Alternative Communication (AAC)</strong> means extra ways to be heard — signs,
+            symbols, picture boards, apps, eye-gaze devices, and speech-generating tech.</p>
+          <p>It doesn’t replace speech; it <em>adds channels</em> so people can say what they mean.</p>
+          </div>
+          
+          <aside class="notes">
+            Keep it friendly: “extra ways to be heard.” Stress dignity and agency.
+
+            Truth #2: AAC is not only for non-speaking individuals
+            Yes, you read that correctly. AAC can benefit those that speak. You do not have to have a label of
+            “nonverbal” or “non-speaking” or “minimally speaking” to benefit from AAC.
+
+            If you can’t speak in an emergency, you might benefit from AAC.
+            If you can’t speak when dysregulated, you might benefit from AAC.
+            If your speech is unclear to familiar or unfamiliar listeners, you might benefit from AAC.
+            If you are having communication breakdowns and showing signs of frustration, you might benefit from AAC
+            If you have trouble initiating speech without a model, you might benefit from AAC.
+          </aside>
+        </section>
+
+        <!-- 2.3 What's improved already -->
+        <section data-transition="fade">
+          <h4>What’s improved already</h4>
+          <ol>
+            <li>Better <strong>text-to-speech</strong> and <strong>speech-to-text</strong>.</li>
+            <li>Smarter typing and <strong>next-word</strong> prediction.</li>
+            <li>Eye-tracking and access tech for complex physical needs.</li>
+            <li>Richer symbol sets and classroom practices.</li>
+          </ol>
+          <p>All of this helps — it lowers effort and speeds up conversation.</p>
+          <aside class="notes">
+            Acknowledge real progress so the audience trusts the gap we name next.
+          </aside>
+        </section>
+
+        <!-- 2.4 The stubborn gap: representation -->
+        <section data-transition="fade">
+          <h4>The stubborn gap</h4>
+          <p>But one piece hasn’t moved enough: <strong>representation</strong> — how ideas become pictures.</p>
+          <p>Symbol vocabularies are still <em>limited</em>, sometimes <em>inconsistent</em>, and often
+            <em>infantilising</em>.
+          </p>
+          <p>Teachers tell us about the same moment again and again: a student knows exactly what they want to say — and
+            can’t find the symbol. The moment passes. The feeling doesn’t.</p>
+          <aside class="notes">
+            Tell the story: searching for the “right” pictogram and not finding it. Make the pain point human.
+          </aside>
+        </section>
+
+        <!-- 2.5 A human story (PECS as currency) -->
+        <section data-transition="fade">
+          <h4>When symbols become currency</h4>
+          <p>In PECS, children sometimes <em>hide</em> the “cake” card to use it later. The card isn’t a picture of cake
+            — it’s a <strong>token of agency</strong>.</p>
+          <p>That’s the message: language is action. Our systems must meet that reality.</p>
+          <aside class="notes">
+            Short, vivid anecdote to bridge into “speech-act → pictogram”.
+          </aside>
+        </section>
+
+        <!-- 2.6 The opportunity: intent → pictogram -->
+        <section data-transition="fade">
+          <h4>A new opportunity</h4>
+          <p>The next frontier is <strong>automating the step from intent to image</strong> — from the <em>speech
+              act</em> (“I want water”, “No thanks”, “That’s funny”) to a clear, adult, culturally fitting pictogram.
+          </p>
+          <p>This niche is <strong>under-explored</strong> in today’s generative AI. That’s where our project lives.</p>
+          <p><strong>PictoNet</strong> aims to learn this mapping; <strong>PictoForge</strong> lets people correct it;
+            <strong>MediaFranca</strong> shares those improvements across communities.
+          </p>
+          <aside class="notes">
+            Set up the three-layer solution you’ll unpack next. Keep the promise tangible: clearer, adult, culturally
+            fitting pictograms on demand.
+          </aside>
+        </section>
+
+        <!-- optional footer with tiny citations for your own reference -->
+        <section data-visibility="hidden">
+          <small>
+            Sources (for speaker reference): Stats NZ Disability statistics 2023; Whaikaha summary; 2023 Census
+            communication difficulty; NZSLT Data Fact Sheet; MoE Inclusive Education AAC.
+          </small>
+        </section>
+
+      </section>
+
+      <!-- 3: PictoNet, PictoForge and MediaFranca -->
+      <section>
+        <!-- 3.0 - 3 layered project -->
+        <section>
+          <object data="svg/3-research-layers.svg" class="r-stretch"></object>
+          <aside class="notes">So, this research is structured across three layers. At the first level, the pictogram
+            itself: what makes it good, clear, and memorable — as AAC professionals say, “learnable and consistent,” and
+            as designers add, “synthetic and elegant.” At the second level, the interaction: how humans and generative
+            systems co-compose, how reversibility and transparency are guaranteed, how edits remain explainable. At the
+            third level, the infrastructure: how corrections become collective, how cultural adaptations are federated,
+            and how governance prevents decay into noise. This threefold structure is not only my method; it is also my
+            ethical stance.</aside>
+        </section>
+
+        <!-- Sub-slide 3.1 PictoNet -->
+        <section>
+          <div class="col-2">
+            <table class="essence-mediafranca level level-pictonet" border="0" cellpadding="8" cellspacing="0">
+              <thead>
+                <tr>
+                  <th><span>Focus</span></th>
+                  <th><strong>PictoNet</strong><br><em>Meaning through Images</em></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><em>The challenge</em></td>
+                  <td>Translate communicative intention—written as text—into a pictogram that is cognitively accessible,
+                    clear, and dignified.</td>
+                </tr>
+                <tr>
+                  <td><em>Where the gap is</em></td>
+                  <td>AAC still relies on illustrators and fixed libraries; systems do not yet <strong>generate</strong>
+                    pictograms directly from language.</td>
+                </tr>
+                <tr>
+                  <td><em>What to design</em></td>
+                  <td>A <strong>transformer-based LLM</strong> that converts natural language into <strong>SVG</strong>
+                    pictograms—using a visual grammar linking verbs, objects, and contexts.</td>
+                </tr>
+                <tr>
+                  <td><em>Why it matters</em></td>
+                  <td>Builds a bridge between text and image, expanding communication for people with complex
+                    communication needs.</td>
+                </tr>
+              </tbody>
+            </table>
+            <object type="image/svg+xml" class="thumb" data="/svg/level-1.svg"></object>
+          </div>
+
+          <aside class="notes">
+            <p>The transformer that turns words into images. It wrestles with the old problem of representation: what
+              travels from text to picture, what is lost, what can be learned.</p>
+            <p>We ground this in Wittgenstein (meaning as use), Austin/Searle (speech acts), and the Natural Semantic
+              Metalanguage (shared “atoms” of meaning). PictoNet maps those semantic primes to visual primitives.</p>
+          </aside>
+
+        </section>
+
+        <!-- Sub-slide 3.2 PictoForge-->
+        <section>
+          <div class="col-2">
+            <table class="essence-mediafranca level level-pictoforge" border="0" cellpadding="8" cellspacing="0">
+              <thead>
+                <tr>
+                  <th><span>Focus</span></th>
+                  <th><strong>PictoForge</strong><br><em>Designing with AI</em></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><em>The challenge</em></td>
+                  <td>Treat AI as a <strong>design material</strong>—directly manipulable, refineable, and
+                    understandable
+                    through use.</td>
+                </tr>
+                <tr>
+                  <td><em>Where the gap is</em></td>
+                  <td>Most generative tools hide inner logic; users cannot see how outputs are built or teach the system
+                    how
+                    to improve.</td>
+                </tr>
+                <tr>
+                  <td><em>What to design</em></td>
+                  <td>An <strong>interactive interface</strong> where users adjust pictograms and each correction
+                    becomes
+                    structured feedback for retraining (direct manipulation & RLHF).</td>
+                </tr>
+                <tr>
+                  <td><em>Why it matters</em></td>
+                  <td>Turns machine learning into a visible, human process—understanding grows through collaboration,
+                    not
+                    opacity.</td>
+                </tr>
+              </tbody>
+            </table>
+            <object type="image/svg+xml" class="thumb" data="/svg/level-2.svg"></object>
+          </div>
+
+          <aside class="notes">
+            <p>The workshop where people and model co-edit pictograms. Corrections, audits, and local vocabularies are
+              logged as structured data. Each human nudge becomes a learning signal.</p>
+            <p>This is the <strong>corrective/generative loop</strong>: propose → edit → learn. Over time the system
+              internalises clarity, cultural fit, and adult dignity.</p>
+          </aside>
+
+        </section>
+
+        <!-- Sub-slide 3.3 MediaFranca -->
+        <section>
+          <div class="col-2">
+            <table class="essence-mediafranca level level-mediafranca" border="0" cellpadding="8" cellspacing="0">
+              <thead>
+                <tr>
+                  <th><span>Focus</span></th>
+                  <th><strong>MediaFranca</strong><br><em>Language as a Commons</em></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><em>The challenge</em></td>
+                  <td>Ensure the <strong>fair use of data</strong> for AI training—respecting authorship, privacy,
+                    cultural identity, and model portability.</td>
+                </tr>
+                <tr>
+                  <td><em>Where the gap is</em></td>
+                  <td>Centralised infrastructures concentrate data and power; communities lose control over voices,
+                    languages, and creative work.</td>
+                </tr>
+                <tr>
+                  <td><em>What to design</em></td>
+                  <td>A <strong>federated, open-source platform</strong> where local instances train their models and
+                    share improvements responsibly (cultural sovereignty & ethical governance).</td>
+                </tr>
+                <tr>
+                  <td><em>Why it matters</em></td>
+                  <td>Redefines AI as a collective resource rather than a corporate asset—communities own, adapt, and
+                    evolve their languages.</td>
+                </tr>
+              </tbody>
+            </table>
+            <object type="image/svg+xml" class="thumb" data="/svg/level-3.svg"></object>
+          </div>
+
+          <aside class="notes">
+            <p>A federated, open implementation — a <em>core communication engine</em>. Communities run local instances,
+              keep their data, share model improvements. Culture stays sovereign; learning flows.</p>
+            <p>Result: dialects of a shared pictographic grammar, maintained as a civic commons.</p>
+          </aside>
+
+        </section>
+      </section>
+
+      <!-- 4: The Problem of Language -->
+      <section id="problem-of-language">
+        <section>
+          <h2>The problem of language</h2>
+          <aside class="notes">
+            Opens the final conceptual arc: from linguistic purity to pragmatic use.
+          </aside>
+        </section>
+
+        <section id="perfect-language" data-background-color="#000" data-background-image="images/characteristica_universalis.jpg" class="invert">
+          <br><br><br><br><br><br><br><br>
+          <br><br><br><br><br><br><br><br>
+          <br><br><br><br><br><br><br><br>
+          <h3>The search for the perfect and universal</h3>
+          
+          
+            <aside class="notes">
+              <p>For centuries, philosophers dreamed of a language so precise that misunderstanding would be impossible —
+                universal, timeless, context-free.</p>
+              <p>From Plato to Leibniz and Frege, clarity grew as life receded. A sealed code travels well — but breathes
+                poorly.</p>
+            </aside>
+        </section>
+
+        <section id="situated-language" data-transition="fade">
+          <h3>The complexity of the situated</h3>
+          <div class="image">
+            <img src="images/img-06.png" alt="A pictographic explanation of the same event in English and Nootka">
+          </div>
+          
+          <p>Meaning lives in practice. Words gain sense from use, activity, and timing.</p>
+          <p>Language games (Wittgenstein) and linguistic relativity (Sapir–Whorf) show that communities shape what
+            things mean.</p>
+        </section>
+
+
+        <!-- Aesthetics of Accessibility -->
+        <section id="aesthetics-of-accessibility">
+          <section id="svg-code-sync" data-transition="fade">
+            <h2>Text as Image: <span>The Aesthetics of Accessibility</span></h2>
+
+            <div style="display:grid;grid-template-columns:50% 50%;height:500px;gap:1rem;">
+
+              <!-- IZQUIERDA: código -->
+              <div style="overflow:auto;font-size:.55em;line-height:1.2;">
+                <pre style="font-size:85%;white-space:pre;margin-left: 2em;">
+                <code id="svg-source" class="language-xml" data-line-numbers></code>
+              </pre>
+              </div>
+
+              <!-- DERECHA: contenedor para SVG inline (sustituye el <object> existente) -->
+              <div id="svg-stage"
+                style="display:flex;align-items:center;justify-content:center;background:#9c9b9b;border-radius:1ex;">
+              </div>
+
+              <!-- script del round trip hightlight -->
+              <script type="module">
+                (() => {
+                  const slide = document.querySelector('#svg-code-sync');
+                  if (!slide || slide.dataset.syncInit === '1') return;
+                  slide.dataset.syncInit = '1';
+
+                  const codeEl = slide.querySelector('#svg-source');
+                  const stage = slide.querySelector('#svg-stage');
+                  if (!codeEl || !stage) return;
+
+                  const svgURL = new URL('svg/pictogram.svg', document.baseURI).toString();
+
+                  // ----------
+                  // utilidades
+                  // ----------
+
+                  const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+                  function wrapBlockById(text, id, k) {
+                    const reOpen = new RegExp(`<([a-zA-Z][\\w:-]*)\\b[^>]*\\bid=(["'])${id}\\2[^>]*>`);
+                    const m = reOpen.exec(text);
+                    if (!m) return text;
+                    const tag = m[1],
+                      openStart = m.index,
+                      openEnd = m.index + m[0].length;
+
+                    if (m[0].endsWith('/>')) {
+                      return text.slice(0, openStart) + `__MF_START_${k}__` +
+                        text.slice(openStart, openEnd) + `__MF_END_${k}__` +
+                        text.slice(openEnd);
+                    }
+                    let depth = 1,
+                      i = openEnd,
+                      reAny = new RegExp(`<\\/?${tag}\\b[^>]*>`, 'g');
+                    reAny.lastIndex = i;
+                    for (;;) {
+                      const nx = reAny.exec(text);
+                      if (!nx) break;
+                      const tok = nx[0];
+                      if (tok.startsWith(`</${tag}`)) depth--;
+                      else if (!tok.endsWith('/>')) depth++;
+                      i = nx.index + tok.length;
+                      if (depth === 0) break;
+                    }
+                    return text.slice(0, openStart) + `__MF_START_${k}__` +
+                      text.slice(openStart, i) + `__MF_END_${k}__` +
+                      text.slice(i);
+                  }
+
+                  function markAllBlocks(svgText) {
+                    const ids = new Set();
+                    let m;
+                    const re = /\bid=(["'])([^"']+)\1/g;
+                    while ((m = re.exec(svgText))) ids.add(m[2]);
+                    let txt = svgText,
+                      k = 0;
+                    for (const id of ids) {
+                      txt = wrapBlockById(txt, id, k);
+                      k++;
+                    }
+                    return {
+                      txt,
+                      total: k
+                    };
+                  }
+
+                  function wrapCommentsIntoSpans(root) {
+                    const walker = document.createTreeWalker(root, NodeFilter.SHOW_COMMENT, null);
+                    const starts = new Map();
+                    const pairs = [];
+                    let node;
+                    while ((node = walker.nextNode())) {
+                      const s = node.data.match(/^MF_START_(\d+)$/);
+                      const e = node.data.match(/^MF_END_(\d+)$/);
+                      if (s) starts.set(s[1], node);
+                      if (e) {
+                        const i = e[1],
+                          st = starts.get(i);
+                        if (st) pairs.push({
+                          i,
+                          startNode: st,
+                          endNode: node
+                        });
+                      }
+                    }
+                    pairs.forEach(({
+                      i,
+                      startNode,
+                      endNode
+                    }) => {
+                      const range = document.createRange();
+                      range.setStartAfter(startNode);
+                      range.setEndBefore(endNode);
+
+                      const span = document.createElement('span');
+                      span.className = 'code-node';
+                      span.dataset.mfI = i;
+
+                      const fragText = range.cloneContents().textContent || '';
+                      const m = fragText.match(/\bid\s*=\s*["']([^"']+)["']/);
+                      if (m) span.dataset.id = m[1];
+
+                      try {
+                        range.surroundContents(span);
+                      } catch {}
+                      startNode.remove();
+                      endNode.remove();
+                    });
+                  }
+
+                  function bindSync(svgEl) {
+                    const idMap = new Map();
+                    svgEl.querySelectorAll('[id]').forEach(n => idMap.set(n.id, n));
+
+                    const setSel = (id, on) => {
+                      const node = idMap.get(id);
+                      if (node) node.classList.toggle('is-selected', on);
+                      codeEl.querySelectorAll(`.code-node[data-id="${CSS.escape(id)}"]`)
+                        .forEach(n => n.classList.toggle('is-selected', on));
+                    };
+
+                    // código → svg
+                    codeEl.addEventListener('mouseover', e => {
+                      const t = e.target.closest('.code-node');
+                      if (t) setSel(t.dataset.id, true);
+                    });
+                    codeEl.addEventListener('mouseout', e => {
+                      const t = e.target.closest('.code-node');
+                      if (t) setSel(t.dataset.id, false);
+                    });
+
+                    // svg → código
+                    idMap.forEach((node, id) => {
+                      node.style.cursor = 'pointer';
+                      node.addEventListener('mouseenter', () => setSel(id, true));
+                      node.addEventListener('mouseleave', () => setSel(id, false));
+                    });
+                  }
+
+                  // -------------
+                  // carga principal
+                  // -------------
+                  fetch(svgURL).then(r => r.text()).then(svgText => {
+                    // (1) marcar bloques en texto
+                    const {
+                      txt,
+                      total
+                    } = markAllBlocks(svgText);
+
+                    // (2) escapar todo y convertir marcadores en **comentarios HTML reales**
+                    let html = esc(txt);
+                    for (let i = 0; i < total; i++) {
+                      html = html
+                        .replaceAll(esc(`__MF_START_${i}__`), `<!--MF_START_${i}-->`)
+                        .replaceAll(esc(`__MF_END_${i}__`), `<!--MF_END_${i}-->`);
+                    }
+
+                    // (3) ahora sí, usar innerHTML (comentarios quedan como nodos, el resto está escapado)
+                    codeEl.innerHTML = html;
+
+                    // (4) ejecutar Prism si existe
+                    if (window.Prism?.highlightElement) window.Prism.highlightElement(codeEl);
+
+                    // (5) envolver los rangos delimitados por los comentarios en <span.code-node>
+                    //     usar raf para asegurarnos que Prism ya reescribió el DOM
+                    requestAnimationFrame(() => {
+                      wrapCommentsIntoSpans(codeEl);
+                    });
+
+                    // (6) inyectar el SVG inline y enlazar interacciones
+                    stage.innerHTML = svgText;
+                    const svgEl = stage.querySelector('svg');
+                    bindSync(svgEl);
+                  });
+                })();
+              </script>
+
+            </div>
+
+            <aside class="notes">
+              Here is the thing: SVG is both an image format and a text-based code format. This means that you can edit
+              it as text, and the image will change accordingly. Note that the code holds verosimilitude to the semantic
+              structure of the image. This opens a more granular way to edit and adapt pictograms, and for the system to
+              learn from those edits. When I speak of SVG as both image and code, I return to what designers told me:
+              transparency is essential. One designer remarked, “a pictogram must not be an ornament you cannot touch;
+              it should be something you can open, adjust, and rebuild.” On the other side, AAC professionals underlined
+              the importance of editability: when a pictogram does not match a child’s context, they need to adapt it
+              quickly. SVG offers precisely this: structure that can be read, modified, and taught to machines, but also
+              kept open for human correction. It transforms the pictogram from a closed asset into a living artefact.
+
+            </aside>
+          </section>
+
+        </section>
+
+        <section id="aesthetics-of-accessibility-2">
+          <section id="svg-code-sync" data-transition="fade">
+            <h2>Text as Image: <span>The Aesthetics of Accessibility</span></h2>
+
+            <div style="display:grid;grid-template-columns:50% 50%;height:500px;gap:1rem;">
+
+              <!-- IZQUIERDA: código -->
+              <div style="overflow:auto;font-size:.55em;line-height:1.2;">
+                <pre style="font-size:85%;white-space:pre;margin-left: 2em;">
+                <code id="svg-source" class="language-xml" data-line-numbers></code>
+              </pre>
+              </div>
+
+              <!-- DERECHA: contenedor para SVG inline (sustituye el <object> existente) -->
+              <div id="svg-stage"
+                style="display:flex;align-items:center;justify-content:center;background:#9c9b9b;border-radius:1ex;">
+              </div>
+
+              <!-- script del round trip hightlight -->
+              <script type="module">
+                (() => {
+                  const slide = document.querySelector('#svg-code-sync');
+                  if (!slide || slide.dataset.syncInit === '1') return;
+                  slide.dataset.syncInit = '1';
+
+                  const codeEl = slide.querySelector('#svg-source');
+                  const stage = slide.querySelector('#svg-stage');
+                  if (!codeEl || !stage) return;
+
+                  const svgURL = new URL('svg/cnn-pictogram.svg', document.baseURI).toString();
+
+                  // ----------
+                  // utilidades
+                  // ----------
+
+                  const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+                  function wrapBlockById(text, id, k) {
+                    const reOpen = new RegExp(`<([a-zA-Z][\\w:-]*)\\b[^>]*\\bid=(["'])${id}\\2[^>]*>`);
+                    const m = reOpen.exec(text);
+                    if (!m) return text;
+                    const tag = m[1],
+                      openStart = m.index,
+                      openEnd = m.index + m[0].length;
+
+                    if (m[0].endsWith('/>')) {
+                      return text.slice(0, openStart) + `__MF_START_${k}__` +
+                        text.slice(openStart, openEnd) + `__MF_END_${k}__` +
+                        text.slice(openEnd);
+                    }
+                    let depth = 1,
+                      i = openEnd,
+                      reAny = new RegExp(`<\\/?${tag}\\b[^>]*>`, 'g');
+                    reAny.lastIndex = i;
+                    for (;;) {
+                      const nx = reAny.exec(text);
+                      if (!nx) break;
+                      const tok = nx[0];
+                      if (tok.startsWith(`</${tag}`)) depth--;
+                      else if (!tok.endsWith('/>')) depth++;
+                      i = nx.index + tok.length;
+                      if (depth === 0) break;
+                    }
+                    return text.slice(0, openStart) + `__MF_START_${k}__` +
+                      text.slice(openStart, i) + `__MF_END_${k}__` +
+                      text.slice(i);
+                  }
+
+                  function markAllBlocks(svgText) {
+                    const ids = new Set();
+                    let m;
+                    const re = /\bid=(["'])([^"']+)\1/g;
+                    while ((m = re.exec(svgText))) ids.add(m[2]);
+                    let txt = svgText,
+                      k = 0;
+                    for (const id of ids) {
+                      txt = wrapBlockById(txt, id, k);
+                      k++;
+                    }
+                    return {
+                      txt,
+                      total: k
+                    };
+                  }
+
+                  function wrapCommentsIntoSpans(root) {
+                    const walker = document.createTreeWalker(root, NodeFilter.SHOW_COMMENT, null);
+                    const starts = new Map();
+                    const pairs = [];
+                    let node;
+                    while ((node = walker.nextNode())) {
+                      const s = node.data.match(/^MF_START_(\d+)$/);
+                      const e = node.data.match(/^MF_END_(\d+)$/);
+                      if (s) starts.set(s[1], node);
+                      if (e) {
+                        const i = e[1],
+                          st = starts.get(i);
+                        if (st) pairs.push({
+                          i,
+                          startNode: st,
+                          endNode: node
+                        });
+                      }
+                    }
+                    pairs.forEach(({
+                      i,
+                      startNode,
+                      endNode
+                    }) => {
+                      const range = document.createRange();
+                      range.setStartAfter(startNode);
+                      range.setEndBefore(endNode);
+
+                      const span = document.createElement('span');
+                      span.className = 'code-node';
+                      span.dataset.mfI = i;
+
+                      const fragText = range.cloneContents().textContent || '';
+                      const m = fragText.match(/\bid\s*=\s*["']([^"']+)["']/);
+                      if (m) span.dataset.id = m[1];
+
+                      try {
+                        range.surroundContents(span);
+                      } catch {}
+                      startNode.remove();
+                      endNode.remove();
+                    });
+                  }
+
+                  function bindSync(svgEl) {
+                    const idMap = new Map();
+                    svgEl.querySelectorAll('[id]').forEach(n => idMap.set(n.id, n));
+
+                    const setSel = (id, on) => {
+                      const node = idMap.get(id);
+                      if (node) node.classList.toggle('is-selected', on);
+                      codeEl.querySelectorAll(`.code-node[data-id="${CSS.escape(id)}"]`)
+                        .forEach(n => n.classList.toggle('is-selected', on));
+                    };
+
+                    // código → svg
+                    codeEl.addEventListener('mouseover', e => {
+                      const t = e.target.closest('.code-node');
+                      if (t) setSel(t.dataset.id, true);
+                    });
+                    codeEl.addEventListener('mouseout', e => {
+                      const t = e.target.closest('.code-node');
+                      if (t) setSel(t.dataset.id, false);
+                    });
+
+                    // svg → código
+                    idMap.forEach((node, id) => {
+                      node.style.cursor = 'pointer';
+                      node.addEventListener('mouseenter', () => setSel(id, true));
+                      node.addEventListener('mouseleave', () => setSel(id, false));
+                    });
+                  }
+
+                  // -------------
+                  // carga principal
+                  // -------------
+                  fetch(svgURL).then(r => r.text()).then(svgText => {
+                    // (1) marcar bloques en texto
+                    const {
+                      txt,
+                      total
+                    } = markAllBlocks(svgText);
+
+                    // (2) escapar todo y convertir marcadores en **comentarios HTML reales**
+                    let html = esc(txt);
+                    for (let i = 0; i < total; i++) {
+                      html = html
+                        .replaceAll(esc(`__MF_START_${i}__`), `<!--MF_START_${i}-->`)
+                        .replaceAll(esc(`__MF_END_${i}__`), `<!--MF_END_${i}-->`);
+                    }
+
+                    // (3) ahora sí, usar innerHTML (comentarios quedan como nodos, el resto está escapado)
+                    codeEl.innerHTML = html;
+
+                    // (4) ejecutar Prism si existe
+                    if (window.Prism?.highlightElement) window.Prism.highlightElement(codeEl);
+
+                    // (5) envolver los rangos delimitados por los comentarios en <span.code-node>
+                    //     usar raf para asegurarnos que Prism ya reescribió el DOM
+                    requestAnimationFrame(() => {
+                      wrapCommentsIntoSpans(codeEl);
+                    });
+
+                    // (6) inyectar el SVG inline y enlazar interacciones
+                    stage.innerHTML = svgText;
+                    const svgEl = stage.querySelector('svg');
+                    bindSync(svgEl);
+                  });
+                })();
+              </script>
+            </div>
+          </section>
+
+        </section>
+
+      </section>
+
+      <!-- 5: AAC Cases & Interview Learnings -->
+      <section id="aac-cases">
+        <section>
+          <h2>AAC cases and interview learnings</h2>
+        </section>
+
+        <section>
+          <h3>Blissymbolics</h3>
+          <p>Ambition for perfect order — logical, complete. In practice: coherent yet brittle; too rigid for messy
+            life.</p>
+        </section>
+
+        <section data-transition="fade">
+          <h3>PECS (Picture Exchange Communication System)</h3>
+          <p>Communication as action: cards as tokens of agency. Powerful for a first bridge, yet expression may stall
+            in repetition.</p>
+        </section>
+
+        <section data-transition="fade">
+          <h3>Core boards and LAMP</h3>
+          <p>Fixed icon locations shift language into movement; the body learns paths. Powerful, yet demanding of
+            stability and context.</p>
+        </section>
+
+        <section data-background-color="#FFF">
+          <h3>What this implies for PictoNet</h3>
+          <ul>
+            <li><strong>Pragmatics-aware:</strong> recognise speech-acts (request, comment, refusal).</li>
+            <li><strong>Abstraction ladder:</strong> move between concrete and abstract with learnable conventions.</li>
+            <li><strong>Culturally adaptable:</strong> shared grammar, local exponents.</li>
+            <li><strong>Co-created:</strong> corrections and styles from users and professionals.</li>
+            <li><strong>Hybrid:</strong> works across screen and print, high-tech and low-tech.</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- 6: Designing PictoNet (the Pipeline) -->
+      <section id="pipeline">
+        <section>
+          <h2>Designing PictoNet (the pipeline)</h2>
+          <div class="p5-host" data-sketch="pipeline" style="width:100%; height:40vh;"></div>
+          <ol class="inline">
+            <li>Understand the utterance</li>
+            <li>Map meaning to visual parts</li>
+            <li>Generate a clean SVG</li>
+            <li>Add accessibility metadata</li>
+            <li>Learn from human edits (loop)</li>
+          </ol>
+        </section>
+
+        <section>
+          <h3>1 · Semantic analysis — NLU front-end</h3>
+          <code lang="javascript">
+            {
+            "utterance": "Please make your bed",
+            "lang": "en",
+            "metadata": { "speech_act": "directive", "intent": "request" },
+            "frames": [
+            {
+            "id": "f1",
+            "frame_name": "Directed_action",
+            "lexical_unit": "make",
+            "roles": {
+            "Agent": { "type": "Addressee", "ref": "you", "surface": "your" },
+            "Theme": { "type": "Object", "lemma": "bed", "surface": "bed", "definiteness": "definite" }
+            }
+            }
+            ],
+            "logical_form": { "event": "make(you, bed)" },
+            "pragmatics": { "politeness": "polite", "formality": "neutral", "expected_response": "compliance" },
+            "visual_guidelines": { "focus_actor": "you", "action_core": "make", "object_core": "bed", "context":
+            "bedroom", "temporal": "immediate" }
+            }
+          </code>
+          <ul>
+            <li>Extract roles: who does what, to whom, with what intent.</li>
+            <li>Classify speech-act: directive, question, statement, social.</li>
+            <li>Decompose abstract terms using NSM primitives.</li>
+          </ul>
+        </section>
+
+        <section data-transition="fade">
+          <h3>2 · Concept mapping → visual primitives</h3>
+          <ul>
+            <li>Link roles to a <em>Pictogram Concept Set</em> (IDs + relations).</li>
+            <li>Apply conventions: clouds = intangible; motion marks = verbs; plural marks.</li>
+            <li>Use local style dictionaries for cultural fit.</li>
+          </ul>
+        </section>
+
+        <section data-transition="fade">
+          <h3>3 · Hybrid SVG generation</h3>
+          <ul>
+            <li>Produce structured SVG (groups/IDs ↔ semantics).</li>
+            <li>Refine proportion and balance algorithmically.</li>
+            <li>Editable, inspectable artefacts instead of opaque bitmaps.</li>
+          </ul>
+        </section>
+
+        <section data-transition="fade">
+          <h3>4 · Accessibility post-processing</h3>
+          <ul>
+            <li>Add title/desc, ARIA roles, semantic tags.</li>
+            <li>Export for print boards and web use.</li>
+            <li>One asset, many contexts.</li>
+          </ul>
+        </section>
+
+        <section data-transition="fade">
+          <h3>5 · Human-in-the-loop refinement</h3>
+          <ul>
+            <li>PictoForge captures edits as structured feedback.</li>
+            <li>Corrections guide retraining (RLHF) and local style embeddings.</li>
+            <li>Federated updates share improvements safely.</li>
+          </ul>
+        </section>
+
+        <section data-background-color="#FFF">
+          <h3>What this could enable</h3>
+          <ul>
+            <li>New pictographic vocabulary on demand.</li>
+            <li>Visible “why” behind each drawing.</li>
+            <li>High-tech ↔ low-tech continuity.</li>
+            <li>Cultural adaptation within shared structure.</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- 7: The Invitation -->
+      <section id="invitation">
+        <section>
+          <h2>The invitation</h2>
+          <p>This work invites collaboration on:</p>
+          <ul>
+            <li>Pictogram validation (comprehension, dignity, context).</li>
+            <li>Semantic-adhesion metrics (intent ↔ image fit).</li>
+            <li>Interfaces for AI as design material (direct manipulation, auditability).</li>
+            <li>Local style embeddings and federated learning.</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- Thank You -->
+      <section id="thanks" data-background-color="#FFF">
+        <h2>Thank you</h2>
+
+        <p>
+          The <strong>MediaFranca Initiative</strong> is a collaborative open framework for inclusive, visual, and
+          linguistically grounded communication systems.
+          Below are the core repositories that define its ecosystem, each focusing on a different layer of the pipeline:
+        </p>
+
+        <ol>
+          <li>
+            <a href="https://github.com/mediafranca/manifesto" target="_blank"><strong>manifiesto</strong></a> –
+            The foundational document outlining the ethical, social, and design principles that guide the MediaFranca
+            ecosystem.
+          </li>
+          <li>
+            <a href="https://github.com/mediafranca/pictonet" target="_blank"><strong>pictonet</strong></a> –
+            The semantic communication network that models meanings through pictograms and linguistic structures.
+          </li>
+          <li>
+            <a href="https://github.com/mediafranca/pictoforge" target="_blank"><strong>pictoforge</strong></a> –
+            The visual synthesis engine that generates pictographic messages from structured semantic representations.
+          </li>
+          <li>
+            <a href="https://github.com/mediafranca/nlu-schema" target="_blank"><strong>nlu-schema</strong></a> –
+            The natural language understanding (NLU) schema defining how utterances are decomposed into semantic and
+            pragmatic structures (used by the NLU analyzer).
+          </li>
+          <li>
+            <a href="https://github.com/mediafranca/vcsci" target="_blank"><strong>vcsci</strong></a> –
+            The Visual-Semantic Communication Interface that connects linguistic understanding with visual expression
+            for accessible communication.
+          </li>
+        </ol>
+        <p><strong>Herbert Spencer González</strong> · PhD in Design (AUT)</p>
+        <p><a href="https://herbertspencer.net/cc">herbertspencer.net/cc</a> · <a
+            href="mailto:herbert.spencer@autuni.ac.nz">herbert.spencer@autuni.ac.nz</a></p>
+      </section>
+
+
+    </div>
+  </div>
+
+  <script type="module" src="./main.js"></script>
+
+</body>
+
+</html>

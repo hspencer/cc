@@ -515,28 +515,10 @@ body {
     zoom: 1.66;
 }
 
+.code-node.is-selected { background: rgba(254, 94, 1, 0.195); outline: 1px solid $terciary-color; border-radius: .3ex;}
+svg .is-selected { filter: drop-shadow(0 0 2px $terciary-color); }
 
-/* highlight */
-#svg-code-sync {
-    $color-select: #00d2ff;
 
-    .code-node {
-        border-radius: .35em;
-        padding: .2em .25em;
-        transition: outline-color .12s ease, background .12s ease;
-    }
-
-    .code-node.is-selected {
-        outline: 2px solid $color-select;
-        outline-offset: 3px;
-        background: rgba(0, 210, 255, .10);
-    }
-
-    svg .is-selected {
-        filter: drop-shadow(0 0 .11rem $color-select) drop-shadow(0 0 .08rem $color-select);
-        transition: filter .12s ease;
-    }
-}
 
 /* code highlight */
 

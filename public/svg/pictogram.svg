@@ -4,8 +4,8 @@ version="1.1" viewBox="0 0 100 100">
   <!-- Make the bed  -->
   <defs>
     <style> 
-      .f { fill: #fff; stroke: #000; stroke-linejoin: square; }
-      .k { fill: #000; stroke: #FFF; stroke-linejoin: square; }
+      .f { fill: #fff; stroke: #000; stroke-linejoin: round; }
+      .k { fill: #000; stroke: #FFF; }
     </style>
   </defs>
   <g id="bed">

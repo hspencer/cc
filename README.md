@@ -1,4 +1,4 @@
-# **MediaFranca** <br>A Practice-Oriented Investigation into a Generative Pictographic System for Cognitive Accessibility</style>
+# **MediaFranca** <br>A Practice-Oriented Investigation into a Generative Pictographic System for Cognitive Accessibility
 
 This doctoral research explores how a generative pictographic system can be designed to support communication for people with complex communication needs. Current augmentative and alternative communication (AAC) tools often compromise style or personal expression, limiting users' agency in daily interactions. The project tackles this issue by investigating how design practice and generative technologies can collaborate to create pictograms that are clear, adaptable, and culturally relevant.
 

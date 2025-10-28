@@ -9,6 +9,7 @@
   <!-- en <head> o justo antes de </body>, pero SIEMPRE antes de main.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/2.0.4/p5.min.js" defer></script>
   <script src="./p5/sketches.js" defer></script>
+  <script type="module" src="svg-sync.js"></script>
 </head>
 
 <body>
@@ -91,20 +92,6 @@
           </aside>
         </section>
 
-        <!-- 1.6 Pictogramas de Pictos -->
-        <section data-background-iframe="https://pictogramas.pictos.cl" data-background-interactive
-          data-background-opacity="1" class="zoom125">
-          <aside class="notes">
-            pictograms are constructed as the sum of 3 layers. The complete support is the pictogram that
-            represents the situation, the instruction in writen and spoken word and an icon that reinforces the action.
-            From the designers I interviewed, a different concern emerges. They insist that a good pictogram is not just
-            guessable; it must hold clarity without losing dignity. They care about stroke weight, proportion, and
-            balance, because these small decisions affect legibility and trust. One told me, “elegance is not
-            decoration; it is what keeps the image memorable.” That resonates with the PICTOS approach, where we built
-            supports in layers to reduce cognitive load.
-          </aside>
-        </section>
-
         <!-- the space between words and images -->
         <section data-background-color="#FFF" data-background-image="svg/word-visual-space.svg">
           <aside class="notes">Both groups converge here: they say cognitive accessibility depends on coherence between
@@ -164,12 +151,13 @@
         <section data-transition="fade">
           <h3>What is AAC?</h3>
           <div class="image">
-            <img src="images/ccn.png" alt="Pictogram of a person with complex communication needs" style="width: 300px;">
-          <p><strong>Augmentative and Alternative Communication (AAC)</strong> means extra ways to be heard — signs,
-            symbols, picture boards, apps, eye-gaze devices, and speech-generating tech.</p>
-          <p>It doesn’t replace speech; it <em>adds channels</em> so people can say what they mean.</p>
+            <img src="images/ccn.png" alt="Pictogram of a person with complex communication needs"
+              style="width: 300px;">
+            <p><strong>Augmentative and Alternative Communication (AAC)</strong> means extra ways to be heard — signs,
+              symbols, picture boards, apps, eye-gaze devices, and speech-generating tech.</p>
+            <p>It doesn’t replace speech; it <em>adds channels</em> so people can say what they mean.</p>
           </div>
-          
+
           <aside class="notes">
             Keep it friendly: “extra ways to be heard.” Stress dignity and agency.
 
@@ -413,247 +401,75 @@
           </aside>
         </section>
 
-        <section data-background-color="#000" data-background-image="images/characteristica_universalis.jpg" class="invert">
+        <section id="perfect-language"
+          data-background-image="images/characteristica_universalis.jpg" class="invert">
           <br><br><br><br><br><br><br><br>
           <br><br><br><br><br><br><br><br>
           <br><br><br><br><br><br><br><br>
           <h3>The search for the perfect and universal</h3>
-          
-          
-            <aside class="notes">
-              <p>For centuries, philosophers dreamed of a language so precise that misunderstanding would be impossible —
-                universal, timeless, context-free.</p>
-              <p>From Plato to Leibniz and Frege, clarity grew as life receded. A sealed code travels well — but breathes
-                poorly.</p>
-            </aside>
+
+
+          <aside class="notes">
+            <p>For centuries, philosophers dreamed of a language so precise that misunderstanding would be impossible —
+              universal, timeless, context-free.</p>
+            <p>From Plato to Leibniz and Frege, clarity grew as life receded. A sealed code travels well — but breathes
+              poorly.</p>
+          </aside>
         </section>
 
-        <section data-transition="fade">
+        <section id="situated-language" data-transition="fade">
           <h3>The complexity of the situated</h3>
           <div class="image">
             <img src="images/img-06.png" alt="A pictographic explanation of the same event in English and Nootka">
           </div>
-          
+
           <p>Meaning lives in practice. Words gain sense from use, activity, and timing.</p>
           <p>Language games (Wittgenstein) and linguistic relativity (Sapir–Whorf) show that communities shape what
             things mean.</p>
         </section>
 
 
-        <!-- SVG as Code ↔ SVG as Image - section of sections -->
-        <section>
-          <section id="svg-code-sync" data-transition="fade">
-            <h2>Text as Image: The Aesthetics of Accessibility</h2>
+        <!-- Aesthetics of Accessibility -->
+        <!-- Primera instancia -->
+        <section class="svg-code-sync" data-svg-url="svg/pictogram.svg" data-transition="fade">
+          <h2>Text as Image: <span>The Aesthetics of Accessibility</span></h2>
 
-            <div style="display:grid;grid-template-columns:50% 50%;height:500px;gap:1rem;">
-
-              <!-- IZQUIERDA: código -->
-              <div style="overflow:auto;font-size:.55em;line-height:1.2;">
-                <pre style="font-size:85%;white-space:pre;margin-left: 2em;">
-                <code id="svg-source" class="language-xml" data-line-numbers></code>
+          <div style="display:grid;grid-template-columns:50% 50%;height:500px;gap:1rem;">
+            <!-- IZQUIERDA: código -->
+            <div style="overflow:auto;font-size:.55em;line-height:1.2;">
+              <pre style="font-size:85%;white-space:pre;margin-left:2em;">
+              <code data-role="svg-source" class="language-xml" data-line-numbers></code>
               </pre>
-              </div>
-
-              <!-- DERECHA: contenedor para SVG inline (sustituye el <object> existente) -->
-              <div id="svg-stage"
-                style="display:flex;align-items:center;justify-content:center;background:#9c9b9b;border-radius:1ex;">
-              </div>
-
-              <!-- script del round trip hightlight -->
-              <script type="module">
-                (() => {
-                  const slide = document.querySelector('#svg-code-sync');
-                  if (!slide || slide.dataset.syncInit === '1') return;
-                  slide.dataset.syncInit = '1';
-
-                  const codeEl = slide.querySelector('#svg-source');
-                  const stage = slide.querySelector('#svg-stage');
-                  if (!codeEl || !stage) return;
-
-                  const svgURL = new URL('svg/pictogram.svg', document.baseURI).toString();
-
-                  // ----------
-                  // utilidades
-                  // ----------
-                  const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;')
-                    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-
-                  function wrapBlockById(text, id, k) {
-                    const reOpen = new RegExp(`<([a-zA-Z][\\w:-]*)\\b[^>]*\\bid=(["'])${id}\\2[^>]*>`);
-                    const m = reOpen.exec(text);
-                    if (!m) return text;
-                    const tag = m[1],
-                      openStart = m.index,
-                      openEnd = m.index + m[0].length;
-
-                    if (m[0].endsWith('/>')) {
-                      return text.slice(0, openStart) + `__MF_START_${k}__` +
-                        text.slice(openStart, openEnd) + `__MF_END_${k}__` +
-                        text.slice(openEnd);
-                    }
-                    let depth = 1,
-                      i = openEnd,
-                      reAny = new RegExp(`<\\/?${tag}\\b[^>]*>`, 'g');
-                    reAny.lastIndex = i;
-                    for (;;) {
-                      const nx = reAny.exec(text);
-                      if (!nx) break;
-                      const tok = nx[0];
-                      if (tok.startsWith(`</${tag}`)) depth--;
-                      else if (!tok.endsWith('/>')) depth++;
-                      i = nx.index + tok.length;
-                      if (depth === 0) break;
-                    }
-                    return text.slice(0, openStart) + `__MF_START_${k}__` +
-                      text.slice(openStart, i) + `__MF_END_${k}__` +
-                      text.slice(i);
-                  }
-
-                  function markAllBlocks(svgText) {
-                    const ids = new Set();
-                    let m;
-                    const re = /\bid=(["'])([^"']+)\1/g;
-                    while ((m = re.exec(svgText))) ids.add(m[2]);
-                    let txt = svgText,
-                      k = 0;
-                    for (const id of ids) {
-                      txt = wrapBlockById(txt, id, k);
-                      k++;
-                    }
-                    return {
-                      txt,
-                      total: k
-                    };
-                  }
-
-                  function wrapCommentsIntoSpans(root) {
-                    const walker = document.createTreeWalker(root, NodeFilter.SHOW_COMMENT, null);
-                    const starts = new Map();
-                    const pairs = [];
-                    let node;
-                    while ((node = walker.nextNode())) {
-                      const s = node.data.match(/^MF_START_(\d+)$/);
-                      const e = node.data.match(/^MF_END_(\d+)$/);
-                      if (s) starts.set(s[1], node);
-                      if (e) {
-                        const i = e[1],
-                          st = starts.get(i);
-                        if (st) pairs.push({
-                          i,
-                          startNode: st,
-                          endNode: node
-                        });
-                      }
-                    }
-                    pairs.forEach(({
-                      i,
-                      startNode,
-                      endNode
-                    }) => {
-                      const range = document.createRange();
-                      range.setStartAfter(startNode);
-                      range.setEndBefore(endNode);
-
-                      const span = document.createElement('span');
-                      span.className = 'code-node';
-                      span.dataset.mfI = i;
-
-                      const fragText = range.cloneContents().textContent || '';
-                      const m = fragText.match(/\bid\s*=\s*["']([^"']+)["']/);
-                      if (m) span.dataset.id = m[1];
-
-                      try {
-                        range.surroundContents(span);
-                      } catch {}
-                      startNode.remove();
-                      endNode.remove();
-                    });
-                  }
-
-                  function bindSync(svgEl) {
-                    const idMap = new Map();
-                    svgEl.querySelectorAll('[id]').forEach(n => idMap.set(n.id, n));
-
-                    const setSel = (id, on) => {
-                      const node = idMap.get(id);
-                      if (node) node.classList.toggle('is-selected', on);
-                      codeEl.querySelectorAll(`.code-node[data-id="${CSS.escape(id)}"]`)
-                        .forEach(n => n.classList.toggle('is-selected', on));
-                    };
-
-                    // código → svg
-                    codeEl.addEventListener('mouseover', e => {
-                      const t = e.target.closest('.code-node');
-                      if (t) setSel(t.dataset.id, true);
-                    });
-                    codeEl.addEventListener('mouseout', e => {
-                      const t = e.target.closest('.code-node');
-                      if (t) setSel(t.dataset.id, false);
-                    });
-
-                    // svg → código
-                    idMap.forEach((node, id) => {
-                      node.style.cursor = 'pointer';
-                      node.addEventListener('mouseenter', () => setSel(id, true));
-                      node.addEventListener('mouseleave', () => setSel(id, false));
-                    });
-                  }
-
-                  // -------------
-                  // carga principal
-                  // -------------
-                  fetch(svgURL).then(r => r.text()).then(svgText => {
-                    // (1) marcar bloques en texto
-                    const {
-                      txt,
-                      total
-                    } = markAllBlocks(svgText);
-
-                    // (2) escapar todo y convertir marcadores en **comentarios HTML reales**
-                    let html = esc(txt);
-                    for (let i = 0; i < total; i++) {
-                      html = html
-                        .replaceAll(esc(`__MF_START_${i}__`), `<!--MF_START_${i}-->`)
-                        .replaceAll(esc(`__MF_END_${i}__`), `<!--MF_END_${i}-->`);
-                    }
-
-                    // (3) ahora sí, usar innerHTML (comentarios quedan como nodos, el resto está escapado)
-                    codeEl.innerHTML = html;
-
-                    // (4) ejecutar Prism si existe
-                    if (window.Prism?.highlightElement) window.Prism.highlightElement(codeEl);
-
-                    // (5) envolver los rangos delimitados por los comentarios en <span.code-node>
-                    //     usar raf para asegurarnos que Prism ya reescribió el DOM
-                    requestAnimationFrame(() => {
-                      wrapCommentsIntoSpans(codeEl);
-                    });
-
-                    // (6) inyectar el SVG inline y enlazar interacciones
-                    stage.innerHTML = svgText;
-                    const svgEl = stage.querySelector('svg');
-                    bindSync(svgEl);
-                  });
-                })();
-              </script>
-
             </div>
 
-            <aside class="notes">
-              Here is the thing: SVG is both an image format and a text-based code format. This means that you can edit
-              it as text, and the image will change accordingly. Note that the code holds verosimilitude to the semantic
-              structure of the image. This opens a more granular way to edit and adapt pictograms, and for the system to
-              learn from those edits. When I speak of SVG as both image and code, I return to what designers told me:
-              transparency is essential. One designer remarked, “a pictogram must not be an ornament you cannot touch;
-              it should be something you can open, adjust, and rebuild.” On the other side, AAC professionals underlined
-              the importance of editability: when a pictogram does not match a child’s context, they need to adapt it
-              quickly. SVG offers precisely this: structure that can be read, modified, and taught to machines, but also
-              kept open for human correction. It transforms the pictogram from a closed asset into a living artefact.
-
-            </aside>
-          </section>
-
+            <!-- DERECHA: SVG inline -->
+            <div data-role="svg-stage"
+              style="display:flex;align-items:center;justify-content:center;background:#c4c2c2;border-radius:1ex;">
+            </div>
+          </div>
         </section>
+        
+        <!-- Segunda instancia -->
+        <section class="svg-code-sync" data-svg-url="svg/ccn.svg" data-transition="fade">
+          <h2>Direct <span>Manipulation</span></h2>
+
+          <div style="display:grid;grid-template-columns:50% 50%;height:500px;gap:1rem;">
+            <!-- IZQUIERDA: código -->
+            <div style="overflow:auto;font-size:.55em;line-height:1.2;">
+              <pre style="font-size:85%;white-space:pre;margin-left:2em;">
+              <code data-role="svg-source" class="language-xml" data-line-numbers></code>
+              </pre>
+            </div>
+
+            <!-- DERECHA: SVG inline -->
+            <div data-role="svg-stage"
+              style="display:flex;align-items:center;justify-content:center;background:#9c9b9b;border-radius:1ex;">
+            </div>
+          </div>
+        </section>
+
+
+
 
       </section>
 

@@ -9,8 +9,8 @@
   <!-- en <head> o justo antes de </body>, pero SIEMPRE antes de main.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/2.0.4/p5.min.js" defer></script>
   <script src="./p5/sketches.js" defer></script>
-  <script type="module" crossorigin src="/cc/assets/index-_72sVLtG.js"></script>
-  <link rel="stylesheet" crossorigin href="/cc/assets/index-DPfJLav4.css">
+  <script type="module" crossorigin src="/cc/assets/index-IZuXxDZs.js"></script>
+  <link rel="stylesheet" crossorigin href="/cc/assets/index-Cw1h6meJ.css">
 </head>
 
 <body>
@@ -165,10 +165,13 @@
         <!-- 2.2 What AAC is (plain) -->
         <section data-transition="fade">
           <h3>What is AAC?</h3>
-          <img src="images/ccn.png" alt="Pictogram of a person with complex communication needs" style="width: 300px;">
+          <div class="image">
+            <img src="images/ccn.png" alt="Pictogram of a person with complex communication needs" style="width: 300px;">
           <p><strong>Augmentative and Alternative Communication (AAC)</strong> means extra ways to be heard — signs,
             symbols, picture boards, apps, eye-gaze devices, and speech-generating tech.</p>
           <p>It doesn’t replace speech; it <em>adds channels</em> so people can say what they mean.</p>
+          </div>
+          
           <aside class="notes">
             Keep it friendly: “extra ways to be heard.” Stress dignity and agency.
 
@@ -412,16 +415,27 @@
           </aside>
         </section>
 
-        <section data-background-color="#FFF">
-          <h3>The search for the universal and perfect</h3>
-          <p>For centuries, philosophers dreamed of a language so precise that misunderstanding would be impossible —
-            universal, timeless, context-free.</p>
-          <p>From Plato to Leibniz and Frege, clarity grew as life receded. A sealed code travels well — but breathes
-            poorly.</p>
+        <section data-background-color="#000" data-background-image="images/characteristica_universalis.jpg" class="invert">
+          <br><br><br><br><br><br><br><br>
+          <br><br><br><br><br><br><br><br>
+          <br><br><br><br><br><br><br><br>
+          <h3>The search for the perfect and universal</h3>
+          
+          
+            <aside class="notes">
+              <p>For centuries, philosophers dreamed of a language so precise that misunderstanding would be impossible —
+                universal, timeless, context-free.</p>
+              <p>From Plato to Leibniz and Frege, clarity grew as life receded. A sealed code travels well — but breathes
+                poorly.</p>
+            </aside>
         </section>
 
         <section data-transition="fade">
           <h3>The complexity of the situated</h3>
+          <div class="image">
+            <img src="images/img-06.png" alt="A pictographic explanation of the same event in English and Nootka">
+          </div>
+          
           <p>Meaning lives in practice. Words gain sense from use, activity, and timing.</p>
           <p>Language games (Wittgenstein) and linguistic relativity (Sapir–Whorf) show that communities shape what
             things mean.</p>
@@ -509,9 +523,8 @@
       <section id="pipeline">
         <section>
           <h2>Designing PictoNet (the pipeline)</h2>
-           <div class="p5-host" data-sketch="pipeline" style="width:100%; height:50vh;"></div>
-          <p><em>Status: proposal</em></p>
-          <ol>
+          <div class="p5-host" data-sketch="pipeline" style="width:100%; height:40vh;"></div>
+          <ol class="inline">
             <li>Understand the utterance</li>
             <li>Map meaning to visual parts</li>
             <li>Generate a clean SVG</li>
@@ -522,6 +535,28 @@
 
         <section>
           <h3>1 · Semantic analysis — NLU front-end</h3>
+          <code lang="javascript">
+            {
+            "utterance": "Please make your bed",
+            "lang": "en",
+            "metadata": { "speech_act": "directive", "intent": "request" },
+            "frames": [
+            {
+            "id": "f1",
+            "frame_name": "Directed_action",
+            "lexical_unit": "make",
+            "roles": {
+            "Agent": { "type": "Addressee", "ref": "you", "surface": "your" },
+            "Theme": { "type": "Object", "lemma": "bed", "surface": "bed", "definiteness": "definite" }
+            }
+            }
+            ],
+            "logical_form": { "event": "make(you, bed)" },
+            "pragmatics": { "politeness": "polite", "formality": "neutral", "expected_response": "compliance" },
+            "visual_guidelines": { "focus_actor": "you", "action_core": "make", "object_core": "bed", "context":
+            "bedroom", "temporal": "immediate" }
+            }
+          </code>
           <ul>
             <li>Extract roles: who does what, to whom, with what intent.</li>
             <li>Classify speech-act: directive, question, statement, social.</li>
@@ -593,9 +628,41 @@
       <!-- Thank You -->
       <section id="thanks" data-background-color="#FFF">
         <h2>Thank you</h2>
+
+        <p>
+          The <strong>MediaFranca Initiative</strong> is a collaborative open framework for inclusive, visual, and
+          linguistically grounded communication systems.
+          Below are the core repositories that define its ecosystem, each focusing on a different layer of the pipeline:
+        </p>
+
+        <ol>
+          <li>
+            <a href="https://github.com/mediafranca/manifesto" target="_blank"><strong>manifiesto</strong></a> –
+            The foundational document outlining the ethical, social, and design principles that guide the MediaFranca
+            ecosystem.
+          </li>
+          <li>
+            <a href="https://github.com/mediafranca/pictonet" target="_blank"><strong>pictonet</strong></a> –
+            The semantic communication network that models meanings through pictograms and linguistic structures.
+          </li>
+          <li>
+            <a href="https://github.com/mediafranca/pictoforge" target="_blank"><strong>pictoforge</strong></a> –
+            The visual synthesis engine that generates pictographic messages from structured semantic representations.
+          </li>
+          <li>
+            <a href="https://github.com/mediafranca/nlu-schema" target="_blank"><strong>nlu-schema</strong></a> –
+            The natural language understanding (NLU) schema defining how utterances are decomposed into semantic and
+            pragmatic structures (used by the NLU analyzer).
+          </li>
+          <li>
+            <a href="https://github.com/mediafranca/vcsci" target="_blank"><strong>vcsci</strong></a> –
+            The Visual-Semantic Communication Interface that connects linguistic understanding with visual expression
+            for accessible communication.
+          </li>
+        </ol>
         <p><strong>Herbert Spencer González</strong> · PhD in Design (AUT)</p>
         <p><a href="https://herbertspencer.net/cc">herbertspencer.net/cc</a> · <a
-            href="mailto:herbert@pictos.net">herbert@pictos.net</a></p>
+            href="mailto:herbert.spencer@autuni.ac.nz">herbert.spencer@autuni.ac.nz</a></p>
       </section>
 
 

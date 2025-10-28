@@ -1,6 +1,6 @@
 // ======================================================
-// p5.js "pipeline" — carga con HTMLImageElement + drawImage (sin p5.Image)
-// Absolutas a producción + fallback local /cc/images/...
+// p5.js "pipeline" — SVG robusto (fetch→Blob→ObjectURL + drawImage)
+// Producción ABS (herbertspencer.net) + fallback local /cc/svg/ para dev
 // ======================================================
 
 const P5_REGISTRY = new Map();
@@ -9,16 +9,16 @@ function mountP5In(sectionEl){
   if(!sectionEl) return;
   sectionEl.querySelectorAll('.p5-host').forEach(host=>{
     if(P5_REGISTRY.has(host)) return;
-    const type = (host.dataset.sketch||'').toLowerCase();
+    const type=(host.dataset.sketch||'').toLowerCase();
     if(type!=='pipeline') return;
-    const inst = new p5(pipelineFactory(host), host);
+    const inst=new p5(pipelineFactory(host), host);
     P5_REGISTRY.set(host, inst);
   });
 }
 function unmountP5In(sectionEl){
   if(!sectionEl) return;
   sectionEl.querySelectorAll('.p5-host').forEach(host=>{
-    const inst = P5_REGISTRY.get(host);
+    const inst=P5_REGISTRY.get(host);
     if(inst?.remove) inst.remove();
     P5_REGISTRY.delete(host);
     host.innerHTML='';
@@ -27,43 +27,64 @@ function unmountP5In(sectionEl){
 
 // Reveal hooks
 if(typeof window!=='undefined'){
-  const R = window.Reveal;
-  const cur = ()=> (R?.getCurrentSlide ? R.getCurrentSlide() : null);
+  const R=window.Reveal;
+  const cur=()=> (R?.getCurrentSlide? R.getCurrentSlide() : null);
   if(R?.on){
-    R.on('ready', e => { document.querySelectorAll('.reveal .slides section').forEach(unmountP5In); mountP5In(e.currentSlide||cur()); });
-    R.on('slidechanged', e => { unmountP5In(e.previousSlide); mountP5In(e.currentSlide); });
-    R.on('overviewhidden', () => { document.querySelectorAll('.reveal .slides section').forEach(unmountP5In); mountP5In(cur()); });
+    R.on('ready',e=>{ document.querySelectorAll('.reveal .slides section').forEach(unmountP5In); mountP5In(e.currentSlide||cur()); });
+    R.on('slidechanged',e=>{ unmountP5In(e.previousSlide); mountP5In(e.currentSlide); });
+    R.on('overviewhidden',()=>{ document.querySelectorAll('.reveal .slides section').forEach(unmountP5In); mountP5In(cur()); });
   }else{
-    document.addEventListener('DOMContentLoaded', ()=>{
+    document.addEventListener('DOMContentLoaded',()=>{
       const present=document.querySelector('.reveal .slides section.present');
       if(present){ document.querySelectorAll('.reveal .slides section').forEach(unmountP5In); mountP5In(present); }
     });
   }
 }
 
-// ---------- Carga con HTMLImageElement + fallback ----------
-function loadHTMLImage(primaryUrl, fallbackUrl, label){
-  return new Promise(resolve=>{
-    const bust = u => u + (u.includes('?')?'&':'?') + 'cb=' + Date.now();
-    const img = new Image();
-    img.crossOrigin = 'anonymous';
-    img.decoding = 'async';
-    img.fetchPriority = 'high';
+// ---------- Cargar SVG → HTMLImageElement mediante Blob/ObjectURL ----------
+async function loadSVGAsHTMLImage(primaryUrl, fallbackUrl, label){
+  const bust = (u)=> u + (u.includes('?')?'&':'?') + 'cb=' + Date.now();
 
-    const tryFallback = ()=>{
-      console.warn(`[pipeline] ${label}: primary failed → trying fallback`, fallbackUrl);
-      const f = new Image();
-      f.crossOrigin = 'anonymous';
-      f.decoding = 'async';
-      f.onload = ()=>{ console.log(`[pipeline] ✔ ${label} fallback loaded`, fallbackUrl, f.naturalWidth, 'x', f.naturalHeight); resolve({img:f, used:fallbackUrl}); };
-      f.onerror = e => { console.error(`[pipeline] ✖ ${label} fallback failed`, e); resolve({img:null, used:fallbackUrl}); };
-      f.src = bust(fallbackUrl);
-    };
+  async function fetchToImg(url){
+    const res = await fetch(bust(url), { cache: 'no-store' });
+    if(!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
+    const svgText = await res.text();
 
-    img.onload = ()=>{ console.log(`[pipeline] ✔ ${label} primary loaded`, primaryUrl, img.naturalWidth, 'x', img.naturalHeight); resolve({img, used:primaryUrl}); };
-    img.onerror = ()=> tryFallback();
-    img.src = bust(primaryUrl);
-  });
+    // (Opcional) saneos seguros si tus SVG enlazan recursos externos:
+    //  - Elimina <image href="http..."> externos
+    //  - Garantiza viewBox/width/height
+    // Aquí sólo convertimos a Blob:
+    const blob = new Blob([svgText], { type: 'image/svg+xml' });
+    const objUrl = URL.createObjectURL(blob);
+
+    const img = await new Promise((resolve, reject)=>{
+      const im = new Image();
+      im.decoding = 'async';
+      im.onload = ()=> resolve(im);
+      im.onerror = reject;
+      im.src = objUrl;
+    });
+
+    return { img, objUrl };
+  }
+
+  // Intento primario
+  try{
+    const {img, objUrl} = await fetchToImg(primaryUrl);
+    console.log(`[pipeline] ✔ ${label} primary loaded`, primaryUrl, img.naturalWidth, 'x', img.naturalHeight);
+    return { img, used: primaryUrl, objUrl };
+  }catch(e){
+    console.warn(`[pipeline] ✖ ${label} primary failed → fallback`, primaryUrl, e);
+    // Fallback local
+    try{
+      const {img, objUrl} = await fetchToImg(fallbackUrl);
+      console.log(`[pipeline] ✔ ${label} fallback loaded`, fallbackUrl, img.naturalWidth, 'x', img.naturalHeight);
+      return { img, used: fallbackUrl, objUrl };
+    }catch(e2){
+      console.error(`[pipeline] ✖ ${label} fallback failed`, fallbackUrl, e2);
+      return { img: null, used: fallbackUrl, objUrl: null };
+    }
+  }
 }
 
 // ======================================================
@@ -71,32 +92,32 @@ function loadHTMLImage(primaryUrl, fallbackUrl, label){
 // ======================================================
 function pipelineFactory(parentEl){
   return function(p){
-
-    // Producción (absolutas) + dev (fallback local con base /cc/)
-    const ABS_UTTER = 'https://herbertspencer.net/cc/images/utterance.png';
-    const ABS_PICTO = 'https://herbertspencer.net/cc/images/pictogram-g.png';
-    const LOC_UTTER = '/cc/images/utterance.png';
-    const LOC_PICTO = '/cc/images/pictogram-g.png';
+    // URLs ABS (prod) + fallback local (dev)
+    const ABS_UTTER = 'https://herbertspencer.net/cc/svg/utterance.svg';
+    const ABS_PICTO = 'https://herbertspencer.net/cc/svg/pictogram-g.svg';
+    const LOC_UTTER = '/cc/svg/utterance.svg';
+    const LOC_PICTO = '/cc/svg/pictogram-g.svg';
 
     // Estado
     let columns=[];
-    let htmlUtter=null, htmlPicto=null; // HTMLImageElement
-    let usedU='(none)', usedP='(none)';
+    let svgUtter=null, svgPicto=null;       // HTMLImageElement (desde blob:)
+    let urlU='(none)', urlP='(none)';       // info
+    let urlUObj=null, urlPObj=null;         // blob: objectURL para revocar
 
     // Visual
     const columnHeight=300, labelSize=14, labelFont='Lexend', labelMaxW=100, labelMarginNormal=8, labelMarginImage=-80;
     const COLORS={
-      "Text Processing":{r:65,g:47,b:166},
+      "Tokenization":{r:65,g:47,b:166},
       "NLU":{r:161,g:76,b:87},
-      "Concept Mapping":{r:236,g:98,b:27},
+      "NSM":{r:236,g:98,b:27},
       "Blending":{r:112,g:40,b:11},
       "Styler":{r:44,g:9,b:2}
     };
     const COLDEF=[
       {label:"Utterance",type:"image"},
-      {label:"Text Processing",type:"normal"},
+      {label:"Tokenization",type:"normal"},
       {label:"NLU",type:"normal"},
-      {label:"Concept Mapping",type:"normal"},
+      {label:"NSM",type:"normal"},
       {label:"Blending",type:"normal"},
       {label:"Styler",type:"normal"},
       {label:"SVG Output",type:"image"}
@@ -123,14 +144,12 @@ function pipelineFactory(parentEl){
       p.textFont(labelFont); p.textSize(labelSize); p.textAlign(p.CENTER,p.TOP);
       p.canvas.style.touchAction='none';
 
-      console.groupCollapsed('[pipeline] load HTMLImageElement (abs → local fallback)');
-      const [U,P] = await Promise.all([
-        loadHTMLImage(ABS_UTTER, LOC_UTTER, 'utterance'),
-        loadHTMLImage(ABS_PICTO, LOC_PICTO, 'pictogram')
-      ]);
-      htmlUtter = U.img; usedU = U.used;
-      htmlPicto = P.img; usedP = P.used;
-      console.log('[pipeline] used URLs →', {utterance:usedU, pictogram:usedP});
+      console.groupCollapsed('[pipeline] load SVGs (abs → local fallback, blob URLs)');
+      const U = await loadSVGAsHTMLImage(ABS_UTTER, LOC_UTTER, 'utterance');
+      const P = await loadSVGAsHTMLImage(ABS_PICTO, LOC_PICTO, 'pictogram');
+      svgUtter = U.img; urlU = U.used; urlUObj = U.objUrl;
+      svgPicto = P.img; urlP = P.used; urlPObj = P.objUrl;
+      console.log('[pipeline] used URLs →', { utterance:urlU, pictogram:urlP });
       console.groupEnd();
 
       generateColumns();
@@ -139,6 +158,15 @@ function pipelineFactory(parentEl){
       p.canvas.addEventListener('pointerdown', upd, {passive:true});
       p.canvas.addEventListener('pointerup',   upd, {passive:true});
       p.canvas.addEventListener('pointercancel', upd, {passive:true});
+    };
+
+    p.remove = function(){
+      // Revocar objectURLs para liberar memoria
+      try { if (urlUObj) URL.revokeObjectURL(urlUObj); } catch(_) {}
+      try { if (urlPObj) URL.revokeObjectURL(urlPObj); } catch(_) {}
+      // p5 cleanup normal
+      p._removeElements?.();
+      const cnv = p.canvas; cnv?.parentNode?.removeChild?.(cnv);
     };
 
     p.windowResized = function(){
@@ -153,12 +181,13 @@ function pipelineFactory(parentEl){
       drawConnections();
       drawColumns();
 
-      // Indicadores de diagnóstico (arriba-izq)
+      /*
+      // Pequeño overlay de diagnostico (opcional; puedes quitarlo)
       p.fill(0); p.textAlign(p.LEFT,p.TOP); p.textSize(12);
-      p.text(`[pipeline] U:${!!htmlUtter}(${htmlUtter?.naturalWidth||0}×${htmlUtter?.naturalHeight||0})  P:${!!htmlPicto}(${htmlPicto?.naturalWidth||0}×${htmlPicto?.naturalHeight||0})`, 10, 8);
-      p.text(`usedU: ${usedU}`, 10, 26);
-      p.text(`usedP: ${usedP}`, 10, 42);
+      p.text(`SVG U: ${!!svgUtter} (${svgUtter?.naturalWidth||0}×${svgUtter?.naturalHeight||0})`, 10, 8);
+      p.text(`SVG P: ${!!svgPicto} (${svgPicto?.naturalWidth||0}×${svgPicto?.naturalHeight||0})`, 10, 24);
       p.textAlign(p.CENTER,p.TOP); p.textSize(labelSize);
+      */
     };
 
     // -------- interacción --------
@@ -220,16 +249,12 @@ function pipelineFactory(parentEl){
           p.rect(c.left,c.top,c.w,c.h,12);
         }
         if(c.type==='image'){
-          // Selecciona la HTMLImage correspondiente
-          const el = (c.label==='Utterance') ? htmlUtter : (c.label==='SVG Output') ? htmlPicto : null;
+          const el = (c.label==='Utterance') ? svgUtter : (c.label==='SVG Output') ? svgPicto : null;
           if(el && el.naturalWidth && el.naturalHeight){
-            const drawW=140; const ar=el.naturalWidth/el.naturalHeight; const drawH=drawW/(ar||1);
-            // Dibujo con el contexto nativo
-            const ctx = p.drawingContext;
-            ctx.imageSmoothingEnabled = true;
-            ctx.drawImage(el, c.left+c.w/2 - drawW/2, c.top+c.h/2 - drawH/2, drawW, drawH);
+            const drawW=100; const ar=el.naturalWidth/el.naturalHeight; const drawH=drawW/(ar||1);
+            const ctx=p.drawingContext; ctx.imageSmoothingEnabled=true;
+            ctx.drawImage(el, c.left+c.w/2-drawW/2, c.top+c.h/2-drawH/2, drawW, drawH);
           }else{
-            // placeholder
             p.noStroke(); p.fill(240); p.rect(c.left, c.top+c.h/2-18, c.w, 36, 8);
             p.fill(120); p.textSize(12);
             p.text((c.label==='Utterance'?'utterance':'pictogram')+' loading…', c.left+c.w/2, c.top+c.h/2-6);
@@ -239,6 +264,7 @@ function pipelineFactory(parentEl){
           p.noStroke(); p.fill(c.color.r,c.color.g,c.color.b);
           for(const n of c.nodes) p.circle(n.x,n.y,4);
         }
+        p.noStroke();
         p.fill(0); p.textSize(labelSize);
         const m = (c.type==='image')? labelMarginImage : labelMarginNormal;
         p.text(c.label.toUpperCase(), c.left+c.w/2, c.top+c.h+m);
@@ -255,9 +281,9 @@ function pipelineFactory(parentEl){
           if(!states[ia]) continue;
           for(let ib=0; ib<nodesB.length; ib++){
             const n1=nodesA[ia], n2=nodesB[ib], st=states[ia][ib];
-            if(st.state==='idle'){ if(p.random()<PEAK_PROB){ st.state='fading-in'; st.progress=0; } }
-            else if(st.state==='fading-in'){ st.progress+=FADE_IN; if(st.progress>=1){ st.progress=1; st.state='fading-out'; } }
-            else if(st.state==='fading-out'){ st.progress-=FADE_OUT; if(st.progress<=0){ st.progress=0; st.state='idle'; } }
+            if(st.state==='idle'){ if(p.random()<0.001){ st.state='fading-in'; st.progress=0; } }
+            else if(st.state==='fading-in'){ st.progress+=0.04; if(st.progress>=1){ st.progress=1; st.state='fading-out'; } }
+            else if(st.state==='fading-out'){ st.progress-=0.02; if(st.progress<=0){ st.progress=0; st.state='idle'; } }
 
             if(BASE_ALPHA>0){ p.stroke(col.r,col.g,col.b,BASE_ALPHA); p.strokeWeight(BASE_STROKE); p.line(n1.x,n1.y,n2.x,n2.y); }
             if(st.progress>0){

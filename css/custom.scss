@@ -2,6 +2,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Outfit:wght@100..900&display=swap');
 
+
+
+
 /* Variables tipográficas */
 $font-family-base: 'Lexend',
 sans-serif;
@@ -12,6 +15,7 @@ $line-height-base: 1.5;
 $primary-color: #460556;
 $secondary-color: #ff6600;
 $terciary-color: #c73319;
+$color-text: rgb(17, 16, 19);
 
 /* Sobrescribe variables de Reveal (si las usa) */
 $background-color: #c4cfb5; // Fondo de la presentación
@@ -173,7 +177,7 @@ body {
                         span {
                             font-weight: 290;
                             font-size: 0.85em;
-                            color: transparentize($color, 0.3);
+                            color: rgba($color-text, 0.7);
 
                             a,
                             a:visited {
@@ -202,8 +206,23 @@ body {
 
         .image{
             text-align: center;
-            img, svg{
-                max-width: 70vw;
+            
+            img, 
+            svg{
+                display: relative;
+                display: inline-block;
+                padding: 0 20%;
+            }
+
+            .legend{
+                font-size: 80%;
+                position: relative;
+                text-align: left;
+                ul{
+                    li::marker{
+                     color: $terciary-color;
+                    }
+                }
             }
         }
 
@@ -248,8 +267,8 @@ body {
                     break-inside: avoid;
                     padding: 0 0.23ex 0.123ex 0.27ex;
                     color: $terciary-color;
-                    background-color:transparentize($terciary-color, .9);
-                    border: 0.013ex solid transparentize($terciary-color, .8);
+                    background-color: rgba($terciary-color, .1);
+                    border: 0.013ex solid rgba($terciary-color, .2);
                     font-weight: 300;
                 }
             }
@@ -469,7 +488,7 @@ body {
 
 /* highlight */
 #svg-code-sync {
-    $col: #00d2ff;
+    $color-select: #00d2ff;
 
     .code-node {
         border-radius: .35em;
@@ -478,13 +497,13 @@ body {
     }
 
     .code-node.is-selected {
-        outline: 2px solid $col;
+        outline: 2px solid $color-select;
         outline-offset: 3px;
         background: rgba(0, 210, 255, .10);
     }
 
     svg .is-selected {
-        filter: drop-shadow(0 0 .11rem $col) drop-shadow(0 0 .08rem $col);
+        filter: drop-shadow(0 0 .11rem $color-select) drop-shadow(0 0 .08rem $color-select);
         transition: filter .12s ease;
     }
 }

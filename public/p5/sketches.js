@@ -1,287 +1,389 @@
 // ========================================================================
-// GESTOR DE INSTANCIAS P5.JS PARA REVEAL.JS
+// Reveal.js + p5.js — Sketch único "pipeline"
+// Versión PNG: rutas ABS /cc/images/utterance.png y /cc/images/pictogram-g.png
+// Drag/hover corregidos (getBoundingClientRect) + logs
 // ========================================================================
 
 const P5_REGISTRY = new Map();
 
-/**
- * Monta todos los sketches de p5.js dentro de una sección/diapositiva.
- * Se debe llamar cuando la diapositiva se vuelve visible.
- * @param {HTMLElement} sectionEl El elemento de la sección de Reveal.
- */
 function mountP5In(sectionEl) {
-  const hosts = sectionEl.querySelectorAll('.p5-host');
-  hosts.forEach(host => {
-    // Si ya existe una instancia para este host, no hagas nada.
+  if (!sectionEl) return;
+  sectionEl.querySelectorAll('.p5-host').forEach(host => {
     if (P5_REGISTRY.has(host)) return;
-
-    const sketchType = host.dataset.sketch;
-    let factory = null;
-
-    // Selector de la "fábrica" de sketches
-    if (sketchType === 'chronology') {
-      factory = chronologySketchFactory(host);
-    } else if (sketchType === 'neural-network') {
-      factory = neuralNetworkSketchFactory(host);
-    }
-
-    if (!factory) {
-      console.warn(`No p5 factory found for sketch type: ${sketchType}`);
-      return;
-    }
-
-    // Crea la nueva instancia y la guarda en el registro.
-    const instance = new p5(factory, host);
+    const type = (host.dataset.sketch || '').toLowerCase();
+    if (type !== 'pipeline') return;
+    const instance = new p5(pipelineSketchFactory(host), host);
     P5_REGISTRY.set(host, instance);
   });
 }
 
-/**
- * Desmonta y limpia todos los sketches de p5.js de una sección.
- * Se debe llamar cuando la diapositiva se oculta.
- * @param {HTMLElement} sectionEl El elemento de la sección de Reveal.
- */
 function unmountP5In(sectionEl) {
-  const hosts = sectionEl.querySelectorAll('.p5-host');
-  hosts.forEach(host => {
-    const instance = P5_REGISTRY.get(host);
-    if (instance) {
-      if (typeof instance.remove === 'function') {
-        instance.remove(); // Método de p5.js para limpiar todo.
-      }
-      P5_REGISTRY.delete(host);
-      host.innerHTML = ''; // Limpia el contenedor por si acaso.
-    }
+  if (!sectionEl) return;
+  sectionEl.querySelectorAll('.p5-host').forEach(host => {
+    const inst = P5_REGISTRY.get(host);
+    if (inst && typeof inst.remove === 'function') inst.remove();
+    P5_REGISTRY.delete(host);
+    host.innerHTML = '';
   });
 }
 
-// ========================================================================
-// FÁBRICA DE SKETCH #1: CHRONOLOGY
-// (Sin cambios, se mantiene como referencia)
-// ========================================================================
+if (typeof window !== 'undefined') {
+  const R = window.Reveal;
+  const cur = () => (R && typeof R.getCurrentSlide === 'function') ? R.getCurrentSlide() : null;
 
-function chronologySketchFactory(parentEl) {
+  if (R && typeof R.on === 'function') {
+    R.on('ready', (e) => {
+      document.querySelectorAll('.reveal .slides section').forEach(unmountP5In);
+      mountP5In(e.currentSlide || cur());
+    });
+    R.on('slidechanged', (e) => {
+      unmountP5In(e.previousSlide);
+      mountP5In(e.currentSlide);
+    });
+    R.on('overviewhidden', () => {
+      document.querySelectorAll('.reveal .slides section').forEach(unmountP5In);
+      mountP5In(cur());
+    });
+  } else {
+    document.addEventListener('DOMContentLoaded', () => {
+      const present = document.querySelector('.reveal .slides section.present');
+      if (present) {
+        document.querySelectorAll('.reveal .slides section').forEach(unmountP5In);
+        mountP5In(present);
+      }
+    });
+  }
+}
+
+// ========================================================================
+// Fábrica del sketch "pipeline" (PNG)
+// ========================================================================
+function pipelineSketchFactory(parentEl) {
   return function(p) {
-    const startTime = 1990;
-    const endTime = 2030;
-    let currentYear = startTime;
-    let thisYear;
-    const yearEvents = { 1990: "WWW", 1991: "Linux Kernel", 1992: "PCs, SMS", 1993: "Web browser", 1994: "E-Commerce", 1995: "Windows 95, Netscape", 1996: "GUI", 1997: "Google PageRank", 1998: "MP3, ICQ", 1999: "P2P: Napster", 2000: "Dot-com bubble", 2001: "Wikipedia", 2002: "Bluetooth", 2003: "Social media, VoIP", 2004: "Facebook, APIs", 2005: "YouTube, Maps", 2006: "Twitter, AWS", 2007: "Multitouch: iPhone", 2008: "Android, iOS, Symbian", 2009: "PayPal, Bitcoin", 2010: "iPad", 2011: "Siri", 2012: "Deep Learning", 2013: "Wearable Computing", 2014: "Oculus Rift: VR", 2015: "TensorFlow · CRISPR", 2016: "Pokémon GO: AR", 2017: "AI: Transformers", 2018: "GDPR", 2019: "5G, 4G LTE", 2020: "COVID-19, GPT-3", 2021: "NFTs, Metaverse", 2022: "Quantum Computing", 2023: "Custom GPTs", 2024: "AI Agents", 2025: "AGI?" };
-    const fadeValues = {};
-    let hostW, hostH;
+    // --- Rutas PNG absolutas ---
+    const PNG_UTTERANCE = '/cc/images/utterance.png';
+    const PNG_PICTO     = '/cc/images/pictogram-g.png';
 
-    p.setup = function() {
-      hostW = parentEl.clientWidth;
-      hostH = parentEl.clientHeight;
-      const c = p.createCanvas(hostW, hostH);
-      c.parent(parentEl);
-      thisYear = new Date().getFullYear();
-      for (const y in yearEvents) fadeValues[y] = 255;
-      p.textFont('Lexend');
+    // --- Estado & config ---
+    let columns = [];
+    const columnHeight = 300;
+    const labelFontFamily = 'Lexend';
+    const labelSize = 14;
+    const labelMaxWidth = 100;
+    const labelMarginNormal = 8;
+    const labelMarginImage  = -80;
+
+    const COLORS = {
+      "Text Processing":   { r:  65, g:  47, b:166 },
+      "NLU":               { r: 161, g:  76, b: 87 },
+      "Concept Mapping":   { r: 236, g:  98, b: 27 },
+      "Blending":          { r: 112, g:  40, b: 11 },
+      "Styler":            { r:  44, g:   9, b:  2 }
     };
 
-    p.windowResized = function() {
-      hostW = parentEl.clientWidth;
-      hostH = parentEl.clientHeight;
-      p.resizeCanvas(hostW, hostH);
+    const COLUMN_DEFS = [
+      { label: "Utterance",       type: "image"  },
+      { label: "Text Processing", type: "normal" },
+      { label: "NLU",             type: "normal" },
+      { label: "Concept Mapping", type: "normal" },
+      { label: "Blending",        type: "normal" },
+      { label: "Styler",          type: "normal" },
+      { label: "SVG Output",      type: "image"  }
+    ];
+
+    // Pulsos
+    const BASE_ALPHA  = 0;
+    const PEAK_ALPHA  = 200;
+    const BASE_STROKE = 0.25;
+    const PEAK_STROKE = 1.0;
+    const PEAK_PROB   = 0.001;
+
+    const FADE_IN_SPEED  = 0.04;
+    const FADE_OUT_SPEED = 0.02;
+
+    let hoverColumn = null;
+    let draggingColumn = null;
+    let dragOffsetX = 0, dragOffsetY = 0;
+
+    let imgUtterance = null, imgPictogram = null;
+    let connectionStates = [];
+
+    // Puntero en coords de canvas (corrige transform/scale de Reveal)
+    let pointerX = 0, pointerY = 0;
+    function toLocalXYFromEvent(e) {
+      const rect = p.canvas.getBoundingClientRect();
+      const pt = e?.touches?.[0] || e?.changedTouches?.[0] || e;
+      const cx = pt?.clientX ?? 0;
+      const cy = pt?.clientY ?? 0;
+      return {
+        x: (cx - rect.left) * (p.width  / rect.width),
+        y: (cy - rect.top ) * (p.height / rect.height),
+      };
+    }
+    function updatePointer(e) {
+      const { x, y } = toLocalXYFromEvent(e);
+      pointerX = x; pointerY = y;
+    }
+
+    // ---------- p5 lifecycle ----------
+    p.preload = function() {
+      console.groupCollapsed('[pipeline] preload PNGs');
+      console.log('→', PNG_UTTERANCE);
+      imgUtterance = p.loadImage(
+        PNG_UTTERANCE,
+        () => console.log('✔ loaded utterance.png'),
+        (err) => console.error('✖ error loading', PNG_UTTERANCE, err)
+      );
+      console.log('→', PNG_PICTO);
+      imgPictogram = p.loadImage(
+        PNG_PICTO,
+        () => console.log('✔ loaded pictogram-g.png'),
+        (err) => console.error('✖ error loading', PNG_PICTO, err)
+      );
+      console.groupEnd();
+    };
+
+    p.setup = function() {
+      p.createCanvas(parentEl.clientWidth, parentEl.clientHeight);
+      p.textFont(labelFontFamily);
+      p.textSize(labelSize);
+      p.textAlign(p.CENTER, p.TOP);
+      p.canvas.style.touchAction = 'none';
+
+      generateColumns();
+
+      p.canvas.addEventListener('pointermove', updatePointer, { passive: true });
+      p.canvas.addEventListener('pointerdown', updatePointer, { passive: true });
+      p.canvas.addEventListener('pointerup',   updatePointer, { passive: true });
+      p.canvas.addEventListener('pointercancel', updatePointer, { passive: true });
+
+      console.info('[pipeline] setup — canvas size:', p.width, 'x', p.height);
     };
 
     p.draw = function() {
       p.clear();
-      drawExponentialGraph();
-      displayYear();
-      drawLegends();
-    };
-
-    function drawExponentialGraph() {
-      p.noFill(); p.stroke(166, 49, 23); p.beginShape();
-      for (let x = 0; x <= currentYear - startTime; x += 0.02) {
-        const y = Math.pow(2, x / 5);
-        p.vertex(
-          p.map(x + startTime, startTime, endTime, 0, p.width),
-          p.map(y, 1, Math.pow(2, (endTime - startTime) / 5), p.height, 0)
-        );
-      }
-      p.endShape();
-    }
-
-    function displayYear() {
-      p.noStroke(); p.fill(190); p.textSize(52);
-      if (currentYear < thisYear) {
-        p.text(p.nf(Math.floor(currentYear), 4), 10, 52);
-      } else {
-        p.text(thisYear + "…", 10, 52);
-      }
-      if (currentYear < endTime) {
-        currentYear += (endTime - startTime) / Math.max(1, p.width);
-      }
-    }
-
-    function drawLegends() {
-      p.noStroke(); p.textSize(16);
-      for (const y in yearEvents) {
-        const yi = parseInt(y, 10);
-        if (currentYear >= yi) {
-          p.fill(fadeValues[y]);
-          const xPos = p.map(yi, startTime, endTime, 0, p.width);
-          const yPos = p.height * 0.9 - (yi % 10) * 20;
-          p.text(yearEvents[y], xPos, yPos);
-          p.push();
-          p.translate(xPos, yPos);
-          p.rotate(-p.HALF_PI);
-          p.textFont("Lexend");
-          p.textSize(10);
-          p.fill(166, 49, 23, 130);
-          p.text(yi, 15, 9);
-          p.pop();
-          if (fadeValues[y] > 10) fadeValues[y]--;
-        }
-      }
-    }
-  };
-}
-
-// ========================================================================
-// FÁBRICA DE SKETCH #2: NEURAL NETWORK (REFACTORIZADO)
-// ========================================================================
-
-function neuralNetworkSketchFactory(parentEl) {
-  // Helper para parsear números desde data-attributes
-  function num(v, dflt) {
-    const n = Number(v);
-    return Number.isFinite(n) ? n : dflt;
-  }
-
-  // La fábrica devuelve la función del sketch que p5.js utilizará
-  return function(p) {
-    // Configuración leída desde los data-attributes del elemento anfitrión (parentEl)
-    const cfg = {
-      minLayers: num(parentEl.dataset.minLayers, 5),
-      maxLayers: num(parentEl.dataset.maxLayers, 11),
-      minNodes: num(parentEl.dataset.minNodes, 6),
-      maxNodes: num(parentEl.dataset.maxNodes, 30),
-      nodeSize: num(parentEl.dataset.nodeSize, 4.0),
-      minConnectionStroke: num(parentEl.dataset.minConnectionStroke, 0.25),
-      maxConnectionStroke: num(parentEl.dataset.maxConnectionStroke, 4.0),
-      minConnectionAlpha: num(parentEl.dataset.minConnectionAlpha, 3),
-      maxConnectionAlpha: num(parentEl.dataset.maxConnectionAlpha, 30),
-      frameRate: num(parentEl.dataset.frameRate, 5)
-    };
-
-    let nodesPerLayer = [];
-    let network = [];
-    let nodeColor;
-
-    p.setup = () => {
-      p.createCanvas(parentEl.clientWidth, parentEl.clientHeight);
-      p.frameRate(cfg.frameRate);
-      nodeColor = p.color(255, 67, 0, 180);
-      generateRandomNetwork();
-    };
-
-    p.draw = () => {
-      p.clear();
+      hoverColumn = null;
+      detectHover(pointerX, pointerY);
       drawConnections();
-      drawNodes();
+      drawColumns();
     };
 
-    p.windowResized = () => {
+    p.windowResized = function() {
       p.resizeCanvas(parentEl.clientWidth, parentEl.clientHeight);
-      generateNetworkLayout(); // Regenera layout para el nuevo tamaño
+      generateColumns();
+      console.info('[pipeline] windowResized — canvas size:', p.width, 'x', p.height);
     };
 
-    // Interacción mínima: [r] regenera, [espacio] vuelca config en consola
-    p.keyPressed = () => {
-      switch (p.key) {
-        case 'r':
-          generateRandomNetwork();
+    // Interacción
+    p.mousePressed = function(e) {
+      updatePointer(e);
+      for (let col of columns) {
+        if (pointerX >= col.left && pointerX <= col.left + col.w &&
+            pointerY >= col.top  && pointerY <= col.top  + col.h) {
+          draggingColumn = col;
+          dragOffsetX = pointerX - col.left;
+          dragOffsetY = pointerY - col.top;
           break;
-        case ' ':
-          exportConfig();
-          break;
+        }
       }
     };
 
-    // ---- Lógica interna del sketch (sin cambios) ----
+    p.mouseDragged = function(e) {
+      if (!draggingColumn) return;
+      updatePointer(e);
 
-    function generateRandomNetwork() {
-      nodesPerLayer = [];
-      const numLayers = p.floor(p.random(cfg.minLayers, cfg.maxLayers + 1));
-      for (let i = 0; i < numLayers; i++) {
-        const numNodes = p.floor(p.random(cfg.minNodes, cfg.maxNodes + 1));
-        nodesPerLayer.push(numNodes);
+      draggingColumn.left = pointerX - dragOffsetX;
+      draggingColumn.top  = pointerY - dragOffsetY;
+
+      draggingColumn.x = draggingColumn.left + draggingColumn.w/2;
+      draggingColumn.y = draggingColumn.top;
+
+      if (draggingColumn.type === "image") {
+        const cx = draggingColumn.left + draggingColumn.w/2;
+        const cy = draggingColumn.top  + draggingColumn.h/2;
+        for (let n of draggingColumn.nodes) { n.x = cx; n.y = cy; }
+      } else {
+        const nCount = draggingColumn.nodes.length;
+        const gap = draggingColumn.h / (nCount + 1);
+        for (let i = 0; i < nCount; i++) {
+          draggingColumn.nodes[i].x = draggingColumn.left + draggingColumn.w/2;
+          draggingColumn.nodes[i].y = draggingColumn.top  + gap * (i + 1);
+        }
       }
-      generateNetworkLayout();
-    }
+    };
 
-    function generateNetworkLayout() {
-    network = [];
-    const numLayers = nodesPerLayer.length;
-    const layerSpacing = p.width / (numLayers + 1);
-    const margin = 100; // Tu margen vertical en píxeles
+    p.mouseReleased = function(e) {
+      updatePointer(e);
+      draggingColumn = null;
+    };
 
-    for (let i = 0; i < numLayers; i++) {
-        const layer = [];
-        const numNodesInLayer = nodesPerLayer[i];
-        // El espacio se calcula sobre la altura total disponible
-        const nodeSpacing = p.height / (numNodesInLayer + 1);
-        const x = layerSpacing * (i + 1);
+    // -------- Helpers ----------
+    function generateColumns() {
+      columns = [];
+      const spacing = p.width / (COLUMN_DEFS.length + 1);
 
-        for (let j = 0; j < numNodesInLayer; j++) {
-        // 1. Calcula la posición 'y' ideal sin margen
-        const idealY = nodeSpacing * (j + 1);
-        
-        // 2. Mapea esa posición al nuevo rango con margen
-        //    p.map(valor, rango_original_inicio, rango_original_fin, rango_nuevo_inicio, rango_nuevo_fin)
-        const mappedY = p.map(idealY, 0, p.height, margin, p.height - margin);
+      for (let i = 0; i < COLUMN_DEFS.length; i++) {
+        const def = COLUMN_DEFS[i];
+        const cx = spacing * (i + 1);
+        const w  = spacing * 0.19;
+        const yTop = p.height / 2 - columnHeight / 2;
+        const isImage = def.type === "image";
 
-        // 3. Añade el nodo con la propiedad 'y' para que las otras funciones lo encuentren
-        layer.push({ x: x, y: mappedY });
+        const nodes = [];
+        if (isImage) {
+          const n = 20, px = cx, py = yTop + columnHeight/2;
+          for (let k = 0; k < n; k++) nodes.push({ x: px, y: py });
+        } else {
+          const n = 20, gap = columnHeight / (n + 1);
+          for (let j = 0; j < n; j++) nodes.push({ x: cx, y: yTop + gap * (j + 1) });
         }
-        network.push(layer);
-    }
+
+        const colRGB =
+          def.type === "normal" ? (COLORS[def.label] || { r: 220, g: 80, b: 80 })
+                                : { r: 230, g: 230, b: 230 };
+
+        let img = null;
+        if (isImage) {
+          if (def.label === 'Utterance')  img = imgUtterance;
+          if (def.label === 'SVG Output') img = imgPictogram;
+        }
+
+        columns.push({
+          label: def.label,
+          labelUpper: def.label.toUpperCase(),
+          type: def.type,
+          x: cx,
+          y: yTop,
+          w: w,
+          h: columnHeight,
+          left: cx - w/2,
+          top: yTop,
+          nodes,
+          color: colRGB,
+          image: img
+        });
+      }
+
+      // Estados de conexión
+      connectionStates = [];
+      for (let i = 0; i < columns.length - 1; i++) {
+        const aLen = columns[i].nodes.length;
+        const bLen = columns[i+1].nodes.length;
+        const states = [];
+        for (let ia = 0; ia < aLen; ia++) {
+          const row = [];
+          for (let ib = 0; ib < bLen; ib++) {
+            row.push({ progress: 0, state: 'idle' });
+          }
+          states.push(row);
+        }
+        connectionStates.push(states);
+      }
     }
 
-    function drawNodes() {
-      p.noStroke();
-      p.fill(nodeColor);
-      for (const layer of network) {
-        for (const node of layer) {
-          p.circle(node.x, node.y, cfg.nodeSize);
+    function detectHover(x, y) {
+      if (draggingColumn) return;
+      for (let col of columns) {
+        if (x >= col.left && x <= col.left + col.w &&
+            y >= col.top  && y <= col.top  + col.h) {
+          hoverColumn = col; return;
         }
+      }
+    }
+
+    function drawColumns() {
+      p.rectMode(p.CORNER);
+      for (let col of columns) {
+        if (col.type === "normal") {
+          const baseA = (col === hoverColumn) ? 200 : 120;
+          p.noStroke();
+          p.fill(col.color.r, col.color.g, col.color.b, baseA);
+          p.rect(col.left, col.top, col.w, col.h, 12);
+        }
+
+        if (col.type === "image") {
+          if (col.image) {
+            const drawW = 100;
+            const ar = (col.image.width && col.image.height) ? (col.image.width / col.image.height) : 1;
+            const drawH = drawW / ar;
+            p.imageMode(p.CENTER);
+            p.image(col.image, col.left + col.w/2, col.top + col.h/2, drawW, drawH);
+          } else {
+            p.push();
+            p.noStroke();
+            p.fill(240);
+            p.rect(col.left, col.top + col.h/2 - 20, col.w, 40, 8);
+            p.fill(120);
+            p.textSize(12);
+            p.text('loading…', col.left + col.w/2, col.top + col.h/2 - 6);
+            p.pop();
+          }
+        } else {
+          p.noStroke();
+          p.fill(col.color.r, col.color.g, col.color.b);
+          for (let n of col.nodes) p.circle(n.x, n.y, 4);
+        }
+
+        p.fill(0);
+        p.textSize(labelSize);
+        const margin = (col.type === "image") ? labelMarginImage : labelMarginNormal;
+        const labelY = col.top + col.h + margin;
+        drawWrappedText(col.labelUpper, col.left + col.w/2, labelY, labelMaxWidth, 16);
       }
     }
 
     function drawConnections() {
-      for (let i = 0; i < network.length - 1; i++) {
-        const current = network[i];
-        const next = network[i + 1];
-        for (const a of current) {
-          for (const b of next) {
-            const sw = p.random(cfg.minConnectionStroke, cfg.maxConnectionStroke);
-            const sa = p.random(cfg.minConnectionAlpha, cfg.maxConnectionAlpha);
-            p.stroke(254, 129, 112, sa);
-            p.strokeWeight(sw);
-            p.line(a.x, a.y, b.x, b.y);
+      if (!connectionStates.length) return;
+      for (let i = 0; i < columns.length - 1; i++) {
+        const A = columns[i], B = columns[i + 1];
+        const isToPic = (B.type === "image" && B.label === "SVG Output");
+        const c = isToPic ? { r: 0, g: 0, b: 0 } : B.color;
+        const nodesA = A.nodes, nodesB = B.nodes, states = connectionStates[i];
+
+        for (let ia = 0; ia < nodesA.length; ia++) {
+          if (!states[ia]) continue;
+          for (let ib = 0; ib < nodesB.length; ib++) {
+            const n1 = nodesA[ia], n2 = nodesB[ib], st = states[ia][ib];
+            if (st.state === 'idle') {
+              if (p.random() < PEAK_PROB) { st.state = 'fading-in'; st.progress = 0; }
+            } else if (st.state === 'fading-in') {
+              st.progress += FADE_IN_SPEED;
+              if (st.progress >= 1) { st.progress = 1; st.state = 'fading-out'; }
+            } else if (st.state === 'fading-out') {
+              st.progress -= FADE_OUT_SPEED;
+              if (st.progress <= 0) { st.progress = 0; st.state = 'idle'; }
+            }
+            if (BASE_ALPHA > 0) {
+              p.stroke(c.r, c.g, c.b, BASE_ALPHA);
+              p.strokeWeight(BASE_STROKE);
+              p.line(n1.x, n1.y, n2.x, n2.y);
+            }
+            if (st.progress > 0) {
+              const eased = st.progress < 0.5 ? 4*st.progress**3
+                                              : 1 - Math.pow(-2*st.progress + 2, 3) / 2;
+              const alphaVal = p.lerp(0, PEAK_ALPHA, eased);
+              const strokeW = p.lerp(BASE_STROKE, PEAK_STROKE, eased);
+              p.stroke(c.r, c.g, c.b, alphaVal);
+              p.strokeWeight(strokeW);
+              p.line(n1.x, n1.y, n2.x, n2.y);
+            }
           }
         }
       }
     }
 
-    function exportConfig() {
-      const s = `
-// --- Config Export ---
-minLayers=${cfg.minLayers};
-maxLayers=${cfg.maxLayers};
-minNodes=${cfg.minNodes};
-maxNodes=${cfg.maxNodes};
-nodeSize=${cfg.nodeSize.toFixed(2)};
-minConnectionStroke=${cfg.minConnectionStroke.toFixed(2)};
-maxConnectionStroke=${cfg.maxConnectionStroke.toFixed(2)};
-minConnectionAlpha=${cfg.minConnectionAlpha.toFixed(0)};
-maxConnectionAlpha=${cfg.maxConnectionAlpha.toFixed(0)};
-`;
-      console.log(s);
+    function drawWrappedText(str, cx, topY, maxW, lineH) {
+      const words = str.split(' ');
+      let line = '', y = topY;
+      for (let i = 0; i < words.length; i++) {
+        const test = (line ? line + ' ' : '') + words[i];
+        if (p.textWidth(test) > maxW && line) {
+          p.noStroke(); p.text(line, cx, y);
+          line = words[i]; y += lineH;
+        } else line = test;
+      }
+      p.noStroke();
+      if (line) p.text(line, cx, y);
     }
   };
 }

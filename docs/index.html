@@ -9,16 +9,16 @@
   <!-- en <head> o justo antes de </body>, pero SIEMPRE antes de main.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/2.0.4/p5.min.js" defer></script>
   <script src="./p5/sketches.js" defer></script>
-  <script type="module" crossorigin src="/cc/assets/index-Dth0Vic1.js"></script>
-  <link rel="stylesheet" crossorigin href="/cc/assets/index-BTL_kIK9.css">
+  <script type="module" crossorigin src="/cc/assets/index-_72sVLtG.js"></script>
+  <link rel="stylesheet" crossorigin href="/cc/assets/index-DPfJLav4.css">
 </head>
 
 <body>
   <div class="reveal">
     <div class="slides">
 
-      <!-- 1: Title & About me  -->
-      <section>
+      <!-- 1: Introduction  -->
+      <section id="intro">
         <!-- 1.1 title -->
         <section data-background-color="#FFF" data-transition="concave" id="title-slide">
           <object type="image/svg+xml" data="svg/title-illustration.svg" class="illustration"
@@ -50,8 +50,6 @@
             <span>This presentation lives at <a href="https://herbertspencer.net/cc">herbertspencer.net/cc</a></span>
             <img class="logo" src="images/AUT.jpg" alt="Auckland University of Technology">
           </div>
-
-
         </section>
 
         <!-- 1.2 Aromos  -->
@@ -61,10 +59,6 @@
             that sustain us.</aside>
         </section>
 
-        <!-- 1.3 wiki Casiopea -->
-        <!-- <section data-background-iframe="https://wiki.ead.pucv.cl/Herbert_Spencer" data-background-interactive
-          data-background-opacity="1">
-        </section> -->
 
         <!-- 1.3 Profesor  -->
         <section data-background-image="images/travesia.jpg">
@@ -78,11 +72,14 @@
         </section>
 
         <!-- Núcleo de Investigación en Accesibilidad e Inclusión PUCV  -->
-        <section data-background-image="images/nucleo.jpg" >
-          <h2 class="photo-overlay"><span class="light">Research Centre for</span><br><span>Accessibility and Inclusion</span><br><span class="light">Pontifical Catholic University of Valparaíso</span></h2>
+        <section data-background-image="images/nucleo.jpg">
+          <h2 class="photo-overlay"><span class="light">Research Centre for</span><br><span>Accessibility and
+              Inclusion</span><br><span class="light">Pontifical Catholic University of Valparaíso</span></h2>
           <aside class="notes">
-            Over time, the team grew into an interdisciplinary centre, with people from linguistics, engineering, sociology, law and more. Together we tried to build knowledge across differences, following the idea that inclusive research requires inclusive teams.
-          </aside></aside>
+            Over time, the team grew into an interdisciplinary centre, with people from linguistics, engineering,
+            sociology, law and more. Together we tried to build knowledge across differences, following the idea that
+            inclusive research requires inclusive teams.
+          </aside>
         </section>
 
         <!-- 1.5 PICTOS Service  -->
@@ -108,10 +105,9 @@
             decoration; it is what keeps the image memorable.” That resonates with the PICTOS approach, where we built
             supports in layers to reduce cognitive load.
           </aside>
-        </section> 
+        </section>
 
         <!-- the space between words and images -->
-         
         <section data-background-color="#FFF" data-background-image="svg/word-visual-space.svg">
           <aside class="notes">Both groups converge here: they say cognitive accessibility depends on coherence between
             words and images. Therapists describe the fatigue of their students when facing mismatched systems.
@@ -121,7 +117,6 @@
             correspondence between instruction and pictogram promotes comprehension and reduces cognitive overload. This
             is the fundamental idea on which my research is based.</aside>
         </section>
-        
 
         <!-- 1.3 research question-->
         <section>
@@ -140,23 +135,25 @@
       </section>
 
 
-
-
-      <!-- Slide 2 -->
       <!-- 2: Why this research matters -->
       <section id="why-matters">
-
         <!-- 2.1 Scale of need (Aotearoa NZ) -->
         <section data-background-color="#FFF">
           <h3 class="xl">Why this research matters?</h3>
           <div class="image">
-            <img src="svg/people-with-ccn.svg" alt="between 6% and 10% have complex communication needs" style="margin 0 auto; width: 60vw;">
+            <img src="svg/people-with-ccn.svg" alt="between 6% and 10% have complex communication needs">
             <div class="legend">
-            In Aotearoa New Zealand, about <strong>1 in 6 people</strong> live with disability — around
-            <strong>851,000</strong> people in 2023. And communication is a big part of that picture: the Census shows about <strong>5.9%</strong> of people
-            aged 5+ report some difficulty communicating; professional estimates put <strong>up to 10%</strong> of New
-            Zealanders with a communication difficulty. Behind every number is everyday life: friendships, school, work, independence.
-          </div>
+              <ul>
+                <li>According to the 2023 census, in New Zealand, about <strong>1 in 6 people</strong> live with
+                  disability — around
+                  <strong>851,000</strong> people.
+                </li>
+                <li>The census indicates that <strong>5.9%</strong> of people aged 5+ report some difficulty
+                  communicating</li>
+                <li>Professional estimates put <strong>up to 10%</strong> of New
+                  Zealanders with a communication difficulty.</li>
+              </ul>
+            </div>
           </div>
 
           <aside class="notes">
@@ -176,7 +173,8 @@
             Keep it friendly: “extra ways to be heard.” Stress dignity and agency.
 
             Truth #2: AAC is not only for non-speaking individuals
-            Yes, you read that correctly. AAC can benefit those that speak.  You do not have to have a label of “nonverbal” or “non-speaking” or “minimally speaking” to benefit from AAC.
+            Yes, you read that correctly. AAC can benefit those that speak. You do not have to have a label of
+            “nonverbal” or “non-speaking” or “minimally speaking” to benefit from AAC.
 
             If you can’t speak in an emergency, you might benefit from AAC.
             If you can’t speak when dysregulated, you might benefit from AAC.
@@ -252,362 +250,358 @@
 
       </section>
 
-
-
-      <!-- Slide 3, the 3 layers: PictoNet, PictoForge and MediaFranca -->
+      <!-- 3: PictoNet, PictoForge and MediaFranca -->
       <section>
-        
-        <!-- 3.1 - 3 layered project -->
+        <!-- 3.0 - 3 layered project -->
         <section>
           <object data="svg/3-research-layers.svg" class="r-stretch"></object>
-          <aside class="notes">So, this research is structured across three layers. At the first level, the pictogram itself: what makes it good, clear, and memorable — as AAC professionals say, “learnable and consistent,” and as designers add, “synthetic and elegant.” At the second level, the interaction: how humans and generative systems co-compose, how reversibility and transparency are guaranteed, how edits remain explainable. At the third level, the infrastructure: how corrections become collective, how cultural adaptations are federated, and how governance prevents decay into noise. This threefold structure is not only my method; it is also my ethical stance.</aside>
+          <aside class="notes">So, this research is structured across three layers. At the first level, the pictogram
+            itself: what makes it good, clear, and memorable — as AAC professionals say, “learnable and consistent,” and
+            as designers add, “synthetic and elegant.” At the second level, the interaction: how humans and generative
+            systems co-compose, how reversibility and transparency are guaranteed, how edits remain explainable. At the
+            third level, the infrastructure: how corrections become collective, how cultural adaptations are federated,
+            and how governance prevents decay into noise. This threefold structure is not only my method; it is also my
+            ethical stance.</aside>
         </section>
 
-        <!-- tabla completa 
-        <section>
-          <table class="essence-mediafranca" border="0" cellpadding="8" cellspacing="0">
-            <thead>
-              <tr>
-                <th><span>Focus</span></th>
-                <th><strong>PictoNet</strong><br><em>Meaning through Images</em></th>
-                <th><strong>PictoForge</strong><br><em>Designing with AI</em></th>
-                <th><strong>MediaFranca</strong><br><em>Language as a Commons</em></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><em>The challenge</em></td>
-                <td>Translate communicative intention — written as text — into a pictogram that is cognitively
-                  accessible, clear, and dignified.</td>
-                <td>Treat AI as a <strong>design material</strong>—directly manipulable, refineable, and understandable
-                  through use.</td>
-                <td>Ensure the <strong>fair use of data</strong> for AI training—respecting authorship, privacy,
-                  cultural identity, and model portability.</td>
-              </tr>
-              <tr>
-                <td><em>Where the gap is</em></td>
-                <td>AAC still relies on illustrators and fixed libraries; systems do not yet <strong>generate</strong>
-                  pictograms directly from language.</td>
-                <td>Most generative tools hide inner logic; users cannot see how outputs are built or teach the system
-                  how to improve.</td>
-                <td>Centralised infrastructures concentrate data and power; communities lose control over voices,
-                  languages, and creative work.</td>
-              </tr>
-              <tr>
-                <td><em>What to design</em></td>
-                <td>A <strong>transformer-based LLM</strong> that converts natural language into <strong>SVG</strong>
-                  pictograms—using a visual grammar linking verbs, objects, and contexts.</td>
-                <td>An <strong>interactive interface</strong> where users adjust pictograms and each correction becomes
-                  structured feedback for retraining (direct manipulation & RLHF).</td>
-                <td>A <strong>federated, open-source platform</strong> where local instances train their models and
-                  share improvements responsibly (cultural sovereignty & ethical governance).</td>
-              </tr>
-              <tr>
-                <td><em>Why it matters</em></td>
-                <td>Builds a bridge between text and image, expanding communication for people with complex
-                  communication needs.</td>
-                <td>Turns machine learning into a visible, human process—understanding grows through collaboration, not
-                  opacity.</td>
-                <td>Redefines AI as a collective resource rather than a corporate asset—communities own, adapt, and
-                  evolve their languages.</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-        -->
-
-        <!-- Sub-slide 3.1 -->
+        <!-- Sub-slide 3.1 PictoNet -->
         <section>
           <div class="col-2">
             <table class="essence-mediafranca level level-pictonet" border="0" cellpadding="8" cellspacing="0">
-            <thead>
-              <tr>
-                <th><span>Focus</span></th>
-                <th><strong>PictoNet</strong><br><em>Meaning through Images</em></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><em>The challenge</em></td>
-                <td>Translate communicative intention—written as text—into a pictogram that is cognitively accessible,
-                  clear, and dignified.</td>
-              </tr>
-              <tr>
-                <td><em>Where the gap is</em></td>
-                <td>AAC still relies on illustrators and fixed libraries; systems do not yet <strong>generate</strong>
-                  pictograms directly from language.</td>
-              </tr>
-              <tr>
-                <td><em>What to design</em></td>
-                <td>A <strong>transformer-based LLM</strong> that converts natural language into <strong>SVG</strong>
-                  pictograms—using a visual grammar linking verbs, objects, and contexts.</td>
-              </tr>
-              <tr>
-                <td><em>Why it matters</em></td>
-                <td>Builds a bridge between text and image, expanding communication for people with complex
-                  communication needs.</td>
-              </tr>
-            </tbody>
+              <thead>
+                <tr>
+                  <th><span>Focus</span></th>
+                  <th><strong>PictoNet</strong><br><em>Meaning through Images</em></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><em>The challenge</em></td>
+                  <td>Translate communicative intention—written as text—into a pictogram that is cognitively accessible,
+                    clear, and dignified.</td>
+                </tr>
+                <tr>
+                  <td><em>Where the gap is</em></td>
+                  <td>AAC still relies on illustrators and fixed libraries; systems do not yet <strong>generate</strong>
+                    pictograms directly from language.</td>
+                </tr>
+                <tr>
+                  <td><em>What to design</em></td>
+                  <td>A <strong>transformer-based LLM</strong> that converts natural language into <strong>SVG</strong>
+                    pictograms—using a visual grammar linking verbs, objects, and contexts.</td>
+                </tr>
+                <tr>
+                  <td><em>Why it matters</em></td>
+                  <td>Builds a bridge between text and image, expanding communication for people with complex
+                    communication needs.</td>
+                </tr>
+              </tbody>
             </table>
             <object type="image/svg+xml" class="thumb" data="/cc/svg/level-1.svg"></object>
           </div>
-          
+
           <aside class="notes">
             <p>The transformer that turns words into images. It wrestles with the old problem of representation: what
-            travels from text to picture, what is lost, what can be learned.</p>
+              travels from text to picture, what is lost, what can be learned.</p>
             <p>We ground this in Wittgenstein (meaning as use), Austin/Searle (speech acts), and the Natural Semantic
-            Metalanguage (shared “atoms” of meaning). PictoNet maps those semantic primes to visual primitives.</p>
+              Metalanguage (shared “atoms” of meaning). PictoNet maps those semantic primes to visual primitives.</p>
           </aside>
-          
+
         </section>
 
-        <!-- Sub-slide 3.2 -->
+        <!-- Sub-slide 3.2 PictoForge-->
         <section>
           <div class="col-2">
             <table class="essence-mediafranca level level-pictoforge" border="0" cellpadding="8" cellspacing="0">
-          <thead>
-            <tr>
-              <th><span>Focus</span></th>
-              <th><strong>PictoForge</strong><br><em>Designing with AI</em></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><em>The challenge</em></td>
-              <td>Treat AI as a <strong>design material</strong>—directly manipulable, refineable, and understandable
-                through use.</td>
-            </tr>
-            <tr>
-              <td><em>Where the gap is</em></td>
-              <td>Most generative tools hide inner logic; users cannot see how outputs are built or teach the system how
-                to improve.</td>
-            </tr>
-            <tr>
-              <td><em>What to design</em></td>
-              <td>An <strong>interactive interface</strong> where users adjust pictograms and each correction becomes
-                structured feedback for retraining (direct manipulation & RLHF).</td>
-            </tr>
-            <tr>
-              <td><em>Why it matters</em></td>
-              <td>Turns machine learning into a visible, human process—understanding grows through collaboration, not
-                opacity.</td>
-            </tr>
-          </tbody>
-          </table>
-          <object type="image/svg+xml" class="thumb" data="/cc/svg/level-2.svg"></object>
+              <thead>
+                <tr>
+                  <th><span>Focus</span></th>
+                  <th><strong>PictoForge</strong><br><em>Designing with AI</em></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><em>The challenge</em></td>
+                  <td>Treat AI as a <strong>design material</strong>—directly manipulable, refineable, and
+                    understandable
+                    through use.</td>
+                </tr>
+                <tr>
+                  <td><em>Where the gap is</em></td>
+                  <td>Most generative tools hide inner logic; users cannot see how outputs are built or teach the system
+                    how
+                    to improve.</td>
+                </tr>
+                <tr>
+                  <td><em>What to design</em></td>
+                  <td>An <strong>interactive interface</strong> where users adjust pictograms and each correction
+                    becomes
+                    structured feedback for retraining (direct manipulation & RLHF).</td>
+                </tr>
+                <tr>
+                  <td><em>Why it matters</em></td>
+                  <td>Turns machine learning into a visible, human process—understanding grows through collaboration,
+                    not
+                    opacity.</td>
+                </tr>
+              </tbody>
+            </table>
+            <object type="image/svg+xml" class="thumb" data="/cc/svg/level-2.svg"></object>
           </div>
-    
+
           <aside class="notes">
             <p>The workshop where people and model co-edit pictograms. Corrections, audits, and local vocabularies are
-            logged as structured data. Each human nudge becomes a learning signal.</p>
-          <p>This is the <strong>corrective/generative loop</strong>: propose → edit → learn. Over time the system
-            internalises clarity, cultural fit, and adult dignity.</p>
+              logged as structured data. Each human nudge becomes a learning signal.</p>
+            <p>This is the <strong>corrective/generative loop</strong>: propose → edit → learn. Over time the system
+              internalises clarity, cultural fit, and adult dignity.</p>
           </aside>
-          
+
         </section>
 
-        <!-- Sub-slide 3.3 -->
+        <!-- Sub-slide 3.3 MediaFranca -->
         <section>
           <div class="col-2">
             <table class="essence-mediafranca level level-mediafranca" border="0" cellpadding="8" cellspacing="0">
-            <thead>
-              <tr>
-                <th><span>Focus</span></th>
-                <th><strong>MediaFranca</strong><br><em>Language as a Commons</em></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><em>The challenge</em></td>
-                <td>Ensure the <strong>fair use of data</strong> for AI training—respecting authorship, privacy,
-                  cultural identity, and model portability.</td>
-              </tr>
-              <tr>
-                <td><em>Where the gap is</em></td>
-                <td>Centralised infrastructures concentrate data and power; communities lose control over voices,
-                  languages, and creative work.</td>
-              </tr>
-              <tr>
-                <td><em>What to design</em></td>
-                <td>A <strong>federated, open-source platform</strong> where local instances train their models and
-                  share improvements responsibly (cultural sovereignty & ethical governance).</td>
-              </tr>
-              <tr>
-                <td><em>Why it matters</em></td>
-                <td>Redefines AI as a collective resource rather than a corporate asset—communities own, adapt, and
-                  evolve their languages.</td>
-              </tr>
-            </tbody>
-          </table>
-          <object type="image/svg+xml" class="thumb" data="/cc/svg/level-3.svg"></object>
+              <thead>
+                <tr>
+                  <th><span>Focus</span></th>
+                  <th><strong>MediaFranca</strong><br><em>Language as a Commons</em></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><em>The challenge</em></td>
+                  <td>Ensure the <strong>fair use of data</strong> for AI training—respecting authorship, privacy,
+                    cultural identity, and model portability.</td>
+                </tr>
+                <tr>
+                  <td><em>Where the gap is</em></td>
+                  <td>Centralised infrastructures concentrate data and power; communities lose control over voices,
+                    languages, and creative work.</td>
+                </tr>
+                <tr>
+                  <td><em>What to design</em></td>
+                  <td>A <strong>federated, open-source platform</strong> where local instances train their models and
+                    share improvements responsibly (cultural sovereignty & ethical governance).</td>
+                </tr>
+                <tr>
+                  <td><em>Why it matters</em></td>
+                  <td>Redefines AI as a collective resource rather than a corporate asset—communities own, adapt, and
+                    evolve their languages.</td>
+                </tr>
+              </tbody>
+            </table>
+            <object type="image/svg+xml" class="thumb" data="/cc/svg/level-3.svg"></object>
           </div>
-          
+
           <aside class="notes">
             <p>A federated, open implementation — a <em>core communication engine</em>. Communities run local instances,
-            keep their data, share model improvements. Culture stays sovereign; learning flows.</p>
-          <p>Result: dialects of a shared pictographic grammar, maintained as a civic commons.</p>
+              keep their data, share model improvements. Culture stays sovereign; learning flows.</p>
+            <p>Result: dialects of a shared pictographic grammar, maintained as a civic commons.</p>
           </aside>
-          
+
         </section>
       </section>
 
-      <!-- Slide 4 -->
-      <section>
-        <h3>The problem of language</h3>
-        <p>Early logic dreamed of purity — words mirroring facts. But daily speech is relational and embodied; meaning
-          lives in context, gesture, timing.</p>
-        <p>In AAC, a single selection can carry a whole emotion. So we move from truth-conditions to
-          <strong>use-conditions</strong> — from logic to pragmatics.
-        </p>
-        <aside class="notes">
-          Short contrast: “map vs territory”. Bring audience with you.
-        </aside>
+      <!-- 4: The Problem of Language -->
+      <section id="problem-of-language">
+        <section>
+          <h2>The problem of language</h2>
+          <aside class="notes">
+            Opens the final conceptual arc: from linguistic purity to pragmatic use.
+          </aside>
+        </section>
+
+        <section data-background-color="#FFF">
+          <h3>The search for the universal and perfect</h3>
+          <p>For centuries, philosophers dreamed of a language so precise that misunderstanding would be impossible —
+            universal, timeless, context-free.</p>
+          <p>From Plato to Leibniz and Frege, clarity grew as life receded. A sealed code travels well — but breathes
+            poorly.</p>
+        </section>
+
+        <section data-transition="fade">
+          <h3>The complexity of the situated</h3>
+          <p>Meaning lives in practice. Words gain sense from use, activity, and timing.</p>
+          <p>Language games (Wittgenstein) and linguistic relativity (Sapir–Whorf) show that communities shape what
+            things mean.</p>
+        </section>
+
+
+        <!-- SVG as Code ↔ SVG as Image - section of sections -->
+        <section>
+          <section id="svg-code-sync" data-transition="fade">
+            <h2>Text as Image: The Aesthetics of Accessibility</h2>
+
+            <div style="display:grid;grid-template-columns:50% 50%;height:500px;gap:1rem;">
+
+              <!-- IZQUIERDA: código -->
+              <div style="overflow:auto;font-size:.55em;line-height:1.2;">
+                <pre style="font-size:85%;white-space:pre;margin-left: 2em;">
+                <code id="svg-source" class="language-xml" data-line-numbers></code>
+              </pre>
+              </div>
+
+              <!-- DERECHA: contenedor para SVG inline (sustituye el <object> existente) -->
+              <div id="svg-stage"
+                style="display:flex;align-items:center;justify-content:center;background:#9c9b9b;border-radius:1ex;">
+              </div>
+
+              <!-- script del round trip hightlight -->
+
+            </div>
+
+            <aside class="notes">
+              Here is the thing: SVG is both an image format and a text-based code format. This means that you can edit
+              it as text, and the image will change accordingly. Note that the code holds verosimilitude to the semantic
+              structure of the image. This opens a more granular way to edit and adapt pictograms, and for the system to
+              learn from those edits. When I speak of SVG as both image and code, I return to what designers told me:
+              transparency is essential. One designer remarked, “a pictogram must not be an ornament you cannot touch;
+              it should be something you can open, adjust, and rebuild.” On the other side, AAC professionals underlined
+              the importance of editability: when a pictogram does not match a child’s context, they need to adapt it
+              quickly. SVG offers precisely this: structure that can be read, modified, and taught to machines, but also
+              kept open for human correction. It transforms the pictogram from a closed asset into a living artefact.
+
+            </aside>
+          </section>
+
+        </section>
+
       </section>
 
-      <section>
-        <h3>From logic to pragmatism</h3>
-        <p>Wittgenstein: meaning is use. Austin: to speak is to act. Pictograms perform: request, comment, reject,
-          connect.</p>
-        <p>Experts tell us: a good pictogram isn’t the one that looks right; it’s the one that <em>works</em> in a
-          social moment. Success is communicative, not aesthetic.</p>
-        <aside class="notes">
-          Tie theory to field evidence. Keep verbs active: request/comment/reject/connect.
-        </aside>
-      </section>
-
-      <section>
-        <h3>Isotype & the democracy of information</h3>
-        <p>Neurath and Arntz turned statistics into pictures so everyone could read society. Design as translation;
-          information as a public good.</p>
-        <p>MediaFranca carries that ethic forward: not simplification, but shared structure and open participation.</p>
-        <aside class="notes">
-          One image of classic Isotype charts works well here.
-        </aside>
-      </section>
-
-      <section>
-        <h3>A short genealogy of AAC pictography</h3>
+      <!-- 5: AAC Cases & Interview Learnings -->
+      <section id="aac-cases">
+        <section>
+          <h2>AAC cases and interview learnings</h2>
+        </section>
 
         <section>
-          <h4>Blissymbolics</h4>
-          <p>Logical, compositional, universal in aim — conceptually rich, but hard to learn and far from lived context.
-          </p>
+          <h3>Blissymbolics</h3>
+          <p>Ambition for perfect order — logical, complete. In practice: coherent yet brittle; too rigid for messy
+            life.</p>
+        </section>
+
+        <section data-transition="fade">
+          <h3>PECS (Picture Exchange Communication System)</h3>
+          <p>Communication as action: cards as tokens of agency. Powerful for a first bridge, yet expression may stall
+            in repetition.</p>
+        </section>
+
+        <section data-transition="fade">
+          <h3>Core boards and LAMP</h3>
+          <p>Fixed icon locations shift language into movement; the body learns paths. Powerful, yet demanding of
+            stability and context.</p>
+        </section>
+
+        <section data-background-color="#FFF">
+          <h3>What this implies for PictoNet</h3>
+          <ul>
+            <li><strong>Pragmatics-aware:</strong> recognise speech-acts (request, comment, refusal).</li>
+            <li><strong>Abstraction ladder:</strong> move between concrete and abstract with learnable conventions.</li>
+            <li><strong>Culturally adaptable:</strong> shared grammar, local exponents.</li>
+            <li><strong>Co-created:</strong> corrections and styles from users and professionals.</li>
+            <li><strong>Hybrid:</strong> works across screen and print, high-tech and low-tech.</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- 6: Designing PictoNet (the Pipeline) -->
+      <section id="pipeline">
+        <section>
+          <h2>Designing PictoNet (the pipeline)</h2>
+           <div class="p5-host" data-sketch="pipeline" style="width:100%; height:50vh;"></div>
+          <p><em>Status: proposal</em></p>
+          <ol>
+            <li>Understand the utterance</li>
+            <li>Map meaning to visual parts</li>
+            <li>Generate a clean SVG</li>
+            <li>Add accessibility metadata</li>
+            <li>Learn from human edits (loop)</li>
+          </ol>
         </section>
 
         <section>
-          <h4>PECS</h4>
-          <p>Language as exchange. In practice, cards become tokens of agency — children hide “cake” to trade later. The
-            first spark of intentional communication.</p>
+          <h3>1 · Semantic analysis — NLU front-end</h3>
+          <ul>
+            <li>Extract roles: who does what, to whom, with what intent.</li>
+            <li>Classify speech-act: directive, question, statement, social.</li>
+            <li>Decompose abstract terms using NSM primitives.</li>
+          </ul>
         </section>
 
+        <section data-transition="fade">
+          <h3>2 · Concept mapping → visual primitives</h3>
+          <ul>
+            <li>Link roles to a <em>Pictogram Concept Set</em> (IDs + relations).</li>
+            <li>Apply conventions: clouds = intangible; motion marks = verbs; plural marks.</li>
+            <li>Use local style dictionaries for cultural fit.</li>
+          </ul>
+        </section>
+
+        <section data-transition="fade">
+          <h3>3 · Hybrid SVG generation</h3>
+          <ul>
+            <li>Produce structured SVG (groups/IDs ↔ semantics).</li>
+            <li>Refine proportion and balance algorithmically.</li>
+            <li>Editable, inspectable artefacts instead of opaque bitmaps.</li>
+          </ul>
+        </section>
+
+        <section data-transition="fade">
+          <h3>4 · Accessibility post-processing</h3>
+          <ul>
+            <li>Add title/desc, ARIA roles, semantic tags.</li>
+            <li>Export for print boards and web use.</li>
+            <li>One asset, many contexts.</li>
+          </ul>
+        </section>
+
+        <section data-transition="fade">
+          <h3>5 · Human-in-the-loop refinement</h3>
+          <ul>
+            <li>PictoForge captures edits as structured feedback.</li>
+            <li>Corrections guide retraining (RLHF) and local style embeddings.</li>
+            <li>Federated updates share improvements safely.</li>
+          </ul>
+        </section>
+
+        <section data-background-color="#FFF">
+          <h3>What this could enable</h3>
+          <ul>
+            <li>New pictographic vocabulary on demand.</li>
+            <li>Visible “why” behind each drawing.</li>
+            <li>High-tech ↔ low-tech continuity.</li>
+            <li>Cultural adaptation within shared structure.</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- 7: The Invitation -->
+      <section id="invitation">
         <section>
-          <h4>Core Boards</h4>
-          <p>High-frequency words in pragmatic layouts — pattern over script, inviting improvisation and conversation.
-          </p>
+          <h2>The invitation</h2>
+          <p>This work invites collaboration on:</p>
+          <ul>
+            <li>Pictogram validation (comprehension, dignity, context).</li>
+            <li>Semantic-adhesion metrics (intent ↔ image fit).</li>
+            <li>Interfaces for AI as design material (direct manipulation, auditability).</li>
+            <li>Local style embeddings and federated learning.</li>
+          </ul>
         </section>
-
-        <section>
-          <h4>Towards PictoNet</h4>
-          <p>Rigour (Bliss) + intent (PECS) + adaptability (Core) — now with a model that learns back from users.</p>
-        </section>
-
-        <aside class="notes">
-          Keep this moving; one crisp story per sub-slide.
-        </aside>
       </section>
 
-      <section>
-        <h3>Cognition & culture</h3>
-        <p>Dual Coding: minds weave verbal and visual threads together. Yet culture colours both — there’s no neutral
-          picture.</p>
-        <p>Practitioners describe the ladder of abstraction: real object → photo → pictogram. For some, stick figures
-          fail; faces need eyes to feel human.</p>
-        <p>Design response: maximise iconic transparency for concrete things, and provide a consistent visual grammar
-          for abstract ideas.</p>
-        <aside class="notes">
-          Name the “universal–local paradox”: shareable yet belonging.
-        </aside>
+      <!-- Thank You -->
+      <section id="thanks" data-background-color="#FFF">
+        <h2>Thank you</h2>
+        <p><strong>Herbert Spencer González</strong> · PhD in Design (AUT)</p>
+        <p><a href="https://herbertspencer.net/cc">herbertspencer.net/cc</a> · <a
+            href="mailto:herbert@pictos.net">herbert@pictos.net</a></p>
       </section>
 
-      <section>
-        <h3>NSM — tiny atoms of meaning</h3>
-        <p>Semantic primes like <em>want, do, good, someone, because</em> appear in every language. PictoNet maps these
-          to visual primitives — strokes, shapes, gestures — then composes richer “molecules”.</p>
-        <p>Shared grammar, local accents. Universality in structure, specificity in expression.</p>
-        <aside class="notes">
-          If you show a table, keep it minimal — 8–12 primes is plenty.
-        </aside>
-      </section>
 
-      <section>
-        <h3>Pragmatics in action</h3>
-        <p>Frames shape meaning: the same icon behaves differently in different scenes. “Cake” can signal hunger,
-          celebration, or reward.</p>
-        <p>By recognising frames and speech-acts, the system generates pictograms that not only represent — they
-          <em>perform</em> the intended act.
-        </p>
-        <aside class="notes">
-          Offer a quick pair: raised hand = greeting vs refusal, depending on frame.
-        </aside>
-      </section>
-
-      <section>
-        <h3>Training the model</h3>
-        <p>Between text and image lies a high-dimensional landscape. Training teaches the model to find regions where
-          clarity lives: enough detail to mean, not so much that it overwhelms.</p>
-        <p>The loop: text → SVG → human edit → learn. Each correction sharpens semantic precision and reduces cognitive
-          load. Never perfect; always improving — like human learning.</p>
-        <aside class="notes">
-          Keep maths implicit. Anchor in outcomes: clarity, simplicity, recognisability.
-        </aside>
-      </section>
-
-      <section>
-        <h3>PictoForge — the human–AI workshop</h3>
-        <p>Practitioners co-edit outputs; every drag, rename, simplification, or swap is captured as structured
-          feedback. Through RLHF, the model learns from human judgement, not just from data distributions.</p>
-        <p>Audits ensure quality; local vocabularies ensure cultural fit. Style becomes semantics through practice.</p>
-        <aside class="notes">
-          If you demo, show a side-by-side: model proposal → edited result → logged diff.
-        </aside>
-      </section>
-
-      <section>
-        <h3>MediaFranca — federated & open</h3>
-        <p>No single centre. Communities run local instances; data stays local; model updates travel. Chile learns from
-          Aotearoa; Aotearoa from the Pacific — without losing their voice.</p>
-        <p>From app to <em>commons</em>: a civic engine for shared understanding.</p>
-        <aside class="notes">
-          Phrase to land: “Models talk, not data.” Invite questions on privacy & sovereignty.
-        </aside>
-      </section>
-
-      <section>
-        <h3>Rationale & significance</h3>
-        <p>From Isotype’s democratic clarity to today’s open AI, this project treats communication as public
-          infrastructure. It bridges philosophy, linguistics, cognition, and engineering in one practical artefact.</p>
-        <p>PictoNet (engine), PictoForge (practice), MediaFranca (commons): three names for one move — from designing
-          symbols to designing relationships.</p>
-        <aside class="notes">
-          Reconnect ethics: adult dignity, cultural adaptability, accessibility as agency.
-        </aside>
-      </section>
-
-      <section>
-        <h3>Closing invitation</h3>
-        <p>Each layer is an open question, held in open repositories. We welcome contributions to code, datasets, and
-          design — from professionals, families, and communities.</p>
-        <p>Help refine the pictograms. Teach the model. Grow local vocabularies. Shape a language that belongs to
-          everyone.</p>
-        <p><strong>MediaFranca isn’t finished.</strong> It’s a place to think together, draw together, and keep language
-          alive.</p>
-        <aside class="notes">
-          End on community and agency. Invite students to follow, fork, and contribute.
-        </aside>
-      </section>
     </div>
   </div>
-  <!-- tu entry de Vite (ruta relativa para que funcione en /prs/) -->
+
 
 </body>
 

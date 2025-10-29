@@ -8,11 +8,12 @@ The research design encompasses two tracks. The first, Situated Inquiry, involve
 
 The two tracks will converge through PictoForge, an interface where participants assess, improve, and co-create pictograms. This iterative process will take shape in an edition and evaluation interface that utilises reinforcement learning through human feedback. Validation is guided by the Visual Comprehensibility and Semantic Correspondence Index, which integrates conventional standards with context-specific validation, including clear association, semantic accuracy, dignity and cultural adaptability, and coherent graphical synthesis across the set.
 This research aims to produce three interrelated outcomes that advance both theory and practice in design, cognitive accessibility, and inclusive technology: 
- 1.	PictoNet: A generative pictographic model trained on a semantically layered dataset (PICTOS), capable of producing context-sensitive pictograms that integrate cognitive principles (Dual Coding and Conceptual Integration Theory) with compositional visual rules. The model will support both concrete recognition and abstract expression through a structured, editable architecture grounded in semantic primitives. 
 
- 2.	PictoForge: An open, interactive interface enabling round-trip authoring - bidirectional editing between natural language input and SVG-based visual output. This tool will empower users, practitioners, and researchers to generate, inspect, modify, and retrain pictograms, ensuring outputs remain legible, culturally adaptable, and responsive to real-world communicative needs. It will function as a living testbed for iterative co-design and community feedback. 
+ 1. **PictoNet**: A generative pictographic model trained on a semantically layered dataset (PICTOS), capable of producing context-sensitive pictograms that integrate cognitive principles (Dual Coding and Conceptual Integration Theory) with compositional visual rules. The model will support both concrete recognition and abstract expression through a structured, editable architecture grounded in semantic primitives. 
 
-3.	MediaFranca: A speculative yet actionable framework for a federated pictographic commons - a decentralised, community-governed infrastructure for the shared development and evolution of visual vocabularies. Informed by the social model of disability and convivial design principles (Illich, 1973; Murturi et al., 2023), MediaFranca proposes a governance model that balances local cultural sovereignty with semantic interoperability, resisting the centralisation and opacity of commercial AI systems. 
+ 2. **PictoForge**: An open, interactive interface enabling round-trip authoring - bidirectional editing between natural language input and SVG-based visual output. This tool will empower users, practitioners, and researchers to generate, inspect, modify, and retrain pictograms, ensuring outputs remain legible, culturally adaptable, and responsive to real-world communicative needs. It will function as a living testbed for iterative co-design and community feedback. 
+
+ 3. **MediaFranca**: A speculative yet actionable framework for a federated pictographic commons - a decentralised, community-governed infrastructure for the shared development and evolution of visual vocabularies. Informed by the social model of disability and convivial design principles (Illich, 1973; Murturi et al., 2023), MediaFranca proposes a governance model that balances local cultural sovereignty with semantic interoperability, resisting the centralisation and opacity of commercial AI systems. 
 
 Together, these outcomes constitute a generative infrastructure for cognitive accessibility that repositions pictograms as editable, co-authored, and ethically grounded acts of meaning-making. The potential benefits include adding a vital component to the AAC ecosystem: a new generative channel for representation. 
 
@@ -25,7 +26,8 @@ _Read the the full [doctoral research proposal](mediafranca.md)._
 ----
 
 
-## The Structure
+#### The Structure
+
 ```
 ┌────────────────────────────────────────────────-───────────┐
 │ Utterance (communicative intent)                           │

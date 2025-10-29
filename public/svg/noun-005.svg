@@ -1,1 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:serif="http://www.serif.com/" viewBox="0 0 100 125" version="1.1" xml:space="preserve" style="" x="0px" y="0px" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"><rect serif:id="62 - accessibility" x="0" y="0" width="100" height="100" style="" fill="none"/><path d="M50,5c-24.836,0 -45,20.164 -45,45c0,24.836 20.164,45 45,45c24.837,0 45,-20.164 45,-45c0,-24.836 -20.163,-45 -45,-45Zm-6.575,42.761c-0.777,8.925 -2.824,17.581 -6.015,25.997c-0.779,2.055 0.257,4.355 2.312,5.134c2.054,0.779 4.355,-0.256 5.134,-2.311c2.258,-5.958 3.985,-12.027 5.144,-18.215c1.16,6.188 2.887,12.257 5.145,18.215c0.779,2.055 3.08,3.09 5.134,2.311c2.055,-0.779 3.091,-3.079 2.312,-5.134c-3.189,-8.411 -5.236,-17.063 -6.014,-25.98c4.769,-0.234 9.54,-0.734 14.311,-1.509c2.169,-0.353 3.644,-2.4 3.292,-4.569c-0.353,-2.168 -2.4,-3.643 -4.569,-3.291c-13.081,2.126 -26.163,2.042 -39.245,-0.004c-2.171,-0.339 -4.209,1.148 -4.548,3.319c-0.34,2.171 1.147,4.209 3.318,4.548c4.763,0.745 9.525,1.245 14.289,1.489Zm6.575,-25.473c3.967,0 7.187,3.22 7.187,7.186c-0,3.966 -3.22,7.186 -7.187,7.186c-3.966,0 -7.186,-3.22 -7.186,-7.186c0,-3.966 3.22,-7.186 7.186,-7.186Z"/><text x="0" y="115" fill="#000000" font-size="5px" font-weight="bold" font-family="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif">Created by Zach Bogart</text><text x="0" y="120" fill="#000000" font-size="5px" font-weight="bold" font-family="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif">from the Noun Project</text></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:serif="http://www.serif.com/" version="1.1" viewBox="0 0 100 125">
+  <!-- Generator: Adobe Illustrator 29.8.2, SVG Export Plug-In . SVG Version: 2.1.1 Build 3)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: none;
+      }
+
+      .st1 {
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <rect class="st0" y="0" width="100" height="100" serif:id="62 - accessibility"/>
+  <path class="st1" d="M50,5C25.2,5,5,25.2,5,50s20.2,45,45,45,45-20.2,45-45S74.8,5,50,5ZM43.4,47.8c-.8,8.9-2.8,17.6-6,26-.8,2.1.3,4.4,2.3,5.1,2.1.8,4.4-.3,5.1-2.3,2.3-6,4-12,5.1-18.2,1.2,6.2,2.9,12.3,5.1,18.2.8,2.1,3.1,3.1,5.1,2.3,2.1-.8,3.1-3.1,2.3-5.1-3.2-8.4-5.2-17.1-6-26,4.8-.2,9.5-.7,14.3-1.5,2.2-.4,3.6-2.4,3.3-4.6-.4-2.2-2.4-3.6-4.6-3.3-13.1,2.1-26.2,2-39.2,0-2.2-.3-4.2,1.1-4.5,3.3-.3,2.2,1.1,4.2,3.3,4.5,4.8.7,9.5,1.2,14.3,1.5ZM50,22.3c4,0,7.2,3.2,7.2,7.2s-3.2,7.2-7.2,7.2-7.2-3.2-7.2-7.2,3.2-7.2,7.2-7.2Z"/>
+</svg>

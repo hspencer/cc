@@ -81,23 +81,32 @@ body {
     align-items: center;
 }
 
+.col-special{
+    display: grid;
+    grid-template-columns: 10fr 12fr;
+    align-items: center;
+}
+
 .reveal {
     .slides {
+
         .invert{
             h2,h3, p{
                 color: white;
-                background-color: rgba($color-text, 0.36);
-                padding: 0 1ex;
-                font-size: 156%;
                 text-shadow: 1px 1px 2px #25013073;
-                border-radius: .21ex;
             }
         }
+
         h2, h3, h4, h5, h6{
             color: $terciary-color;
+            span{
+                font-weight: 300;
+                color: $color-text;
+            }
         }
+        
         table.essence-mediafranca{
-            font-size: 75%;
+            font-size: 85%;
             width: 100%;
             th{
                 vertical-align: bottom;
@@ -131,6 +140,67 @@ body {
             }
         }
 
+        table.gap{
+            thead{
+                tr{
+                    th{
+                        width: 25%;
+                        text-align: center;
+                        font-weight: 400;
+                        text-transform: uppercase;
+                        font-size: 90%;
+                        color: $terciary-color;
+                        padding-bottom: 1em;
+                        img{
+                            width: 5em;
+                        }
+                    }
+                }
+            }
+            tbody{
+                font-size: 80%;
+                tr{
+                    td{
+                        vertical-align: top;
+                        ul{
+                            list-style: none;
+                            padding-left: 1em;
+                            $check-color: rgb(3, 173, 3);
+                            $fail-color: rgb(208, 45, 8);
+                            li{
+                                position: relative;
+                                padding-left: 1.5em;
+                                margin-bottom: 1em;
+                                &.check{
+                                    &::before {
+                                        content: "✓";
+                                        color: $check-color;
+                                        font-weight: bold;
+                                        font-size: 1.2em;
+                                        position: absolute;
+                                        left: 0;
+                                        top: 0;
+                                    }
+                                }
+                                &.fail{
+                                    color: $fail-color;
+                                    &::before {
+                                        content: "✘";
+                                        color: $fail-color;
+                                        font-weight: bold;
+                                        font-size: 1.2em;
+                                        position: absolute;
+                                        left: 0;
+                                        top: 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         line-height: $line-height-base;
         text-align: left;
 
@@ -150,7 +220,7 @@ body {
                 @include svg-shadow(3, 1px, 1px, 0, rgba(0, 0, 0, 0.039));
             }
 
-            .col-2 {
+            .col-special {
                 margin: 30% 0 0 0;
                 .title {
                     margin: 0;
@@ -176,36 +246,30 @@ body {
                     display: grid;
                     font-size: 75%;
                     line-height: 160%;
-                    font-size: 75%;
-                    grid-template-columns: 4fr 6fr;
-                    margin: 1.5em 0 0 0;
+                    grid-template-columns: 1fr 1fr;
+                    margin: 7em 0 0 0;
 
-                    .author {
-                        margin: 0 0 2em 0;
-
-                        span {
-                            font-weight: 290;
-                            font-size: 0.85em;
-                            color: rgba($color-text, 0.7);
-
-                            a,
-                            a:visited {
-                                color: $terciary-color;
-                            }
-                        }
-                    }
-
+                    .author,
                     .tutors {
                         dt {
                             font-size: .6rem;
                             color: $terciary-color;
                             text-transform: uppercase;
                             font-weight: 600;
-                            margin: 0 0 0 2em;
+                            margin: 2em 0 0 0;
+                            strong{
+                                line-height: 90%;
+                            }
                         }
 
                         dl {
-                            margin: 0 0 0 4em;
+                            margin: 0 0 0 2em;
+                            span{
+                                position: relative;
+                                font-size: 70%;
+                                top: -1ex;
+                                text-transform: uppercase;
+                            }
                         }
                     }
                 }
@@ -220,8 +284,8 @@ body {
             svg{
                 display: relative;
                 display: inline-block;
-                padding: 0 20%;
-                max-width: 60%;
+                padding: 0 10%;
+                max-width: 80%;
             }
 
             .legend{
@@ -515,8 +579,21 @@ body {
     zoom: 1.66;
 }
 
-.code-node.is-selected { background: rgba(254, 94, 1, 0.195); outline: 1px solid $terciary-color; border-radius: .3ex;}
-svg .is-selected { filter: drop-shadow(0 0 2px $terciary-color); }
+.uc{
+    text-transform: uppercase;
+}
+
+
+
+.code-node.is-selected { 
+    background: rgba(254, 94, 1, 0.195); 
+    outline: 1px solid $terciary-color; 
+    border-radius: .6ex;
+}
+
+svg .is-selected { 
+    filter: drop-shadow(0 0 2px $terciary-color); 
+}
 
 
 

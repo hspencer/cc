@@ -107,20 +107,20 @@ function pipelineFactory(parentEl){
     // Visual
     const columnHeight=300, labelSize=14, labelFont='Lexend', labelMaxW=100, labelMarginNormal=8, labelMarginImage=-80;
     const COLORS={
-      "Tokenization":{r:65,g:47,b:166},
-      "NLU":{r:161,g:76,b:87},
-      "NSM":{r:236,g:98,b:27},
-      "Blending":{r:112,g:40,b:11},
-      "Styler":{r:44,g:9,b:2}
+      "NLU":{r:65,g:47,b:166},
+      "Mapping":{r:161,g:76,b:87},
+      "Blending":{r:236,g:98,b:27},
+      "Framing":{r:112,g:40,b:11},
+      "Formatter":{r:44,g:9,b:2}
     };
     const COLDEF=[
       {label:"Utterance",type:"image"},
-      {label:"Tokenization",type:"normal"},
       {label:"NLU",type:"normal"},
-      {label:"NSM",type:"normal"},
+      {label:"Mapping",type:"normal"},
       {label:"Blending",type:"normal"},
-      {label:"Styler",type:"normal"},
-      {label:"SVG Output",type:"image"}
+      {label:"Framing",type:"normal"},
+      {label:"Formatter",type:"normal"},
+      {label:"Pictogram",type:"image"}
     ];
 
     // Conexiones
@@ -249,7 +249,7 @@ function pipelineFactory(parentEl){
           p.rect(c.left,c.top,c.w,c.h,12);
         }
         if(c.type==='image'){
-          const el = (c.label==='Utterance') ? svgUtter : (c.label==='SVG Output') ? svgPicto : null;
+          const el = (c.label==='Utterance') ? svgUtter : (c.label==='Pictogram') ? svgPicto : null;
           if(el && el.naturalWidth && el.naturalHeight){
             const drawW=100; const ar=el.naturalWidth/el.naturalHeight; const drawH=drawW/(ar||1);
             const ctx=p.drawingContext; ctx.imageSmoothingEnabled=true;
@@ -275,7 +275,7 @@ function pipelineFactory(parentEl){
       if(!connectionStates.length) return;
       for(let i=0;i<columns.length-1;i++){
         const A=columns[i], B=columns[i+1];
-        const col=(B.type==='image' && B.label==='SVG Output')? {r:0,g:0,b:0} : B.color;
+        const col=(B.type==='image' && B.label==='Pictogram')? {r:0,g:0,b:0} : B.color;
         const nodesA=A.nodes, nodesB=B.nodes, states=connectionStates[i];
         for(let ia=0; ia<nodesA.length; ia++){
           if(!states[ia]) continue;

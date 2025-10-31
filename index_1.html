@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MediaFranca</title>
+
+  <!-- en <head> o justo antes de </body>, pero SIEMPRE antes de main.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/2.0.4/p5.min.js" defer></script>
+  <script defer src="/p5/sketches.js"></script>
+  <script type="module" src="/svg-sync.js"></script>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- 1: Introduction  -->
+      <section id="intro">
+        <!-- 1.1 title -->
+        <section data-background-color="#FFF" data-transition="concave" id="title-slide">
+          <object type="image/svg+xml" data="svg/title-illustration.svg" class="illustration"
+            alt="MediaFranca Illustration: a thinking bubble of pictograms"></object>
+
+          <div class="col-special">
+            <div class="title">
+              <h1><span>MediaFranca:</span>A Practice-Oriented Investigation into a Generative Pictographic System for
+                Cognitive Accessibility</h1>
+            </div>
+
+            <div class="credentials">
+              <div class="author">
+                <dt>Candidate</dt>
+                <dl><strong>Herbert Spencer González</strong><br>
+                  <span>PhD Student in Design</span>
+                </dl>
+
+              </div>
+
+              <div class="tutors">
+                <dt>Supervisors</dt>
+                <dl>Dr. Marcos Steagall</dl>
+                <dl>Dr. Ivana Nakarada-Kordic</dl>
+                <dt>Advisor</dt>
+                <dl>Dr. Welby Ings</dl>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer">
+            <span>This presentation lives at <a href="https://herbertspencer.net/cc">herbertspencer.net/cc</a></span>
+            <img class="logo" src="images/AUT.jpg" alt="Auckland University of Technology">
+          </div>
+        </section>
+
+        <!-- 1.2 Aromos  -->
+        <section data-background-image="images/aromos.jpg">
+          <aside class="notes">This is my home in Chile, near the Aconcagua river and Cerro la Campana. I begin here
+            because design is always situated; it begins from place, from the ground where we stand and from the waters
+            that sustain us.</aside>
+        </section>
+
+
+        <!-- 1.3 Profesor  -->
+        <section data-background-image="images/travesia.jpg">
+          <h2 class="photo-overlay"><span>Travesía 2018</span><br><span>Corredor Litoral</span><br><span
+              class="light">First Year Design Studio</span><span>+</span><br><span class="light">Third year Light and
+              Color Design Studio</span></h2>
+          <aside class="notes">Here you see my students during a design "Travesía" in the north of Chile. We travelled
+            where the Pacific meets the Atacama desert and built, at full scale, a timber “coastal corridor”. For me,
+            teaching design has always meant expanding perception, opening encounters, and making space for others to
+            participate.</aside>
+        </section>
+
+        <!-- Núcleo de Investigación en Accesibilidad e Inclusión PUCV  -->
+        <section data-background-image="images/nucleo.jpg">
+          <h2 class="photo-overlay"><span class="light">Research Centre for</span><br><span>Accessibility and
+              Inclusion</span><br><span class="light">Pontifical Catholic University of Valparaíso</span></h2>
+          <aside class="notes">
+            Over time, the team grew into an interdisciplinary centre, with people from linguistics, engineering,
+            sociology, law and more. Together we tried to build knowledge across differences, following the idea that
+            inclusive research requires inclusive teams.
+          </aside>
+        </section>
+
+        <!-- 1.5 PICTOS Service  -->
+        <section class="w">
+          <img class="fit" src="images/pictos-service.png" alt="PICTOS Sevice Arqchitecture">
+          <aside class="notes">
+            So we designed supports: a grammar for pictograms, a system for plain language, and a publishing
+            architecture to adapt these supports across services. The aim was not to simplify life but to return
+            dignity, to enable people to complete everyday transactions without dependence... and get the value that
+            these services offer.
+          </aside>
+        </section>
+
+        <!-- the space between words and images -->
+        <section data-background-color="#FFF" data-background-image="svg/word-visual-space.svg">
+          <aside class="notes">Both groups converge here: they say cognitive accessibility depends on coherence between
+            words and images. Therapists describe the fatigue of their students when facing mismatched systems.
+            Designers describe the failure of icons when they drift into opacity or cliché. Their insights confirm the
+            hypothesis: the corridor between word and image must remain tight, structured, and open to correction.
+            The PICTOS approach consists of a highly coherent support between the word space and the image. The direct
+            correspondence between instruction and pictogram promotes comprehension and reduces cognitive overload. This
+            is the fundamental idea on which my research is based.</aside>
+        </section>
+
+        <!-- 1.3 research question-->
+        <section>
+          <p class="smallcaps">research question:</p>
+          <p class="huge question">
+            How can a generative pictographic system <span>be designed</span> to support
+            communication for people with complex communication needs?
+          </p>
+          <aside class="notes">The core question I bring here is: how can a generative pictographic system be designed
+            to support communication for people with complex communication needs? To approach this, I am not working
+            alone in my studio. I am conducting interviews with two groups of professionals. On the one hand, those who
+            teach, educate, and promote the use of AAC tools in schools, clinics, and daily practices. On the other
+            hand, designers who have dedicated their craft to pictograms with great concern for accessibility,
+            comprehension, synthesis, and elegance. Their voices frame the territory of this research.</aside>
+        </section>
+
+      </section><!-- 1 end -->
+
+      <!-- 2: Why this research matters -->
+      <section id="why-matters">
+        <!-- 2.1 Scale of need (Aotearoa NZ) -->
+        <section data-background-color="#FFF">
+          <h2 class="xl">Why this research matters?</h2>
+          <div class="image">
+            <img src="svg/people-with-ccn.svg" alt="between 6% and 10% have complex communication needs">
+            <aside class="notes">
+              <div class="legend">
+                <ul>
+                  <li><strong>1 in 6</strong> New Zealanders (≈ 851,000 people) live with disability (2023 Census).</li>
+                  <li><strong>5.9%</strong> of people aged 5+ report some difficulty communicating.</li>
+                  <li>Professional estimates suggest <strong>up to 10%</strong> experience communication difficulties.
+                  </li>
+                </ul>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- 2.2 What AAC is (plain) -->
+        <section data-background-image="images/aac-systems.png" data-transition="fade" class="invert">
+
+          <div style="text-align: center;">
+            <img src="images/ccn.png" alt="Pictogram of a person with complex communication needs"
+              style="width: 300px;">
+            <h2 class="xl">Augmentative and Alternative Communication (AAC)</h2>
+
+          </div>
+          <aside class="notes">
+            <ul style="color: white">
+              <li>AAC refers to systems and practices that support individuals with limited or absent speech through
+                multimodal means such as symbols, gestures, or technologies</li>
+              <li>It views communication as a social, intentional, and context-dependent process rather than a purely
+                linguistic act, emphasising meaning exchange and participation</li>
+              <li>AAC strives to enable communicative autonomy and social inclusion, allowing individuals to express
+                intent, share understanding, and participate fully in everyday life</li>
+            </ul>
+          </aside>
+
+        </section>
+
+        <!-- 2.3 A gap in representation -->
+        <section data-transition="fade">
+          <h2 class="xl">A persitent gap</h2>
+          <table class="gap">
+            <thead>
+              <tr>
+                <th><img src="svg/noun-003.svg"><br>Speech & Language Augmentation</th>
+                <th><img src="svg/noun-004.svg"><br>Predictive Communication Systems</th>
+                <th><img src="svg/noun-002.svg"><br>Embodied / Sensor-Based Interfaces</th>
+                <th><img src="svg/noun-001.svg"><br>Pictographic & Symbolic Representation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <td>
+                <ul>
+                  <li class="check">voice recognition</li>
+                  <li class="check">text-to-speech synthesis</li>
+                  <li class="check">speech-to-text captioning</li>
+                  <li class="check">AI speech repair for dysarthria</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li class="check">predictive text</li>
+                  <li class="check">next pictogram prediction</li>
+                  <li class="check">context-aware phrase suggestion</li>
+                  <li class="check">adaptive keyboards</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li class="check">swipe keyboards</li>
+                  <li class="check">eye tracking</li>
+                  <li class="check">gesture control</li>
+                  <li class="check">facial expression detection</li>
+                  <li class="check">EEG-based intent sensing</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li class="check">static pictogram sets</li>
+                  <li class="fail">no dynamic generative pictographic systems</li>
+                </ul>
+              </td>
+            </tbody>
+          </table>
+        </section>
+      </section><!-- 2 end -->
+
+      <!-- 3: PictoNet, PictoForge and MediaFranca -->
+      <section>
+
+        <!-- 3.0 - 3 layered project -->
+        <section>
+          <h2>The Shape of the Proposal</h2>
+          <object data="svg/3-research-layers.svg" class="r-stretch"></object>
+          <aside class="notes">So, this research is structured across three layers. At the first level, the pictogram
+            itself: what makes it good, clear, and memorable — as AAC professionals say, “learnable and consistent,” and
+            as designers add, “synthetic and elegant.” At the second level, the interaction: how humans and generative
+            systems co-compose, how reversibility and transparency are guaranteed, how edits remain explainable. At the
+            third level, the infrastructure: how corrections become collective, how cultural adaptations are federated,
+            and how governance prevents decay into noise. This threefold structure is not only my method; it is also my
+            ethical stance.</aside>
+        </section>
+
+        <!-- Sub-slide 3.1 PictoNet -->
+        <section>
+          <div class="col-2">
+            <table class="essence-mediafranca level level-pictonet" border="0" cellpadding="8" cellspacing="0">
+              <thead>
+                <tr>
+                  <th><span>Focus</span></th>
+                  <th><strong>PictoNet</strong><br><em>Meaning through Images</em></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><em>The challenge</em></td>
+                  <td>Translate communicative intention—written as text—into a pictogram that is cognitively accessible,
+                    clear, and dignified.</td>
+                </tr>
+                <tr>
+                  <td><em>Where the gap is</em></td>
+                  <td>AAC still relies on illustrators and fixed libraries; systems do not yet <strong>generate</strong>
+                    pictograms directly from language.</td>
+                </tr>
+                <tr>
+                  <td><em>What to design</em></td>
+                  <td>A <strong>transformer-based LLM</strong> that converts natural language into <strong>SVG</strong>
+                    pictograms—using a visual grammar linking verbs, objects, and contexts.</td>
+                </tr>
+                <tr>
+                  <td><em>Why it matters</em></td>
+                  <td>Builds a bridge between text and image, expanding communication for people with complex
+                    communication needs.</td>
+                </tr>
+              </tbody>
+            </table>
+            <object type="image/svg+xml" class="thumb" data="/svg/level-1.svg"></object>
+          </div>
+
+          <aside class="notes">
+            <p>The transformer that turns words into images. It wrestles with the old problem of representation: what
+              travels from text to picture, what is lost, what can be learned.</p>
+            <p>We ground this in Wittgenstein (meaning as use), Austin/Searle (speech acts), and the Natural Semantic
+              Metalanguage (shared “atoms” of meaning). PictoNet maps those semantic primes to visual primitives.</p>
+          </aside>
+        </section>
+
+        <!-- Sub-slide 3.2 PictoForge-->
+        <section>
+          <div class="col-2">
+            <table class="essence-mediafranca level level-pictoforge" border="0" cellpadding="8" cellspacing="0">
+              <thead>
+                <tr>
+                  <th><span>Focus</span></th>
+                  <th><strong>PictoForge</strong><br><em>Designing with AI</em></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><em>The challenge</em></td>
+                  <td>Treat AI as a <strong>design material</strong>—directly manipulable, refineable, and
+                    understandable
+                    through use.</td>
+                </tr>
+                <tr>
+                  <td><em>Where the gap is</em></td>
+                  <td>Most generative tools hide inner logic; users cannot see how outputs are built or teach the system
+                    how
+                    to improve.</td>
+                </tr>
+                <tr>
+                  <td><em>What to design</em></td>
+                  <td>An <strong>interactive interface</strong> where users adjust pictograms and each correction
+                    becomes
+                    structured feedback for retraining (direct manipulation & RLHF).</td>
+                </tr>
+                <tr>
+                  <td><em>Why it matters</em></td>
+                  <td>Turns machine learning into a visible, human process—understanding grows through collaboration,
+                    not
+                    opacity.</td>
+                </tr>
+              </tbody>
+            </table>
+            <object type="image/svg+xml" class="thumb" data="/svg/level-2.svg"></object>
+          </div>
+
+          <aside class="notes">
+            <p>The workshop where people and model co-edit pictograms. Corrections, audits, and local vocabularies are
+              logged as structured data. Each human nudge becomes a learning signal.</p>
+            <p>This is the <strong>corrective/generative loop</strong>: propose → edit → learn. Over time the system
+              internalises clarity, cultural fit, and adult dignity.</p>
+          </aside>
+        </section>
+
+        <!-- Sub-slide 3.3 MediaFranca -->
+        <section>
+          <div class="col-2">
+            <table class="essence-mediafranca level level-mediafranca" border="0" cellpadding="8" cellspacing="0">
+              <thead>
+                <tr>
+                  <th><span>Focus</span></th>
+                  <th><strong>MediaFranca</strong><br><em>Language as a Commons</em></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><em>The challenge</em></td>
+                  <td>Ensure the <strong>fair use of data</strong> for AI training—respecting authorship, privacy,
+                    cultural identity, and model portability.</td>
+                </tr>
+                <tr>
+                  <td><em>Where the gap is</em></td>
+                  <td>Centralised infrastructures concentrate data and power; communities lose control over voices,
+                    languages, and creative work.</td>
+                </tr>
+                <tr>
+                  <td><em>What to design</em></td>
+                  <td>A <strong>federated, open-source platform</strong> where local instances train their models and
+                    share improvements responsibly (cultural sovereignty & ethical governance).</td>
+                </tr>
+                <tr>
+                  <td><em>Why it matters</em></td>
+                  <td>Redefines AI as a collective resource rather than a corporate asset—communities own, adapt, and
+                    evolve their languages.</td>
+                </tr>
+              </tbody>
+            </table>
+            <object type="image/svg+xml" class="thumb" data="/svg/level-3.svg"></object>
+          </div>
+          <aside class="notes">
+            <p>A federated, open implementation — a <em>core communication engine</em>. Communities run local instances,
+              keep their data, share model improvements. Culture stays sovereign; learning flows.</p>
+            <p>Result: dialects of a shared pictographic grammar, maintained as a civic commons.</p>
+          </aside>
+      </section>
+      </section><!-- 3 end -->
+
+      <!-- 4: Literature review: The Problem of Language -->
+      <section id="problem-of-language">
+
+        <section data-background-image="images/babel.jpg" class="invert">
+            <div class="figure-legend"><strong>The Tower of Babel</strong>, oil on panel by Pieter Bruegel the Elder, 1563. The painting depicts the biblical story of linguistic fragmentation, representing the human ambition to construct a universal language and its subsequent dispersion into multiplicity.</div>
+
+        </section>
+
+        <!-- rabbit -->
+        <section data-background-image='images/relativity.png'></section>
+
+        <!-- 4.1 -->
+        <section data-background-image="images/characteristica_universalis.jpg">
+          <div class="figure-legend"><strong>Characteristica Universalis</strong>, diagrammatic representation of elemental relations from <em>De Arte Combinatoria</em>, Gottfried Wilhelm Leibniz, 1666.</div>
+
+        </section>
+
+        <section data-background-image='images/begriffsschrift.png'>
+          <div class="figure-legend"><Strong>Begriffsschrift</Strong>, diagrammatic notation from <em>Concept Script</em>, Gottlob Frege, 1879.</div>
+        </section>
+
+        <!-- 4.2 -->
+        <section id="situated-language" data-transition="fade">
+          <h3>Universal-local paradox</h3>
+
+          <div class="r-stack">
+            <div class="fragment" height="90vh" style="background-color: white;">
+              <img src="images/img-06.png">
+              <p class="label">Illustration from “Language, Thought, and Reality: Selected Writings of Benjamin Lee
+                Whorf”, 1956</p>
+            </div>
+            <div class="fragment" height="90vh" style="background-color: white;">
+              <img src="images/img-07.png">
+              <p class="label">The <strong>"Maluma-takete"</strong> effect (later renamed “Bouba-kiki”), Köhler, 1929.
+              </p>
+            </div>
+          </div>
+
+        </section>
+
+
+        <!-- NSM Semantic Primes -->
+        <section data-transition="slide">
+          <h2 class="title">65 semantic primes</h2>
+
+          <main class="nsm">
+            <!-- 1. Substantives -->
+            <div>
+              <h2 class="block-name">Substantives</h2>
+              <ul class="nsm-block">
+                <li class="d1">I</li>
+                <li class="d2">YOU</li>
+                <li class="d1">SOMEONE / PERSON</li>
+                <li class="d1">SOMETHING / THING</li>
+                <li class="d1">BODY</li>
+                <li class="d2">PEOPLE</li>
+              </ul>
+            </div>
+
+            <!-- 2. Determiners & Quantifiers -->
+            <div>
+              <h2 class="block-name">Determiners & Quantifiers</h2>
+              <ul class="nsm-block">
+                <li class="d1">THIS</li>
+                <li class="d2">THE SAME</li>
+                <li class="d3">OTHER / ELSE</li>
+                <li class="d1">ONE</li>
+                <li class="d1">TWO</li>
+                <li class="d2">MANY / MUCH</li>
+                <li class="d3">SOME / A FEW</li>
+                <li class="d4">ALL</li>
+                <li class="d5">THERE IS / EXISTS</li>
+                <li class="d4">HAVE (PARTS)</li>
+              </ul>
+            </div>
+
+            <!-- 3. Actions & Events -->
+            <div>
+              <h2 class="block-name">Actions & Events</h2>
+              <ul class="nsm-block">
+                <li class="d1">DO</li>
+                <li class="d4">HAPPEN</li>
+                <li class="d1">MOVE</li>
+                <li class="d1">TOUCH</li>
+              </ul>
+            </div>
+
+            <!-- 4. Mental Predicates -->
+            <div>
+              <h2 class="block-name">Mental Predicates</h2>
+              <ul class="nsm-block">
+                <li class="d3">THINK</li>
+                <li class="d4">KNOW</li>
+                <li class="d5">WANT</li>
+                <li class="d5">FEEL</li>
+                <li class="d4">SEE</li>
+                <li class="d4">HEAR</li>
+              </ul>
+            </div>
+
+            <!-- 5. Speech -->
+            <div>
+              <h2 class="block-name">Speech</h2>
+              <ul class="nsm-block">
+                <li class="d2">SAY</li>
+                <li class="d3">WORD</li>
+                <li class="d5">TRUE</li>
+              </ul>
+            </div>
+
+            <!-- 6. Time & Place -->
+            <div>
+              <h2 class="block-name">Time & Place</h2>
+              <ul class="nsm-block">
+                <li class="d5">WHEN / TIME</li>
+                <li class="d3">NOW</li>
+                <li class="d3">BEFORE</li>
+                <li class="d3">AFTER</li>
+                <li class="d5">A LONG TIME</li>
+                <li class="d5">A SHORT TIME</li>
+                <li class="d4">WHERE / PLACE</li>
+                <li class="d2">HERE</li>
+                <li class="d1">ABOVE</li>
+                <li class="d1">BELOW</li>
+                <li class="d1">FAR</li>
+                <li class="d1">NEAR</li>
+                <li class="d1">SIDE</li>
+                <li class="d1">INSIDE</li>
+              </ul>
+            </div>
+
+            <!-- 7. Logical Concepts -->
+            <div>
+              <h2 class="block-name">Logical Concepts</h2>
+              <ul class="nsm-block">
+                <li class="d2">NOT / NO</li>
+                <li class="d4">MAYBE</li>
+                <li class="d4">CAN</li>
+                <li class="d5">BECAUSE</li>
+                <li class="d5">IF</li>
+              </ul>
+            </div>
+
+            <!-- 8. Evaluators & Descriptors -->
+            <div>
+              <h2 class="block-name">Evaluators & Descriptors</h2>
+              <ul class="nsm-block">
+                <li class="d4">GOOD</li>
+                <li class="d4">BAD</li>
+                <li class="d2">BIG</li>
+                <li class="d2">SMALL</li>
+                <li class="d3">VERY</li>
+                <li class="d3">LIKE / AS</li>
+              </ul>
+            </div>
+          </main>
+          <p style="font-family: 'EB Garamond'; font-size: 14px; margin-top: 4em;"><em>Natural Semantic Metalanguage</em>: Set of 65 semantic primes. London: Oxford University Press.<br><strong>Wierzbicka, A.</strong> (1996, revised in 2017). </p>
+        </section>
+
+        <!-- 4.3 Blending Theory-->
+        <section>
+
+          <div class="r-stack">
+            <h2>Conceptual blending theory</h2>
+
+            <img class="fragment" src="svg/blending.svg" height="600">
+            <img class="fragment" src="svg/blend-1.svg" height="600">
+            <img class="fragment" src="svg/blend-2.svg" height="600">
+            <img class="fragment" src="svg/blend-3.svg" height="600">
+          </div>
+        </section>
+
+        <!-- Aesthetics of Accessibility -->
+        <section class="svg-code-sync" data-svg-url="svg/pictogram.svg" data-transition="fade">
+          <h2>Text as Image: <span>The Aesthetics of Accessibility</span></h2>
+
+          <div style="display:grid;grid-template-columns:50% 50%;height:500px;gap:1rem;">
+            <!-- IZQUIERDA: código -->
+            <div style="overflow:auto;font-size:.55em;line-height:1.2;">
+              <pre style="font-size:85%;white-space:pre;margin-left:2em;">
+              <code data-role="svg-source" class="language-xml" data-line-numbers></code>
+              </pre>
+            </div>
+
+            <!-- DERECHA: SVG inline -->
+            <div data-role="svg-stage"
+              style="display:flex;align-items:center;justify-content:center;background:#c4c2c2;border-radius:1ex;">
+            </div>
+          </div>
+        </section>
+
+      </section><!-- end slide 4 -->
+
+      <!-- 5: Interviews and field research: AAC Cases & Interview Learnings -->
+      <section id="aac-cases">
+        <section>
+          <h2>AAC cases and interview learnings</h2>
+        </section>
+
+        <!-- AAC cases-->
+        <section>
+          <div class="r-stack">
+            <img class="fragment" src="images/aac-bliss.png" width="100%">
+            <img class="fragment" src="images/bliss-example.jpg" width="100%">
+            <img class="fragment" src="images/bliss-example-2.jpg" width="100%">
+            <img class="fragment" src="images/aac-pecs.png" width="100%">
+            <img class="fragment" src="images/aac-core-board.png" width="100%">
+          </div>
+        </section>
+
+      <!-- Speech is an act -->
+       <section data-background-image="images/Gustave_Courbet_-_Bonjour_Monsieur_Courbet_-_Musée_Fabre.jpg"></section>
+
+        <section data-background-color="#FFF">
+          <h3>What this implies for PictoNet</h3>
+          <ul>
+            <li><strong>Pragmatics-aware:</strong> recognise speech-acts (request, comment, refusal).</li>
+            <li><strong>Abstraction ladder:</strong> move between concrete and abstract with learnable conventions.</li>
+            <li><strong>Culturally adaptable:</strong> shared grammar, local exponents.</li>
+            <li><strong>Co-created:</strong> corrections and styles from users and professionals.</li>
+            <li><strong>Hybrid:</strong> works across screen and print, high-tech and low-tech.</li>
+          </ul>
+        </section>
+        <!-- Pictogram definition -->
+        <section data-background-image="svg/definition.svg"></section>
+      </section>
+
+      <!-- 6: Designig the Components -->
+      <section>
+
+        <!-- minimal pipeline table -->
+        <section>
+          <h2>PictoNet Pipeline</h2>
+          <table class="pipeline">
+            <thead>
+              <tr>
+                <td class="start"><span class="speech">"I want to drink water"</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th><span>Step 1</span><br>Semantic Analysis (NLU)</th>
+                <th><span>Step 2</span><br>Conceptual Mapping</th>
+                <th><span>Step 3</span><br>Hybrid SVG Generation</th>
+                <th><span>Step 4</span><br>Accessibility Post-Processing</th>
+                <th>Final Pictogram Output</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  Converts text into <strong>structured meaning</strong> through <strong>speech-act
+                    detection</strong>, <strong>frame semantics</strong>, and <strong>NSM decomposition</strong>.
+                </td>
+                <td>
+                  Maps <strong>semantic roles</strong> to <strong>visual symbols</strong> using a <strong>pictogram
+                    library</strong> and established <strong>graphical conventions</strong>.
+                </td>
+                <td>
+                  Generates an <strong>SVG scaffold</strong> via <strong>LLM reasoning</strong>, refined by a
+                  <strong>diffusion model</strong> for visual coherence.
+                </td>
+                <td>
+                  Adds <strong>accessibility metadata</strong> (<strong>ARIA</strong>, <strong>WCAG</strong>) to
+                  ensure compatibility with assistive technologies.
+                </td>
+                <td class="end">
+                  <div class="center"><img src="svg/rlhf.svg" alt="learning loop" width="50%"></div>Integrates
+                  <strong>user feedback</strong> through <strong>evaluation</strong> and <strong>RLHF
+                    fine-tuning</strong> for iterative model improvement.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </section>
+
+        <!-- complete pipeline table -->
+         <!-- 
+        <section>
+          <h2>PictoNet Pipeline</h2>
+          <table class="pipeline-complete">
+            <thead>
+              <tr>
+                <th></th>
+                <th><span>Step 1</span><br>Semantic Analysis (NLU)</th>
+                <th><span>Step 2</span><br>Conceptual Mapping</th>
+                <th><span>Step 3</span><br>Hybrid SVG Generation</th>
+                <th><span>Step 4</span><br>Accessibility Post-Processing</th>
+                <th>Final Pictogram Output</th>
+                <th>Refinement & Iteration (RLHF)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <span class="speech">"I want to drink water"</span><br><br>The process begins in the PictoForge
+                  interface, where the user inputs a communicative intent.
+                  <strong>Local Specs:</strong>
+                  <ul>
+                    <li>Language and locale (e.g., en-GB).</li>
+                    <li>Output size (e.g., 500x500px).</li>
+                    <li>Graphic style (e.g., "flat design, no shadows").</li>
+                    <li>Colour preferences (e.g., colour or black & white).</li>
+                    <li>Animation preferences (e.g., static or animated).</li>
+                  </ul>
+                </td>
+                <td>
+                  Deconstructs the user's intent from raw text into a structured, machine-readable semantic
+                  representation.
+                  <ul>
+                    <li><strong>Speech Act Classification:</strong> Identifies the pragmatic function (e.g.,
+                      <code>directive</code>).
+                    </li>
+                    <li><strong>Frame Semantics Parsing:</strong> Extracts the core conceptual "frame" (e.g.,
+                      <code>Going_to_a_place</code>) and its semantic roles.
+                    </li>
+                    <li><strong>NSM Decomposition:</strong> Breaks down abstract concepts into universal "semantic
+                      primes".</li>
+                  </ul>
+                </td>
+                <td>
+                  Translates the abstract semantic representation into a concrete set of visual concepts from a target
+                  pictogram library.
+                  <ul>
+                    <li><strong>Symbol Mapping:</strong> Associates semantic roles with specific pictogram identifiers
+                      from a knowledge base (e.g., ARASAAC).</li>
+                    <li><strong>Visual Convention Application:</strong> Programmatically applies the library's graphical
+                      rules (e.g., ARASAAC's "cloud" for abstract concepts).</li>
+                  </ul>
+                </td>
+                <td>
+                  Synthesises the final SVG file by combining the structural reasoning of an LLM with the aesthetic
+                  refinement of a diffusion model.
+                  <ul>
+                    <li><strong>LLM-based Template Generation:</strong> A code-generating LLM creates a clean,
+                      semantically-structured SVG "scaffold".</li>
+                    <li><strong>Diffusion-based Visual Refinement:</strong> A conditional diffusion model (e.g.,
+                      ControlNet) enhances the visual details of the scaffold.</li>
+                  </ul>
+                </td>
+                <td>
+                  Injects metadata into the SVG code to ensure full compliance with WCAG and ARIA standards for
+                  assistive technologies.
+                  <ul>
+                    <li><strong>Assign Role:</strong> Inserts <code>role="img"</code> into the root
+                      <code>&lt;svg&gt;</code> tag.
+                    </li>
+                    <li><strong>Add Title & Description:</strong> Generates and embeds <code>&lt;title&gt;</code> and
+                      <code>&lt;desc&gt;</code> elements.
+                    </li>
+                    <li><strong>Link via ARIA:</strong> Adds an <code>aria-labelledby</code> attribute for robust screen
+                      reader support.</li>
+                  </ul>
+                </td>
+                <td>
+                  The final, compliant, and ready-to-use SVG artefact is presented to the user within the PictoForge
+                  interface for use or evaluation.
+                  <strong>Output Artefact:</strong>
+                  <ul>
+                    <li>A single, self-contained <strong>Final Accessible SVG</strong> file.</li>
+                    <li>Contains both the visual pictogram and embedded metadata from the entire reasoning process.</li>
+                    <li>Ready for immediate use or for evaluation in the next step.</li>
+                  </ul>
+                </td>
+                <td>
+                  A continuous improvement loop where human feedback from PictoForge is used to refine and align the
+                  generative models.
+                  <ul>
+                    <li><strong>Human-in-the-Loop Evaluation:</strong> Users evaluate, edit, and rate generated
+                      pictograms via the PictoForge interface, using the VCSCI benchmark.</li>
+                    <li><strong>Preference Data Collection:</strong> User corrections and ratings are compiled into a
+                      high-quality preference dataset.</li>
+                    <li><strong>Model Retraining (RLHF):</strong> The models from Steps 1 & 3 are fine-tuned using this
+                      preference data as a reward signal.</li>
+                  </ul>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </section>
+         -->
+        
+
+        <!-- NLU Front End-->
+        <section>
+          <h3>Semantic analysis <span>— NLU front-end</span></h3>
+          <div class="col-2">
+            <div class="say">
+              <div class="speech">Please make your bed</div>
+            </div>
+
+            <pre class="nlu"><code data-trim class="language-json">
+<span class="b">{</span>
+<span class="k">"utterance"</span><span class="p">:</span> <span class="s">"Please make your bed"</span><span class="p">,</span>
+<span class="k">"lang"</span><span class="p">:</span> <span class="s">"en"</span><span class="p">,</span>
+<span class="k">"metadata"</span><span class="p">:</span> <span class="b">{</span>
+  <span class="k">"speech_act"</span><span class="p">:</span> <span class="s">"directive"</span><span class="p">,</span>
+  <span class="k">"intent"</span><span class="p">:</span> <span class="s">"request"</span>
+<span class="b">}</span><span class="p">,</span>
+<span class="k">"frames"</span><span class="p">:</span> <span class="b">[</span>
+  <span class="b">{</span>
+    <span class="k">"id"</span><span class="p">:</span> <span class="s">"f1"</span><span class="p">,</span>
+    <span class="k">"frame_name"</span><span class="p">:</span> <span class="s">"Directed_action"</span><span class="p">,</span>
+    <span class="k">"lexical_unit"</span><span class="p">:</span> <span class="s">"make"</span><span class="p">,</span>
+    <span class="k">"roles"</span><span class="p">:</span> <span class="b">{</span>
+      <span class="k">"Agent"</span><span class="p">:</span> <span class="b">{</span>
+        <span class="k">"type"</span><span class="p">:</span> <span class="s">"Addressee"</span><span class="p">,</span>
+        <span class="k">"ref"</span><span class="p">:</span> <span class="s">"you"</span><span class="p">,</span>
+        <span class="k">"surface"</span><span class="p">:</span> <span class="s">"your"</span>
+      <span class="b">}</span><span class="p">,</span>
+      <span class="k">"Theme"</span><span class="p">:</span> <span class="b">{</span>
+        <span class="k">"type"</span><span class="p">:</span> <span class="s">"Object"</span><span class="p">,</span>
+        <span class="k">"lemma"</span><span class="p">:</span> <span class="s">"bed"</span><span class="p">,</span>
+        <span class="k">"surface"</span><span class="p">:</span> <span class="s">"bed"</span><span class="p">,</span>
+        <span class="k">"definiteness"</span><span class="p">:</span> <span class="s">"definite"</span>
+      <span class="b">}</span>
+    <span class="b">}</span>
+  <span class="b">}</span>
+<span class="b">]</span><span class="p">,</span>
+<span class="k">"logical_form"</span><span class="p">:</span> <span class="b">{</span>
+  <span class="k">"event"</span><span class="p">:</span> <span class="s">"make(you, bed)"</span>
+<span class="b">}</span><span class="p">,</span>
+<span class="k">"pragmatics"</span><span class="p">:</span> <span class="b">{</span>
+  <span class="k">"politeness"</span><span class="p">:</span> <span class="s">"polite"</span><span class="p">,</span>
+  <span class="k">"formality"</span><span class="p">:</span> <span class="s">"neutral"</span><span class="p">,</span>
+  <span class="k">"expected_response"</span><span class="p">:</span> <span class="s">"compliance"</span>
+<span class="b">}</span><span class="p">,</span>
+<span class="k">"visual_guidelines"</span><span class="p">:</span> <span class="b">{</span>
+  <span class="k">"focus_actor"</span><span class="p">:</span> <span class="s">"you"</span><span class="p">,</span>
+  <span class="k">"action_core"</span><span class="p">:</span> <span class="s">"make"</span><span class="p">,</span>
+  <span class="k">"object_core"</span><span class="p">:</span> <span class="s">"bed"</span><span class="p">,</span>
+  <span class="k">"context"</span><span class="p">:</span> <span class="s">"bedroom"</span><span class="p">,</span>
+  <span class="k">"temporal"</span><span class="p">:</span> <span class="s">"immediate"</span>
+<span class="b">}</span>
+<span class="b">}</span></code>
+        </pre>
+          </div>
+        </section>
+
+        <!-- PictoForge -->
+        <section data-background-image="images/pictoforge.png" class="pf-slide">
+          <!-- Overlay que aparece con el primer clic -->
+          <img src="images/pictoforge-edit.png" alt="Segment Editor" class="fragment fade-in-then-out pf-overlay"
+            style="width: 400px; margin: 0 30% 0 30%" data-fragment-index="1">
+        </section>
+
+      </section>
+
+      <!-- 7: The Invitation -->
+      <section id="invitation">
+        <section>
+          <h2>The invitation</h2>
+          <p>This work invites collaboration on:</p>
+          <ul>
+            <li>Pictogram validation (comprehension, dignity, context).</li>
+            <li>Semantic-adhesion metrics (intent ↔ image fit).</li>
+            <li>Interfaces for AI as design material (direct manipulation, auditability).</li>
+            <li>Local style embeddings and federated learning.</li>
+          </ul>
+        </section>
+      </section>
+
+      <!-- Thank You -->
+      <section>
+
+        <!-- p5 sketch of the pipeline -->
+        <section>
+          <h2>Thank you</h2>
+          <div class="p5-host" data-sketch="pipeline" style="width:100%; height:40vh;"></div>
+        </section>
+
+        <!-- links -->
+        <section data-background-color="#000">
+          <div class="sm invert" style="width: 40vw;">
+            <p>
+              The <strong>MediaFranca Initiative</strong> is a collaborative open framework for inclusive, visual, and
+              linguistically grounded communication systems.
+              Below are the core repositories that define its ecosystem:
+            </p>
+
+            <ol>
+              <li>
+                <a href="https://github.com/mediafranca/manifesto" target="_blank"><strong>manifiesto</strong></a> –
+                The foundational document outlining the ethical, social, and design principles that guide the
+                MediaFranca
+                ecosystem.
+              </li>
+              <li>
+                <a href="https://github.com/mediafranca/pictonet" target="_blank"><strong>pictonet</strong></a> –
+                The semantic communication network that models meanings through pictograms and linguistic structures.
+              </li>
+              <li>
+                <a href="https://github.com/mediafranca/pictoforge" target="_blank"><strong>pictoforge</strong></a> –
+                The visual synthesis engine that generates pictographic messages from structured semantic
+                representations.
+              </li>
+              <li>
+                <a href="https://github.com/mediafranca/nlu-schema" target="_blank"><strong>nlu-schema</strong></a> –
+                The natural language understanding (NLU) schema defining how utterances are decomposed into semantic and
+                pragmatic structures (used by the NLU analyzer).
+              </li>
+              <li>
+                <a href="https://github.com/mediafranca/vcsci" target="_blank"><strong>vcsci</strong></a> –
+                The Visual Communicability and Semantic Correspondence Index is a framework for measuring the
+                communicative adequacy of pictograms generated by a machine learning modelVisual.
+              </li>
+            </ol>
+            <p><strong>Herbert Spencer González</strong> · PhD in Design (AUT)</p>
+            <p><a href="https://herbertspencer.net/cc">herbertspencer.net/cc</a> · <a
+                href="mailto:herbert.spencer@autuni.ac.nz">herbert.spencer@autuni.ac.nz</a></p>
+          </div>
+
+        </section>
+
+      </section>
+
+
+    </div>
+  </div>
+
+  <script type="module" src="./main.js"></script>
+
+</body>
+
+</html>

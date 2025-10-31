@@ -1,6 +1,6 @@
 /* src/css/custom.scss */
 
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Lexend:wght@100..900&display=swap');
 
 
 
@@ -93,6 +93,7 @@ body {
     .slides {
 
         .invert {
+
             *,
             h2,
             h3,
@@ -100,7 +101,28 @@ body {
                 color: white;
                 text-shadow: 1px 1px 2px #25013073;
             }
-            strong, a{color: $terciary-color;}
+
+            strong,
+            a {
+                color: white;
+            }
+        }
+        /* for spliting the presentation in parts, like Tarantino */
+        h1.divider{
+            font-family: 'EB Garamond';
+            line-height: 100%;
+            text-align: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: 300;
+            span{
+                font-family: Lexend;
+                color: $terciary-color;
+                text-transform: uppercase;
+                letter-spacing: .2ex;
+                font-weight: 500;
+                font-size: 1.1rem;
+            }
         }
 
         h2,
@@ -235,70 +257,71 @@ body {
             table-layout: fixed;
 
             .speech {
-                    // Variables
-                    $bubble-bg: #ffffff;
-                    $bubble-text: #222;
-                    $bubble-border: #0000004c;
-                    $bubble-border-width: 2px;
-                    $bubble-radius: 3ex;
-                    $bubble-padding: 1em;
-                    $bubble-font-size: 1.2rem;
-                    $bubble-margin: 0;
-                    $shadow-color: rgba(0, 0, 0, 0.25);
-                    $shadow: 0 4px 16px $shadow-color;
-                    $tail-width: 1em;
-                    $tail-left: 1.5em;
+                // Variables
+                $bubble-bg: #ffffff;
+                $bubble-text: #222;
+                $bubble-border: #0000004c;
+                $bubble-border-width: 2px;
+                $bubble-radius: 3ex;
+                $bubble-padding: 1em;
+                $bubble-font-size: 1.2rem;
+                $bubble-margin: 0;
+                $shadow-color: rgba(0, 0, 0, 0.25);
+                $shadow: 0 4px 16px $shadow-color;
+                $tail-width: 1em;
+                $tail-left: 1.5em;
 
-                    display: inline-block;
-                    text-align: center;
-                    position: relative;
-                    background: $bubble-bg;
-                    color: $bubble-text;
-                    font-size: $bubble-font-size;
-                    padding: $bubble-padding;
-                    border-radius: $bubble-radius;
-                    margin: $bubble-margin;
-                    border: $bubble-border-width solid $bubble-border;
-                    box-shadow: $shadow;
+                display: inline-block;
+                text-align: center;
+                position: relative;
+                background: $bubble-bg;
+                color: $bubble-text;
+                font-size: $bubble-font-size;
+                padding: $bubble-padding;
+                border-radius: $bubble-radius;
+                margin: $bubble-margin;
+                border: $bubble-border-width solid $bubble-border;
+                box-shadow: $shadow;
 
-                    // Tail outline (negro, atrás)
-                    &::before {
-                        content: '';
-                        position: absolute;
-                        left: $tail-left;
-                        top: 100%;
-                        width: 0;
-                        height: 0;
-                        border: $tail-width solid transparent;
-                        border-top-color: $bubble-border;
-                        border-bottom: 0;
-                        border-left: 0;
-                        margin-left: -$bubble-border-width;
-                    }
-
-                    // Tail blanco (delante)
-                    &::after {
-                        content: '';
-                        position: absolute;
-                        left: $tail-left;
-                        top: calc(100% - $bubble-border-width);
-                        width: 0;
-                        height: 0;
-                        border: calc($tail-width - $bubble-border-width) solid transparent;
-                        border-top-color: $bubble-bg;
-                        border-bottom: 0;
-                        border-left: 0;
-                        margin-left: 0;
-                    }
+                // Tail outline (negro, atrás)
+                &::before {
+                    content: '';
+                    position: absolute;
+                    left: $tail-left;
+                    top: 100%;
+                    width: 0;
+                    height: 0;
+                    border: $tail-width solid transparent;
+                    border-top-color: $bubble-border;
+                    border-bottom: 0;
+                    border-left: 0;
+                    margin-left: -$bubble-border-width;
                 }
 
-            th, td{
+                // Tail blanco (delante)
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: $tail-left;
+                    top: calc(100% - $bubble-border-width);
+                    width: 0;
+                    height: 0;
+                    border: calc($tail-width - $bubble-border-width) solid transparent;
+                    border-top-color: $bubble-bg;
+                    border-bottom: 0;
+                    border-left: 0;
+                    margin-left: 0;
+                }
+            }
+
+            th,
+            td {
                 padding: 1rem .5rem;
-            }    
+            }
 
             th {
                 background-color: $pale-color;
-                
+
                 font-size: 14px;
                 font-weight: 700;
 
@@ -314,11 +337,12 @@ body {
                 font-size: 12px;
                 font-weight: 300;
                 vertical-align: top;
-                strong{
+
+                strong {
                     font-weight: 500;
                 }
             }
-            
+
 
             th:nth-last-child(1) {
                 background-color: $terciary-color;
@@ -327,24 +351,25 @@ body {
                 font-size: 1.2rem;
                 font-weight: 300;
             }
-            th:nth-child(1){
+
+            th:nth-child(1) {
                 border-radius: 0 0 0 1em;
             }
 
             td.start,
-            td.end{
+            td.end {
                 height: 150px;
                 vertical-align: middle;
             }
 
-            td.start{
+            td.start {
                 background: $pale-color;
-                background: linear-gradient(0deg,$pale-color 0%, rgba(255, 255, 255, 0) 100%);
+                background: linear-gradient(0deg, $pale-color 0%, rgba(255, 255, 255, 0) 100%);
             }
 
-            td.end{
+            td.end {
                 background: $terciary-color;
-                background: linear-gradient(180deg,$terciary-color 0%, rgba(255, 255, 255, 0) 100%);
+                background: linear-gradient(180deg, $terciary-color 0%, rgba(255, 255, 255, 0) 100%);
             }
         }
 
@@ -593,9 +618,10 @@ body {
                 padding: 0 10%;
                 max-width: 80%;
             }
-
+            
             .legend {
-                font-size: 80%;
+                font-family: 'EB Garamond';
+                font-size: 14px;
                 position: relative;
                 text-align: left;
 
@@ -605,6 +631,34 @@ body {
                     }
                 }
             }
+
+            
+        }
+
+        .part{
+                img{}
+                p.label{
+                    font-family: 'EB Garamond';
+                font-size: 14px;
+                }
+            }
+
+        /* used for a lonely div in a slide with a background image */
+        .figure-legend {
+            font-family: 'EB Garamond';
+            font-size: 14px;
+
+            &::before {
+                display: block;
+                height: 63vh;
+                content: " ";
+            }
+        }
+
+        .figure-legend-img {
+            font-family: 'EB Garamond';
+            font-size: 14px;
+            margin-top: 4em;
         }
 
         .footer {
@@ -705,7 +759,7 @@ body {
             }
         }
 
-        p.label{
+        p.label {
             margin: 0 4em;
             font-size: 80%;
             font-weight: 333;
@@ -741,46 +795,6 @@ body {
             overflow: hidden;
         }
 
-        .web-window {
-            /* Marco y estética */
-            border: 1px solid rgba(0, 0, 0, 0.16);
-            border-radius: 1.34ex;
-            box-shadow:
-                0 1ex 5px rgba(0, 0, 0, 0.14),
-                0 .66ex 10px rgba(0, 0, 0, 0.35),
-                0 .33ex 30px rgba(0, 0, 0, 0.20);
-            overflow: hidden;
-            background: #fff;
-
-            /* Centrando y limitando tamaño de manera fluida */
-            margin-inline: auto;
-            /* centra horizontalmente dentro de la slide */
-            display: grid;
-            /* para que el iframe llene el contenedor */
-            place-items: stretch;
-            /* iframe a 100% */
-            width: min(85vw, 1200px);
-            height: min(85vh, 800px);
-
-
-            &.pictogramas {
-                height: min(82vh, 860px);
-            }
-
-            &.pipeline {
-                height: min(55vh, 650px);
-            }
-
-
-            // el iframe adentro
-            iframe {
-                width: 100%;
-                height: 100%;
-                border: 0;
-                border-radius: inherit;
-                /* hereda esquinas redondeadas del marco */
-            }
-        }
 
         .nsm {
             margin: 4em 0 0 0;
@@ -845,11 +859,11 @@ body {
     }
 }
 
-.sm{
+.sm {
     font-size: 70%;
 }
 
-.xs{
+.xs {
     font-size: 60%;
 }
 
@@ -1002,6 +1016,6 @@ svg .is-selected {
     }
 }
 
-.center{
+.center {
     text-align: center;
 }

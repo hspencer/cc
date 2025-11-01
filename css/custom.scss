@@ -656,6 +656,13 @@ body {
             }
         }
 
+        .overlay{
+            display: inline-block;
+            padding: 1ex 1em;
+            background-color: #ffffffb5;
+            border-radius: .5ex;
+        }
+
         .figure-legend-img {
             font-family: 'EB Garamond';
             font-size: 14px;
@@ -725,34 +732,7 @@ body {
             }
         }
 
-        h2 {
-
-            &.photo-overlay {
-                $color-photo-overlay: rgba(255, 255, 255, 0.92);
-                color: $color-photo-overlay;
-                margin: 16em 0 0 0;
-                font-weight: 689;
-                line-height: 166%;
-                text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.93);
-                text-transform: uppercase;
-                font-size: 1.36rem;
-
-                span {
-                    background-color: rgba(0, 0, 0, 0.54);
-                    padding: 0 .5ex;
-                    color: $color-photo-overlay;
-
-                    &.light {
-                        font-weight: 222;
-                        text-transform: none;
-                    }
-                }
-            }
-
-        }
-
         .last {
-
             a,
             a:visited {
                 color: $primary-color;

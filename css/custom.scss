@@ -91,7 +91,6 @@ body {
 
 .reveal {
     .slides {
-        iframe{border: 0}
         .invert {
 
             *,
@@ -1004,3 +1003,5 @@ svg .is-selected {
 .center {
     text-align: center;
 }
+
+iframe{border: 0 !important}

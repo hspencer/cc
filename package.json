@@ -18,6 +18,7 @@
     "build:watch": "vite build --watch"
   },
   "dependencies": {
+    "reveal-multiplex": "github:reveal/multiplex",
     "reveal.js": "^5.2.1"
   },
   "devDependencies": {

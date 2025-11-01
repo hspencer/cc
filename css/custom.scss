@@ -91,7 +91,7 @@ body {
 
 .reveal {
     .slides {
-
+        iframe{border: 0}
         .invert {
 
             *,
@@ -102,9 +102,10 @@ body {
                 text-shadow: 1px 1px 2px #25013073;
             }
 
-            strong,
-            a {
-                color: white;
+            strong{color: white;}
+            a, a strong {
+                color: $terciary-color;
+                text-decoration: none;
             }
         }
         /* for spliting the presentation in parts, like Tarantino */
@@ -804,10 +805,14 @@ body {
             gap: 1.5rem;
             grid-template-rows: repeat(auto-fit, minmax(9em, 1fr));
 
+            
+
             .block-name {
-                color: rgb(18, 18, 18);
-                font-size: .9rem;
-                font-weight: 600;
+                color: rgb(227, 227, 227);
+                font-size: .75rem;
+                font-weight: 300;
+                text-transform: uppercase;
+                letter-spacing: .2ex;
                 margin: 0 0 0.5em 0;
                 text-align: left;
             }
@@ -822,28 +827,28 @@ body {
                     margin: .31ex .1ex;
                     padding: 0 .5ex;
                     border-radius: .3ex;
-                    font-size: 110%;
-                    text-shadow: 1px 1px 0 #ffffff4d;
+                    font-size: 120%;
+                    text-shadow: .5px .5px 1px #ffffff73, -1px -1px 1px #00000078;
                 }
 
                 .d1 {
-                    background-color: #48ba0696;
+                    background-color: #48ba06c9;
                 }
 
                 .d2 {
-                    background-color: #96f70494;
+                    background-color: #96f704bd;
                 }
 
                 .d3 {
-                    background-color: #e4f8047e;
+                    background-color: #e4f804ba;
                 }
 
                 .d4 {
-                    background-color: #f78e048d;
+                    background-color: #f78e04b4;
                 }
 
                 .d5 {
-                    background-color: #c94a017e;
+                    background-color: #c94001cc;
                 }
             }
         }

@@ -325,3 +325,5 @@ This recursive alignment between personal adaptation and collective cohesion def
 #### Ethical Approval
 
 This study received ethics approval for three years from the AUT Ethics Committee (AUTEC) on 8 April 2025 under reference number 25/44. I intend to seek ethical approval in the first semester of 2026 to allow for user testing and validation sessions to be conducted online with participants during 2026.
+
+See the [full bibliography](bibliography.md), not directly cited in the document.

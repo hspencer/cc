@@ -702,8 +702,6 @@ Xiao, S., Huang, S., Lin, Y., Ye, Y., & Zeng, W. (2023). Let the Chart Spark: Em
 
 Xing, X., Guan, Y., Zhang, J., Xu, D., & Yu, Q. (2025a). _Reason-SVG: Hybrid Reward RL for Aha-Moments in Vector Graphics Generation_ (No. arXiv:2505.24499). arXiv. [https://doi.org/10.48550/arXiv.2505.24499](https://doi.org/10.48550/arXiv.2505.24499)
 
-Xing, X., Guan, Y., Zhang, J., Xu, D., & Yu, Q. (2025b). _Reason-SVG: Hybrid Reward RL for Aha-Moments in Vector Graphics Generation_ (No. arXiv:2505.24499). [https://doi.org/10.48550/arXiv.2505.24499](https://doi.org/10.48550/arXiv.2505.24499)
-
 Xing, X., Hu, J., Liang, G., Zhang, J., Xu, D., & Yu, Q. (2025). _Empowering LLMs to Understand and Generate Complex Vector Graphics_ (No. arXiv:2412.11102). arXiv. [https://doi.org/10.48550/arXiv.2412.11102](https://doi.org/10.48550/arXiv.2412.11102)
 
 Xing, X., Yu, Q., Wang, C., Zhou, H., Zhang, J., & Xu, D. (2024). _SVGDreamer++: Advancing Editability and Diversity in Text-Guided SVG Generation_ (No. arXiv:2411.17832). arXiv. [https://doi.org/10.48550/arXiv.2411.17832](https://doi.org/10.48550/arXiv.2411.17832)

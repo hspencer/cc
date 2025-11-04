@@ -639,7 +639,7 @@ body {
                 img{}
                 p.label{
                     font-family: 'EB Garamond';
-                font-size: 14px;
+                    font-size: 14px;
                 }
             }
 
@@ -650,7 +650,7 @@ body {
 
             &::before {
                 display: block;
-                height: 63vh;
+                height: 55vh;
                 content: " ";
             }
         }
@@ -658,7 +658,7 @@ body {
         .overlay{
             display: inline-block;
             padding: 1ex 1em;
-            background-color: #ffffffb5;
+            background-color: #ffffff96;
             border-radius: .5ex;
         }
 
@@ -715,12 +715,12 @@ body {
                     color: $terciary-color;
                     background-color: rgba($terciary-color, .1);
                     border: 0.013ex solid rgba($terciary-color, .2);
-                    font-weight: 300;
+                    font-weight: 330;
                 }
             }
 
             &.question {
-                font-weight: 279;
+                font-weight: 310;
                 padding: 0 2m;
                 line-height: 160%;
             }
@@ -789,7 +789,7 @@ body {
             .block-name {
                 color: rgb(227, 227, 227);
                 font-size: .75rem;
-                font-weight: 300;
+                font-weight: 380;
                 text-transform: uppercase;
                 letter-spacing: .2ex;
                 margin: 0 0 0.5em 0;
@@ -807,7 +807,7 @@ body {
                     padding: 0 .5ex;
                     border-radius: .3ex;
                     font-size: 120%;
-                    text-shadow: .5px .5px 1px #ffffff73, -1px -1px 1px #00000078;
+                    text-shadow: .5px .5px 1px #ffffff73, -.5px -.5px 1px #00000057;
                 }
 
                 .d1 {

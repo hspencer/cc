@@ -587,7 +587,7 @@
       <!-- 5: Interviews and field research: AAC Cases & Interview Learnings -->
       <section id="aac-cases">
         <section data-background-image="images/oath-of-the-horatii.png">
-          <div class="figure-legend" style="color: white"><strong>The Oath of the Horatii</strong>, oil on canvas by
+          <div class="figure-legend" style="color: white; margin-top: 12em; max-width: 50%;"><strong>The Oath of the Horatii</strong>, oil on canvas by
             Jacques-Louis David, 1784.</div>
           <aside class="notes">
             <p>I move from theory to grounded practice: what AAC experts and designers do. <strong>Saying is
@@ -597,7 +597,7 @@
         </section>
 
         <section data-background-image="images/aac-bliss.png">
-          <div class="figure-legend"><strong>Blissymbolics chart</strong>, selection of ideographic symbols from Charles
+          <div class="figure-legend" style="margin-top: 12em; max-width: 50%;"><strong>Blissymbolics chart</strong>, selection of ideographic symbols from Charles
             K. Bliss’s system of semantography, first published in the 1949.</div>
         </section>
 
@@ -610,7 +610,7 @@
           <div style="text-align: center;">
             <img src="images/aac-pecs.png" alt="PECS communication book" width="90%">
           </div>
-          <div class="figure-legend-img"><strong>PECS communication book</strong>, example of the Picture Exchange
+          <div class="figure-legend-img" style="max-width: 55%;"><strong>PECS communication book</strong>, example of the Picture Exchange
             Communication System widely used in Chilean special education contexts. The system is based on the physical
             exchange of pictograms to initiate communicative acts and develop functional communication in individuals
             with autism and intellectual disabilities.</div>
@@ -626,7 +626,7 @@
           <div style="text-align: center;">
             <img src="images/aac-core-board.png" alt="Core communication board" width="90%">
           </div>
-          <div class="figure-legend-img"><strong>Core communication board</strong>, example of a high-frequency
+          <div class="figure-legend-img" style="max-width: 55%;"><strong>Core communication board</strong>, example of a high-frequency
             vocabulary system commonly used in New Zealand AAC practice. The board combines core words for everyday
             communication with fringe vocabulary tailored to specific activities or contexts.</div>
           <aside class="notes">
@@ -933,54 +933,76 @@
         <!-- p5 sketch of the pipeline -->
         <section data-transition="slide">
           <h2>Thank you</h2>
-          <div class="p5-host" data-sketch="pipeline" style="width:100%; height:40vh;"></div>
+          <div class="p5-host" data-sketch="pipeline" style="width:100%; height:65vh;"></div>
         </section>
 
         <!-- links -->
 
         <section data-background-color="#000" data-transition="fade">
-          <div class="col-2">
-            <div style="text-align: center;">
-              <img src="svg/mediafranca-dark.svg" alt="MediaFranca Isotype" width="30%">
-            </div>
-            <div class="invert" style="font-size: 11px; line-height: 20px; letter-spacing: .1ex;">
-              <p>The <strong>MediaFranca Initiative</strong> is a collaborative open framework for inclusive, visual,
-                and
-                linguistically grounded communication systems.</p>
+  <div class="col-2">
+    <div style="text-align: center;">
+      <img src="svg/mediafranca-dark.svg" alt="MediaFranca isotype" width="30%">
+    </div>
 
-              <p>Below are the core repositories that define its ecosystem:</p>
+    <div class="invert" style="font-size: 11px; line-height: 20px; letter-spacing: .1ex;">
+      <p>
+        The <strong>MediaFranca Initiative</strong> is an open, collaborative framework for pictographic AAC.
+        It is in an early research and prototyping phase. Its focus is a transparent text-to-SVG generative
+        pipeline: starting from a communicative intent, the system analyses the utterance (NLU), maps it to
+        semantic structures, and outputs an editable, standards-compliant SVG pictogram.
+      </p>
 
-              <ol>
-                <li>
-                  <a href="https://github.com/mediafranca/manifesto" target="_blank"><strong>Manifiesto</strong></a>
-                  outlining the ethical, social, and design principles that guide the MediaFranca ecosystem.
-                </li>
-                <li>
-                  <a href="https://github.com/mediafranca/pictonet" target="_blank"><strong>PictoNet</strong></a> –
-                  The semantic communication network that models meanings through pictograms and linguistic structures.
-                </li>
-                <li>
-                  <a href="https://github.com/mediafranca/pictoforge" target="_blank"><strong>PictoForge</strong></a> –
-                  The pictogram editor for direct manipulation and RLHF interface. See the <a
-                    href="https://pictoforge.mediafranca.net">functional mockup</a>.
-                </li>
-                <li>
-                  <a href="https://github.com/mediafranca/nlu-schema" target="_blank"><strong>nlu-schema</strong></a> –
-                  The natural language understanding (NLU) schema defining how utterances are decomposed into semantic
-                  and pragmatic structures (used by the NLU analyzer as semantic input for pictographic generation).
-                </li>
-                <li>
-                  <a href="https://github.com/mediafranca/vcsci" target="_blank"><strong>VCSCI</strong></a> –
-                  The Visual Communicability and Semantic Correspondence Index is a framework for measuring the
-                  communicative adequacy of pictograms generated by a machine learning model (PictoNet).
-                </li>
-              </ol>
-              <p><strong>Herbert Spencer González</strong> · PhD in Design (AUT)</p>
-              <p><a href="https://herbertspencer.net/cc">herbertspencer.net/cc</a> · <a
-                  href="mailto:herbert.spencer@autuni.ac.nz">herbert.spencer@autuni.ac.nz</a></p>
-            </div>
-          </div>
-        </section>
+      <p>
+        The goal is accessible tooling and reproducible methods for researchers, practitioners, and communities.
+        MediaFranca couples formal modelling (language and pictographic structure) with situated practice
+        (evaluation with AAC stakeholders).
+      </p>
+
+      <p>Core repositories in this foundational ecosystem:</p>
+      <ol>
+        <li>
+          <a href="https://github.com/mediafranca/manifesto" target="_blank" rel="noopener noreferrer">
+            <strong>Manifesto</strong>
+          </a>
+          — ethical, social, and design principles for the ecosystem.
+        </li>
+        <li>
+          <a href="https://github.com/mediafranca/pictonet" target="_blank" rel="noopener noreferrer">
+            <strong>PictoNet</strong>
+          </a>
+          — the semantic communication network that models meaning with pictograms and linguistic structures.
+        </li>
+        <li>
+          <a href="https://github.com/mediafranca/pictoforge" target="_blank" rel="noopener noreferrer">
+            <strong>PictoForge</strong>
+          </a>
+          — pictogram editor and RLHF interface.
+          See the <a href="https://pictoforge.mediafranca.net" target="_blank" rel="noopener noreferrer">functional mock-up</a>.
+        </li>
+        <li>
+          <a href="https://github.com/mediafranca/nlu-schema" target="_blank" rel="noopener noreferrer">
+            <strong>nlu-schema</strong>
+          </a>
+          — natural language understanding schema for decomposing utterances into semantic and pragmatic structures
+          (input to pictographic generation).
+        </li>
+        <li>
+          <a href="https://github.com/mediafranca/vcsci" target="_blank" rel="noopener noreferrer">
+            <strong>VCSCI</strong>
+          </a>
+          — Visual Communicability and Semantic Correspondence Index for assessing the communicative adequacy
+          of machine-generated pictograms.
+        </li>
+      </ol>
+
+      <p><strong>Herbert Spencer González</strong> · PhD in Design (AUT)</p>
+      <p>
+        <a href="https://herbertspencer.net/cc" target="_blank" rel="noopener noreferrer">herbertspencer.net/cc</a>
+        · <a href="mailto:herbert.spencer@autuni.ac.nz">herbert.spencer@autuni.ac.nz</a>
+      </p>
+    </div>
+  </div>
+</section>
 
       </section>
     </div>

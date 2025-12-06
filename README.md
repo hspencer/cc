@@ -21,8 +21,9 @@ By improving the adaptability and expressiveness of a generative pictographic sy
 
 ----
 
-_Read the the full [doctoral research proposal](mediafranca.md)._
-_Cube as Self-Contained Source of Truth [3x3x3](3x3x3.md)._
+
+1. _Read the the full [doctoral research proposal](mediafranca.md)._
+2. _Cube as Self-Contained Source of Truth [3x3x3](3x3x3.md)._
 ----
 
 

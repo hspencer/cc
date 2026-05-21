@@ -1,124 +1,66 @@
-# **MediaFranca** <br>A Practice-Oriented Investigation into a Generative Pictographic System for Cognitive Accessibility
+# Making Pictogram Construction Visible
 
-This doctoral research explores how a generative pictographic system can be designed to support communication for people with complex communication needs. Current augmentative and alternative communication (AAC) tools often compromise style or personal expression, limiting users' agency in daily interactions. The project tackles this issue by investigating how design practice and generative technologies can collaborate to create pictograms that are clear, adaptable, and culturally relevant.
+**Designing Generative Tools for Professional AAC Practice**
 
-The project applies cognitive and linguistic theories - Dual Coding Theory, Conceptual Integration Theory, and Natural Semantic Metalanguage - as well as traditions in visual communication design. These frameworks support the creation of pictograms that can depict both concrete and abstract concepts while remaining easy to understand and sensitive to context.
+This repository hosts the doctoral research proposal and Confirmation of Candidature presentation for **Herbert Spencer González**, PhD in Design at the **Auckland University of Technology (AUT)**, under the supervision of Dr Marcos Steagall and Dr Ivana Nakarada-Kordic, with Dr Welby Ings as advisor.
 
-The research design encompasses two tracks. The first, Situated Inquiry, involves semi-structured interviews with speech therapists, teachers, carers, and designers in Aotearoa New Zealand and Chile. These participants offer valuable insights into how pictograms are taught, adapted, and assessed in real-world practice. Data are analysed thematically using Activity Theory to identify patterns, opportunities, and constraints. The second track, Formal Modelling, develops PictoNet, a generative engine that produces editable, auditable pictograms in SVG format. This track is based on technical feasibility studies, prototype development, and iterative testing.
+The research asks how generative image tools can be designed to make the construction of Augmentative and Alternative Communication (AAC) pictograms *inspectable* and *controllable* by the professionals responsible for validating them — speech-language therapists, special educators, and pictogram designers working with autistic transitional-age youth (16–26) navigating the passage to independent living. It develops a provotype, PICTOS.net, that stages the path from a natural-language phrase to a finished pictogram into discrete, editable steps, making visible the decisions that professionals currently navigate intuitively.
 
-The two tracks will converge through PictoForge, an interface where participants assess, improve, and co-create pictograms. This iterative process will take shape in an edition and evaluation interface that utilises reinforcement learning through human feedback. Validation is guided by the Visual Comprehensibility and Semantic Correspondence Index, which integrates conventional standards with context-specific validation, including clear association, semantic accuracy, dignity and cultural adaptability, and coherent graphical synthesis across the set.
-This research aims to produce three interrelated outcomes that advance both theory and practice in design, cognitive accessibility, and inclusive technology: 
+Working within a constructivist-interpretivist paradigm and Research through Design (Zimmerman et al., 2007), the inquiry proceeds through three overlapping cycles — IDENTIFY, EXPERIMENT, and VALIDATE & REFINE — combining semi-structured interviews with Chilean AAC professionals, participatory design sessions grounded in the Scandinavian tradition (Bødker et al., 2000; Ehn, 1988), and iterative prototyping. Verbal data are analysed with Reflexive Thematic Analysis; material data through Annotated Portfolios; the two are integrated through an activity-theory lens.
 
- 1. **PictoNet**: A generative pictographic model trained on a semantically layered dataset (PICTOS), capable of producing context-sensitive pictograms that integrate cognitive principles (Dual Coding and Conceptual Integration Theory) with compositional visual rules. The model will support both concrete recognition and abstract expression through a structured, editable architecture grounded in semantic primitives. 
+## Documents
 
- 2. **PictoForge**: An open, interactive interface enabling round-trip authoring - bidirectional editing between natural language input and SVG-based visual output. This tool will empower users, practitioners, and researchers to generate, inspect, modify, and retrain pictograms, ensuring outputs remain legible, culturally adaptable, and responsive to real-world communicative needs. It will function as a living testbed for iterative co-design and community feedback. 
+1. **[Doctoral Research Proposal](making-pictogram-construction-visible.md)** — full Confirmation of Candidature text, with figures and references[^1].
+2. **[Cube as Self-Contained Source of Truth (3x3x3)](3x3x3.md)** — methodological notes on the research artefact.
+3. **[Confirmation of Candidature presentation](https://herbertspencer.net/cc)** — the live reveal.js slide deck (source in [`index.html`](index.html)).
 
- 3. **MediaFranca**: A speculative yet actionable framework for a federated pictographic commons - a decentralised, community-governed infrastructure for the shared development and evolution of visual vocabularies. Informed by the social model of disability and convivial design principles (Illich, 1973; Murturi et al., 2023), MediaFranca proposes a governance model that balances local cultural sovereignty with semantic interoperability, resisting the centralisation and opacity of commercial AI systems. 
+[^1]: The historical first version of the proposal — published under the working title *MediaFranca* — is preserved in the [`v1`](https://github.com/hspencer/cc/tree/v1) branch.
 
-Together, these outcomes constitute a generative infrastructure for cognitive accessibility that repositions pictograms as editable, co-authored, and ethically grounded acts of meaning-making. The potential benefits include adding a vital component to the AAC ecosystem: a new generative channel for representation. 
+## Related repository
 
-By improving the adaptability and expressiveness of a generative pictographic system and providing open-source tools for communities to customise and localise, the research lays the groundwork for a federated learning system that supports cultural sovereignty within a highly unequal socio-technical environment.
+A shorter, more current Spanish-language companion lives at **[`hspencer/pictos-chile`](https://github.com/hspencer/pictos-chile)**, with the navigable version available at **<https://herbertspencer.net/pictos-chile>**. That document is the working summary in castellano; this repository remains the canonical English-language proposal and presentation.
 
 ----
 
 
-1. _Read the the full [doctoral research proposal](mediafranca.md)._
-2. _Cube as Self-Contained Source of Truth [3x3x3](3x3x3.md)._
-----
+### PICTOS.net pipeline
 
+The provotype at the centre of the study, PICTOS.net, organises the path from utterance to pictogram across three professional control points — UNDERSTAND, COMPOSE, and PRODUCE. Each editable representation can be intervened on by the professional; edits at one step invalidate the steps downstream, which the tool marks as *outdated* until the professional regenerates them. All interventions are recorded by the audit log[^2].
 
-#### Service process structure
-
-```                                                             ─┐
-┌────────────────────────────────────────────────-───────────┐   |
-│ Utterance (communicative intent)                           │   |
-└────────────────────────────────────────────────────────────┘   |
-                 │                                               | PictoForge─┐  
-                 ▼                                               |            |       
-┌────────────────────────────────────────────────-───────────┐   |            |
-│ Local Settings, preferences & styling                      │   |            |
-└────────────────────────────────────────────────────────────┘   |            |
-                 │                                              -┘            |
-                 ▼                                              ─┐            |
-┌────────────────────────────────────────────────────────────┐   |            |
-│ Text-preprocessing / Tokenization                          │   |            |
-└────────────────────────────────────────────────────────────┘   |            |
-                 │                                               |            |
-                 ▼                                               |            |
-┌────────────────────────────────────────────────────────────┐   |            |
-│ Semantic Analysis (NLU) → Semantic JSON                    │   |            |
-└────────────────────────────────────────────────────────────┘   |            |
-                 │                                               |            |
-                 ▼                                               |            |
-┌────────────────────────────────────────────────────────────┐   |            |
-│ Concept Mapping (WordNet / NSM / FrameNet) → Concept Set   │   | PictoNet   | 
-└──────────────────────────────────────────────────-─────────┘   |            |
-                 │                                               |            |
-                 ▼                                               |            |
-┌────────────────────────────────────────────────────────────┐   |            |
-│ Blending & Pragmatics Contextualisation                    │   |            |
-└────────────────────────────────────────────────────────────┘   |            |
-                 │                                               |            |
-                 ▼                                               |            |
-┌────────────────────────────────────────────────────────────┐   |            |
-│ Layout & Styler → Structured SVG Tree                      │   |            |
-└────────────────────────────────────────────────────────────┘   |            |
-                 │                                               |            |
-                 ▼                                               |            |
-┌────────────────────────────────────────────────────────────┐   |            |
-│  Accessibility Post-processing → Accessible SVG Output     │   |            |
-└────────────────────────────────────────────────────────-───┘   |            |
-                 │                                              ─┘            |
-                 ▼                                              ─┐            |
-┌────────────────────────────────────────────────────────────┐   |            |
-│ Output & Local Storage Cache                               │   |            |
-└──────────────────────────────────────────────-─────────────┘   |            |
-                 │                                               |            |
-         ┌───────┴────────────────Loop: If utterance exists───┐  |            |
-         ▼                                                    │  |            |
-┌────────────────────────────────────────────────────────────┐│  | PictoForge-┘
-│ User Edits in PictoForge → Feedback & Preference Log       ││  |
-└──────────────────────────────────────────────────────-─────┘│  |
-                 │                                            │  |
-                 ▼                                            │  |
-┌────────────────────────────────────────────────────────────┐│  |
-│ Local Model Fine-tuning (Adapter Layers)                   ││  |
-└────────────────────────────────────────────────────────────┘│  |
-                 │                                            │ ─┘
-                 ▼                                            │ ─┐
-┌────────────────────────────────────────────────────────────┐│  |
-│ Upload anonymised updates & feedback                       ││  |
-└────────────────────────────────────────────────────────────┘│  |
-                 │                                            │  |
-                 ▼                                            │  |
-┌────────────────────────────────────────────────────────────┐│  |
-│ Federation Aggregator                                      ││  |
-└────────────────────────────────────────────────────────────┘│  | MediaFranca
-                 │                                            │  |
-                 ▼                                            │  |
-┌────────────────────────────────────────────────────────────┐│  |
-│ PictoNet Parent Model — produce new global weights         ││  |
-└────────────────────────────────────────────────────────────┘│  |
-                 │                                            │  |
-                 ▼                                            │  |
-┌────────────────────────────────────────────────────────────┐│  |
-│ Distribute updated model to local nodes                    ││  |
-└────────────────────────────────────────────────────────────┘│  |
-                 ▲                                            │ ─┘
-                 └────────────────Loop continues──────────────┘
+```mermaid
+flowchart TD
+    U["Utterance · natural-language communicative intent"] --> A
+    subgraph UNDERSTAND
+      A["Structured semantic analysis (NSM): context, classification,<br/>logical form, pragmatics, explications"]
+    end
+    A --> B
+    subgraph COMPOSE
+      B["Element tree: hierarchical visual components"]
+      B --> C["Image-generation prompt: spatial articulation"]
+    end
+    C --> D
+    subgraph PRODUCE
+      D["Bitmap (read-only generative output)"]
+      D --> E["Editable vector trace · SVG structure"]
+    end
+    E --> F["Validated pictogram · added to library"]
+    F -. audit log .-> G[("Intervention record:<br/>edits, discards, regenerations")]
+    A -. invalidates downstream .-> B
+    B -. invalidates downstream .-> D
 ```
 
-### Project repositories
+[^2]: Library-level configuration — graphical preferences, geographic and cultural context, attribution — is transversal to the three control points. The audit log captures manual edits (prior and revised states) and discards (regenerated without editing), and travels with the library on export.
 
-The **[MediaFranca Initiative](https://github.com/mediafranca/)** is a collaborative open framework for inclusive, visual, and linguistically grounded communication systems.
+### Related project repositories
 
-Below are the core repositories that define its ecosystem:
+The doctoral artefact sits alongside the broader **[MediaFranca Initiative](https://github.com/mediafranca/)**, an open framework for inclusive, visual, and linguistically grounded communication systems that gathers earlier and parallel explorations of the same problem space.
 
-1. [**Manifiesto**](https://github.com/mediafranca/manifesto) — outlining the ethical, social, and design principles that guide the MediaFranca ecosystem.  
-2. [**PictoNet**](https://github.com/mediafranca/pictonet) — the semantic communication network that models meanings through pictograms and linguistic structures.  
-3. [**PictoForge**](https://github.com/mediafranca/pictoforge) — the pictogram editor for direct manipulation and RLHF interface. See the [functional mockup](https://pictoforge.mediafranca.net).  
-4. [**nlu-schema**](https://github.com/mediafranca/nlu-schema) — the natural language understanding (NLU) schema defining how utterances are decomposed into semantic and pragmatic structures (used by the NLU analyser as semantic input for pictographic generation).  
-5. [**VCSCI**](https://github.com/mediafranca/vcsci) — the *Visual Communicability and Semantic Correspondence Index*, a framework for measuring the communicative adequacy of pictograms generated by a machine learning model (PictoNet).
+1. [**Manifiesto**](https://github.com/mediafranca/manifesto) — ethical, social, and design principles guiding the MediaFranca ecosystem.
+2. [**PictoNet**](https://github.com/mediafranca/pictonet) — semantic communication network modelling meanings through pictograms and linguistic structures.
+3. [**PictoForge**](https://github.com/mediafranca/pictoforge) — pictogram editor for direct manipulation and RLHF interface ([functional mockup](https://pictoforge.mediafranca.net)).
+4. [**nlu-schema**](https://github.com/mediafranca/nlu-schema) — natural language understanding schema for decomposing utterances into semantic and pragmatic structures.
+5. [**VCSCI**](https://github.com/mediafranca/vcsci) — *Visual Communicability and Semantic Correspondence Index* for measuring the communicative adequacy of generated pictograms.
+6. [**pictos-chile**](https://github.com/hspencer/pictos-chile) — current, brief Spanish-language version of the proposal ([live](https://herbertspencer.net/pictos-chile)).
 
 **Herbert Spencer González** · PhD in Design (AUT)  
 [https://github.com/hspencer/cc](https://github.com/hspencer/cc) · [herbert.spencer@autuni.ac.nz](mailto:herbert.spencer@autuni.ac.nz)

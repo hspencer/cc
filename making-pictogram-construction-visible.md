@@ -25,9 +25,9 @@ Creating and maintaining these systems is a shared professional responsibility. 
 
 The research centres on this professional work — how AAC professionals make decisions about pictogram meaning, depiction, and adaptation when existing libraries fail to cover the specific, often situated vocabulary required for home-based routines, safety instructions, and self-directed activities (Figure 1).
 
-<figure id="figure-1">
-  <img src="images/drp/figure-01.jpeg" alt="Categories of AAC systems and their selection methods">
-  <figcaption><strong>Figure 1.</strong> Categories of AAC systems and their selection methods. This research concentrates on high-tech, pictogram-based systems (highlighted in purple). Source: Author.</figcaption>
+<figure align="center" id="figure-1">
+  <img src="images/drp/figure-01.jpeg" alt="Categories of AAC systems and their selection methods" width="70%">
+  <figcaption><sub><b>Figure 1.</b> Categories of AAC systems and their selection methods. This research concentrates on high-tech, pictogram-based systems (highlighted in purple). Source: Author.</sub></figcaption>
 </figure>
 
 AAC professionals rely on curated pictographic libraries — such as the open-access ARASAAC (Palao & Gobierno de Aragón, 2013) or the proprietary PCS Boardmaker set (Johnson & Watt, 1987) — which provide standardised, pre-validated resources. These libraries are limited: concepts are missing, pictograms are too generic, or cultural variants are unavailable. The pictograms required to support the transition to independent living are personal and context-specific, rarely found in generic sets (Yorkston et al., 1988), and keeping them current with a young person’s changing routines demands continuous adaptation that professionals handle without dedicated tools.
@@ -61,9 +61,9 @@ Second, this research intervenes at a formative moment. Interviews with Chilean 
 
 Third, this research belongs to a discipline uniquely equipped to address it. Between communicative intent and pictographic representation lies an unmapped space of decisions: what to show, what to omit, how abstract to be, how to balance recognisability with visual economy. That space lies beyond pure specification; it requires exploration and judgement. Professionals enact this intuitively. Design research clarifies the process without dictating it, enabling professional judgment to be exercised, observed, and improved. This work belongs in Design because it centres on the creative act through which abstract communicative needs take visual form.
 
-<figure id="figure-2">
-  <img src="images/drp/figure-02.png" alt="Left: ARASAAC pictogram “Peluquería” (Sergio Palao / Government of Aragon, CC BY-NC-SA 4.0)">
-  <figcaption><strong>Figure 2.</strong> Left: ARASAAC pictogram “Peluquería” (Sergio Palao / Government of Aragon, CC BY-NC-SA 4.0). Right: AIGA/DOT public information pictogram for Hairdresser Services (American Institute of Graphic Arts [AIGA], 1974/2017, public domain). The ARASAAC pictogram uses a narrative scene with contextual detail and a childlike figure; the AIGA/DOT system reduces the concept to essential objects and a neutral adult form. For adolescents transitioning to independent living, this difference has direct implications for dignity, appropriateness, and willingness to use the communication system (Zisk & Dalton, 2019).</figcaption>
+<figure align="center" id="figure-2">
+  <img src="images/drp/figure-02.png" alt="Left: ARASAAC pictogram “Peluquería” (Sergio Palao / Government of Aragon, CC BY-NC-SA 4.0)" width="70%">
+  <figcaption><sub><b>Figure 2.</b> Left: ARASAAC pictogram “Peluquería” (Sergio Palao / Government of Aragon, CC BY-NC-SA 4.0). Right: AIGA/DOT public information pictogram for Hairdresser Services (American Institute of Graphic Arts [AIGA], 1974/2017, public domain). The ARASAAC pictogram uses a narrative scene with contextual detail and a childlike figure; the AIGA/DOT system reduces the concept to essential objects and a neutral adult form. For adolescents transitioning to independent living, this difference has direct implications for dignity, appropriateness, and willingness to use the communication system (Zisk & Dalton, 2019).</sub></figcaption>
 </figure>
 
 Fourth, this research draws on a disciplinary tradition that has not yet been applied to the AAC pictogram problem. The dominant pictogram libraries did not emerge from information design but from clinical and educational contexts where functional adequacy took precedence over visual quality, systemic coherence, or age-appropriateness. The result is an aesthetic calibrated for young children, applied without adjustment to adolescents and adults. For a young autistic individual navigating the transition to independent living, communication materials that appear childlike carry a cost to dignity, identity, and willingness to use the system (Batorowicz et al., 2025). Information design has long addressed problems of legibility, age-appropriateness, and systemic consistency at scale; this project brings that inheritance into AAC professional practice (Figure 2).
@@ -108,9 +108,9 @@ The dominant open Spanish-language pictogram resource is ARASAAC (Palao & Gobier
 
 The transition to independent living for autistic adolescents sharpens these limitations. The Drexel National Autism Indicators Report (Roux et al., 2015) found approximately 26% of young adults on the autism spectrum received no services after high school — the transition cliff, where communicative demands increase precisely as institutional supports decline. Household tasks, vocational participation, public services, and self-advocacy each require pictograms that are specific, locally relevant, and routinely absent from standard libraries. Yu et al. (2024) describe just-in-time programming as the professional response: rapid preparation of communication materials in direct response to emerging needs. Timeliness matters because vocabulary needs arise in the moment, while speed intensifies the demands on professional judgement.
 
-<figure id="figure-3">
-  <img src="images/drp/figure-03.png" alt="The pictogram authoring lifecycle as a shared professional workflow">
-  <figcaption><strong>Figure 3.</strong> The pictogram authoring lifecycle as a shared professional workflow. Six stages form a recurring, non-linear cycle; the loop between adjust and validate reflects iterative revision before documentation and implementation. Dot colours indicate which professionals participate at each stage; responsibilities overlap across the cycle. Caregivers are positioned as the persistent context within which communicative needs arise. Adapted from Beukelman and Light (2020).</figcaption>
+<figure align="center" id="figure-3">
+  <img src="images/drp/figure-03.png" alt="The pictogram authoring lifecycle as a shared professional workflow" width="70%">
+  <figcaption><sub><b>Figure 3.</b> The pictogram authoring lifecycle as a shared professional workflow. Six stages form a recurring, non-linear cycle; the loop between adjust and validate reflects iterative revision before documentation and implementation. Dot colours indicate which professionals participate at each stage; responsibilities overlap across the cycle. Caregivers are positioned as the persistent context within which communicative needs arise. Adapted from Beukelman and Light (2020).</sub></figcaption>
 </figure>
 
 Documentation is a further dimension often underestimated. Pictogram production is a cycle of proposing, checking, revising, and validating under time and accountability constraints. Professionals need to explain why a particular pictogram exists, when it should be used, and how it differs from related pictograms — knowledge shared across caregivers, taught to family members, and reused across contexts. A pictogram lacking documented rationale is harder to maintain and easier to misapply (Tönsing et al., 2023). The practical infrastructure for this documentation is absent from current professional workflows — a gap this project positions as a design problem.
@@ -121,9 +121,9 @@ Interest in generative support for AAC has grown in response to the practical pr
 
 A first family treats generation as retrieval and recombination: systems that receive a word or phrase and return pictograms from an existing library, assembled into sequenced strips (Figure 4). This preserves established visual conventions — important when materials must be consistent with what a person has already learned (Cabello et al., 2018; Schwab et al., 2020). Its limitation is structural: the system can produce only what the library already contains.
 
-<figure id="figure-4">
-  <img src="images/drp/figure-04.png" alt="Example of a retrieval-based output: three ARASAAC pictograms assembled from library to represent “Cut my hair” (DictaPi">
-  <figcaption><strong>Figure 4.</strong> Example of a retrieval-based output: three ARASAAC pictograms assembled from library to represent “Cut my hair” (DictaPicto App, Fundación Orange, Spain). The sequential assembly mirrors written syntax, treating pictograms as lexical substitutes within a visual sentence.</figcaption>
+<figure align="center" id="figure-4">
+  <img src="images/drp/figure-04.png" alt="Example of a retrieval-based output: three ARASAAC pictograms assembled from library to represent “Cut my hair” (DictaPi" width="70%">
+  <figcaption><sub><b>Figure 4.</b> Example of a retrieval-based output: three ARASAAC pictograms assembled from library to represent “Cut my hair” (DictaPicto App, Fundación Orange, Spain). The sequential assembly mirrors written syntax, treating pictograms as lexical substitutes within a visual sentence.</sub></figcaption>
 </figure>
 
 A second family, predictive sequencing, addresses message composition speed; vocabulary gaps remain unaddressed by this family. Systems such as PictoBERT and PrAACT use neural models to anticipate which pictogram is likely next in a sequence, functioning as autocomplete for pictogram-based communication (Pereira et al., 2022, 2024). Like retrieval, predictive sequencing operates within existing libraries.
@@ -132,9 +132,9 @@ A third family moves beyond existing libraries: generative models that produce p
 
 The advance in general-purpose generation sharpens AAC-specific constraints. The primary design question is whether generation can maintain a stable visual style across dozens or hundreds of pictograms so they remain coherent for search, learning, and reuse. Adding visual detail or photographic realism — which generative models do well — can introduce ambiguity or cultural mismatch, where simplicity at small display sizes is a functional requirement (Figure 5).
 
-<figure id="figure-5">
-  <img src="images/drp/figure-05.png" alt="Three visualisations of the concept cook: left, ARASAAC pictogram Cook (Sergio Palao / Government of Aragón, CC BY-NC-SA">
-  <figcaption><strong>Figure 5.</strong> Three visualisations of the concept cook: left, ARASAAC pictogram Cook (Sergio Palao / Government of Aragón, CC BY-NC-SA), simplified for small-scale legibility; centre, a stylised image from Sora (OpenAI); right, a photorealistic image from Gemini (Google). At thumbnail scale, the ARASAAC pictogram remains more legible than the two generative outputs.</figcaption>
+<figure align="center" id="figure-5">
+  <img src="images/drp/figure-05.png" alt="Three visualisations of the concept cook: left, ARASAAC pictogram Cook (Sergio Palao / Government of Aragón, CC BY-NC-SA" width="70%">
+  <figcaption><sub><b>Figure 5.</b> Three visualisations of the concept cook: left, ARASAAC pictogram Cook (Sergio Palao / Government of Aragón, CC BY-NC-SA), simplified for small-scale legibility; centre, a stylised image from Sora (OpenAI); right, a photorealistic image from Gemini (Google). At thumbnail scale, the ARASAAC pictogram remains more legible than the two generative outputs.</sub></figcaption>
 </figure>
 
 A further gap affects all families: current generative workflows operate through prompting — the user describes what they want, the model produces an output, and the user accepts or rejects it. This offers limited control over communicatively relevant properties and leaves weak traces of professional reasoning. Across the three families, a recurring concern is that generative assistance can produce fluent, plausible outputs of unchanged communication quality. Zastudil et al. (2025) found that AI assistance increased AAC professionals’ confidence while the quality of resulting communication boards remained unchanged — perceived helpfulness diverged from observable quality. Generative tools that reinforce existing visual conventions leave the age-appropriateness problem of Part 1 untouched.
@@ -175,9 +175,9 @@ The IDENTIFY cycle, completed between May 2025 and February 2026 under AUTEC app
 
 The EXPERIMENT cycle is already underway through the iterative development of the provotype itself. The provotype versions (Figure 6) represent successive refinements to the technical artefact and to the methodological framework around it that have been carried out by the researcher since the close of the IDENTIFY cycle. The participatory design sessions of the second phase, planned and pending an amendment to AUTEC 25/44, formalise the EXPERIMENT cycle as collective work with professional participants and open the transition into the VALIDATE & REFINE cycle. Early sessions explore alternative representations and controls within the authoring interface; later sessions converge toward refinement against the multidisciplinary quality standards of professional AAC practice, with the provotype advancing toward v(n) across the series. This second phase positions the same community of professionals as co-authors of the tools their practice requires and produces material artefacts (libraries of pictograms with their accompanying audit records) that constitute the corpus for an AP analysis.
 
-<figure id="figure-6">
-  <img src="images/drp/figure-06.png" alt="The RtD methodology is structured into three overlapping iterative cycles , with the provotype advancing through success">
-  <figcaption><strong>Figure 6.</strong> The RtD methodology is structured into three overlapping iterative cycles , with the provotype advancing through successive versions. Divergent arrows (orange) mark phases of exploration where possibilities are opened; convergent arrows (blue) mark phases where options are narrowed and decisions consolidated — a rhythm of opening and closing drawn from Banathy’s dynamics of divergence and convergence (Banathy, 1996).</figcaption>
+<figure align="center" id="figure-6">
+  <img src="images/drp/figure-06.png" alt="The RtD methodology is structured into three overlapping iterative cycles , with the provotype advancing through success" width="70%">
+  <figcaption><sub><b>Figure 6.</b> The RtD methodology is structured into three overlapping iterative cycles , with the provotype advancing through successive versions. Divergent arrows (orange) mark phases of exploration where possibilities are opened; convergent arrows (blue) mark phases where options are narrowed and decisions consolidated — a rhythm of opening and closing drawn from Banathy’s dynamics of divergence and convergence (Banathy, 1996).</sub></figcaption>
 </figure>
 
 ### The provotype: PICTOS.net
@@ -194,7 +194,7 @@ PICTOS.net incorporates an audit logging functionality that records professional
 
 Eight professionals participated as formal research participants across seven recorded interviews conducted in Santiago, Valparaíso and Quilpué between May 2025 and February 2026. Two additional preliminary conversations preceded ethics approval and informed the design of the interview instrument; these are treated as contextual background and remain outside the analytic corpus. The participant profile appears in Table 1.
 
-<figure id="table-1">
+<figure align="center" id="table-1">
   <table>
     <thead><tr><th>Code</th><th>Anonymised Profile</th><th>Area of Expertise</th><th>Setting</th><th>Years of experience</th></tr></thead>
     <tbody>
@@ -209,7 +209,7 @@ Eight professionals participated as formal research participants across seven re
       <tr><td>T8</td><td>Centre Director</td><td>Special Education</td><td>Public specialist</td><td>25</td></tr>
     </tbody>
   </table>
-  <figcaption><strong>Table 1.</strong> Participant profiles. SLT = Speech-Language Therapist. D1 and T1 took part in preliminary conversations prior to AUTEC approval (25/44, April 2025); these are contextual background and lie outside the analytic corpus. Formal interviews with both are planned in a subsequent phase, within the ethics pathway scope.</figcaption>
+  <figcaption><sub><b>Table 1.</b> Participant profiles. SLT = Speech-Language Therapist. D1 and T1 took part in preliminary conversations prior to AUTEC approval (25/44, April 2025); these are contextual background and lie outside the analytic corpus. Formal interviews with both are planned in a subsequent phase, within the ethics pathway scope.</sub></figcaption>
 </figure>
 
 Interviews followed a semi-structured guide articulated across six thematic tracks: personal experience with AAC; systems in use; implementation and adaptations made; barriers to adoption and use; a life-cycle perspective; and speculation about future possibilities. The structure provided sufficient consistency across sessions to support comparative analysis while leaving space for participant-led elaboration. The final track, oriented toward speculation about possible futures, opens the prospective dimension that the participatory design sessions of Phase 2 sustain and concretise with the provotype as material.

@@ -57,8 +57,8 @@ The doctoral artefact sits alongside the broader **[MediaFranca Initiative](http
 1. [**Manifiesto**](https://github.com/mediafranca/manifesto) — ethical, social, and design principles guiding the MediaFranca ecosystem.
 2. [**nlu-schema**](https://github.com/mediafranca/nlu-schema) — natural language understanding schema for decomposing utterances into semantic and pragmatic structures.
 3. [**mf-svg-schema**](https://github.com/mediafranca/mf-svg-schema) — MediaFranca SVG Schema for AAC Pictograms.
-5. [**ICAP**](https://github.com/mediafranca/ICAP) — *Pictographic Quality Index* (Índice de Calidad Pictográfica para la CAA) for measuring the communicative adequacy of generated pictograms.
-6. [**pictos-chile**](https://github.com/hspencer/pictos-chile) — current, brief Spanish-language version of the proposal ([live](https://herbertspencer.net/pictos-chile)).
+4. [**ICAP**](https://github.com/mediafranca/ICAP) — *Pictographic Quality Index* (Índice de Calidad Pictográfica para la CAA) for measuring the communicative adequacy of generated pictograms.
+5. [**pictos-chile**](https://github.com/hspencer/pictos-chile) — current, brief Spanish-language version of the proposal ([live](https://herbertspencer.net/pictos-chile)).
 
 **Herbert Spencer González** · PhD in Design (AUT)  
 [https://github.com/hspencer/cc](https://github.com/hspencer/cc) · [herbert.spencer@autuni.ac.nz](mailto:herbert.spencer@autuni.ac.nz)

@@ -10,9 +10,8 @@ Working within a constructivist-interpretivist paradigm and Research through Des
 
 ## Documents
 
-1. **[Doctoral Research Proposal](making-pictogram-construction-visible.md)** — full Confirmation of Candidature text, with figures and references[^1].
-2. **[Cube as Self-Contained Source of Truth (3x3x3)](3x3x3.md)** — methodological notes on the research artefact.
-3. **[Confirmation of Candidature presentation](https://herbertspencer.net/cc)** — the live reveal.js slide deck (source in [`index.html`](index.html)).
+1. **[Doctoral Research Proposal](making-pictogram-construction-visible.md)** — full research proposal text, with figures and references[^1].
+2. **[Confirmation of Candidature presentation](https://herbertspencer.net/cc)** — the live reveal.js slide deck (source in [`index.html`](index.html)).
 
 [^1]: The historical first version of the proposal — published under the working title *MediaFranca* — is preserved in the [`v1`](https://github.com/hspencer/cc/tree/v1) branch.
 
@@ -56,10 +55,9 @@ flowchart TD
 The doctoral artefact sits alongside the broader **[MediaFranca Initiative](https://github.com/mediafranca/)**, an open framework for inclusive, visual, and linguistically grounded communication systems that gathers earlier and parallel explorations of the same problem space.
 
 1. [**Manifiesto**](https://github.com/mediafranca/manifesto) — ethical, social, and design principles guiding the MediaFranca ecosystem.
-2. [**PictoNet**](https://github.com/mediafranca/pictonet) — semantic communication network modelling meanings through pictograms and linguistic structures.
-3. [**PictoForge**](https://github.com/mediafranca/pictoforge) — pictogram editor for direct manipulation and RLHF interface ([functional mockup](https://pictoforge.mediafranca.net)).
-4. [**nlu-schema**](https://github.com/mediafranca/nlu-schema) — natural language understanding schema for decomposing utterances into semantic and pragmatic structures.
-5. [**VCSCI**](https://github.com/mediafranca/vcsci) — *Visual Communicability and Semantic Correspondence Index* for measuring the communicative adequacy of generated pictograms.
+2. [**nlu-schema**](https://github.com/mediafranca/nlu-schema) — natural language understanding schema for decomposing utterances into semantic and pragmatic structures.
+3. [**mf-svg-schema**](https://github.com/mediafranca/mf-svg-schema) — MediaFranca SVG Schema for AAC Pictograms.
+5. [**ICAP**](https://github.com/mediafranca/ICAP) — *Pictographic Quality Index* (Índice de Calidad Pictográfica para la CAA) for measuring the communicative adequacy of generated pictograms.
 6. [**pictos-chile**](https://github.com/hspencer/pictos-chile) — current, brief Spanish-language version of the proposal ([live](https://herbertspencer.net/pictos-chile)).
 
 **Herbert Spencer González** · PhD in Design (AUT)  

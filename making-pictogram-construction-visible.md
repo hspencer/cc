@@ -26,7 +26,7 @@ Creating and maintaining these systems is a shared professional responsibility. 
 The research centres on this professional work — how AAC professionals make decisions about pictogram meaning, depiction, and adaptation when existing libraries fail to cover the specific, often situated vocabulary required for home-based routines, safety instructions, and self-directed activities (Figure 1).
 
 <figure align="center" id="figure-1">
-  <img src="images/drp/figure-01.jpeg" alt="Categories of AAC systems and their selection methods" width="70%">
+  <img src="images/drp/figure-01.jpeg" alt="Categories of AAC systems and their selection methods" width="100%">
   <figcaption><sub><b>Figure 1.</b> Categories of AAC systems and their selection methods. This research concentrates on high-tech, pictogram-based systems (highlighted in purple). Source: Author.</sub></figcaption>
 </figure>
 
@@ -109,7 +109,7 @@ The dominant open Spanish-language pictogram resource is ARASAAC (Palao & Gobier
 The transition to independent living for autistic adolescents sharpens these limitations. The Drexel National Autism Indicators Report (Roux et al., 2015) found approximately 26% of young adults on the autism spectrum received no services after high school — the transition cliff, where communicative demands increase precisely as institutional supports decline. Household tasks, vocational participation, public services, and self-advocacy each require pictograms that are specific, locally relevant, and routinely absent from standard libraries. Yu et al. (2024) describe just-in-time programming as the professional response: rapid preparation of communication materials in direct response to emerging needs. Timeliness matters because vocabulary needs arise in the moment, while speed intensifies the demands on professional judgement.
 
 <figure align="center" id="figure-3">
-  <img src="images/drp/figure-03.png" alt="The pictogram authoring lifecycle as a shared professional workflow" width="70%">
+  <img src="images/drp/figure-03.png" alt="The pictogram authoring lifecycle as a shared professional workflow" width="70%" style='border: 2em solid white'>
   <figcaption><sub><b>Figure 3.</b> The pictogram authoring lifecycle as a shared professional workflow. Six stages form a recurring, non-linear cycle; the loop between adjust and validate reflects iterative revision before documentation and implementation. Dot colours indicate which professionals participate at each stage; responsibilities overlap across the cycle. Caregivers are positioned as the persistent context within which communicative needs arise. Adapted from Beukelman and Light (2020).</sub></figcaption>
 </figure>
 
